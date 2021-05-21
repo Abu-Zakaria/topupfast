@@ -1,0 +1,168 @@
+<template>
+<layout name="Banner">
+	<section class="users-list-wrapper">
+  		<div id="basic-examples">
+			<div class="card">
+				<div class="card-content">
+					<div class="card-body">
+
+						<div v-if="success" class="alert alert-success">
+							{{ success }}
+						</div>
+
+				        <div class="mb-2 text-right">
+				        	<button class="btn btn-sm btn-primary" @click="openModal()">Add New</button>
+				        </div>
+
+				        <table class="table table-bordered table-sm table-condensed">
+				            <thead>
+				            <tr>
+								<th>#</th>
+								<th>Name</th>
+				                <th>Logo</th>
+				                <th>Action</th>
+				            </tr>
+				            </thead>
+				            <tr v-for="(row , index) in banners.data" :key="index">
+				                <td>{{ index+1 }}</td>
+				                <td>{{ row.name }}</td>
+								<td><img :src="'banners/'+row.logo" alt="opps" style="height:50px;width:auto;"></td>
+				                <td width="200">
+				                    <button @click="edit(row)" class="btn btn-sm btn-primary">Edit</button>
+				                    <button @click="deleteRow(row)" class="btn btn-sm btn-danger">Del</button>
+				                </td>
+				            </tr>
+				        </table>
+
+				        <pagination :links="banners.links"></pagination>
+
+				        <div class="modal fade" id="modal">
+				            <div class="modal-dialog">
+
+				                <div class="modal-content">
+				                    <div class="modal-header">
+				                        <h4 class="modal-title">New Contact</h4>
+				                    </div>
+				                    <div class="modal-body">
+
+										<div class="form-group">
+				                            <label for="name"><b>Name</b></label>
+				                            <input class="form-control"  :class="[errors.name ? 'is-invalid' : '']" required id="name" placeholder="Name" v-model="form.name"/>
+				                             <span
+						                          v-if="errors.name"
+						                          class="invalid-feedback"
+						                          role="alert"
+						                        >
+						                          <strong>{{ errors.name[0] }}</strong>
+						                        </span>
+				                        </div>
+
+				                        <div class="form-group">
+				                            <label for="logo"><b>Logo</b></label>
+				                            <input type="file" @change="setLogo" accept="image/*"  class="form-control"  :class="[errors.logo ? 'is-invalid' : '']" required id="logo" name="logo"/>
+				                             <span
+						                          v-if="errors.logo"
+						                          class="invalid-feedback"
+						                          role="alert"
+						                        >
+						                          <strong>{{ errors.logo[0] }}</strong>
+						                        </span>
+				                        </div>
+
+				                    </div>
+				                    <div class="modal-footer">
+				                        <button type="button" class="btn btn-default" @click="closeModal()">Close</button>
+				                        <button type="submit" class="btn btn-primary" v-show="!editMode" @click="save(form)">Save
+				                        </button>
+				                        <button type="submit" class="btn btn-primary" v-show="editMode" @click="update(form)">Update
+				                        </button>
+				                    </div>
+				                </div><!-- /.modal-content -->
+
+				            </div><!-- /.modal-dialog -->
+				        </div><!-- /.modal -->
+
+				    </div>
+				</div>
+			</div>
+		</div>
+    </section>
+</layout>
+</template>
+
+<script>
+	import Layout from "../../Shared/Layout";
+	import Pagination from './../../Shared/Pagination';
+	export default {
+		name: "Banner",
+		components: {Layout,Pagination},
+		props: {
+	      msg: String,
+	      banners: Object,
+	      success: String,
+	      errors: Object,
+	    },
+        data() {
+            return {
+                editMode: false,
+                form: {
+					name: null,
+                    logo: null,
+                },
+            }
+        },
+        methods: {
+			setLogo(e) {
+				this.form.logo = e.target.files[0];
+			},
+            openModal: function () {
+                $('#modal').modal('show')
+            },
+            closeModal: function () {
+                $('#modal').modal('hide')
+                this.reset();
+                this.editMode=false;
+            },
+            reset: function () {
+                this.form = {
+					name: null,
+                    logo: null,
+                }
+            },
+            save: function (data) {
+				var formData = new FormData();
+				formData.append("name", data.name);
+				formData.append("logo", data.logo);
+                this.$inertia.post('/banner', formData)
+                this.reset();
+                this.closeModal();
+                this.editMode = false;
+            },
+            edit: function (data) {
+                this.form = Object.assign({}, data);
+                this.editMode = true;
+                this.openModal();
+            },
+            update: function (data) {
+                if (!confirm('Sure')) return;
+				var formData = new FormData();
+				formData.append("name", data.name);
+				formData.append("logo", data.logo);
+				formData.append("_method", 'PUT');
+                this.$inertia.post('/banner/' + data.id, formData)
+                this.reset();
+                this.closeModal();
+            },
+            deleteRow: function (data) {
+                if (!confirm('Sure')) return;
+                data._method = 'DELETE';
+                this.$inertia.post('/banner/' + data.id, data)
+                this.reset();
+                this.closeModal();
+            }
+        }
+    }
+</script>
+
+<style>
+</style>

@@ -1,0 +1,180 @@
+@import "~pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css";
+
+/*========================================================
+        DARK LAYOUT
+=========================================================*/
+
+.app-title {
+  border-radius: 10px;
+  margin: 5px 0px;
+  color: #fa8a07 !important;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: emoji;
+  padding: 1.6rem 0.5rem 1.35rem 1rem;
+}
+
+#dashboard-analytics .img-left {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#dashboard-analytics .img-right {
+  width: 175px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#dashboard-analytics .bg-analytics {
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7));
+}
+
+#dashboard-analytics .bg-analytics .avatar {
+  margin-bottom: 2rem;
+}
+
+#dashboard-analytics table tr th:first-child,
+#dashboard-analytics table tr td:first-child {
+  padding-left: 2rem;
+}
+
+#dashboard-analytics table tr th:last-child,
+#dashboard-analytics table tr td:last-child {
+  padding-right: 2rem;
+}
+
+#dashboard-analytics table td {
+  padding: 0.75rem;
+}
+
+@media only screen and (max-width: 576px) {
+  #dashboard-analytics .img-left,
+  #dashboard-analytics .img-right {
+    width: 140px;
+  }
+}
+
+.is-invalid .multiselect__tags {
+  border-color: #ea5455;
+  padding-right: calc(1.25em + 1.4rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ea5455' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23ea5455' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center right calc(0.3125em + 0.35rem);
+  background-size: calc(0.625em + 0.7rem) calc(0.625em + 0.7rem);
+}
+.invalid-feedback{
+  display: block !important;
+}
+
+
+.banner-logo-upload-box {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.banner-logo-upload-box img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.width-full {
+  min-width: 100%;
+  height: 150px;
+}
+
+.width-half {
+  width: 50%;
+  height: 100px;
+  margin: auto;
+}
+
+.width-half .btn-pill {
+  width: 60px;
+  height: 60px;
+}
+
+.width-half .btn-pill .fa {
+  line-height: 60px;
+  font-size: 30px;
+}
+
+.passport-size {
+  width: 200px;
+  height: 200px;
+}
+
+.btn-pill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 50%;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.btn-pill .fa {
+  text-align: center;
+  display: block;
+  visibility: hidden;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+.btn-pill input[type=file] {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.width-full .btn-pill,
+.passport-size .btn-pill {
+  width: 100px;
+  height: 100px;
+}
+
+.width-full .btn-pill .fa,
+.passport-size .btn-pill .fa {
+  line-height: 100px;
+  font-size: 35px;
+}
+
+.banner-logo-upload-box:hover {
+  opacity: 0.6;
+}
+
+.banner-logo-upload-box:hover .btn-pill {
+  background-color: #aaa;
+}
+
+.banner-logo-upload-box:hover .btn-pill i.fa {
+  visibility: visible;
+}
+
+.app-content.content {
+    min-height: 92vh;
+}
+.vue__time-picker {
+  width: 100% !important;
+}
+.vue__time-picker input {
+  width: 100% !important;
+}

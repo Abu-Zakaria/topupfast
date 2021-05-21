@@ -1,0 +1,29 @@
+/node_modules
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/vuexy-shell-scripts
+
+
+# ip:104.254.244.77
+# pass:a%?o?P5bdA  
+
+
+
+
+
+
+. $HOME/.nvm/nvm.sh
+nvm use v12.0.0
+
+cd /var/www/client
+
+echo ‘post-receive: building…’
+npm run build && pm2 restart client
