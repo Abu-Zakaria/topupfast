@@ -89,6 +89,11 @@ class UserController extends Controller
 		}
 	}
 
+	public function storeUser(UserRequest $request)
+	{
+		
+	}
+
 	/**
 	 * Update the specified resource in storage.
 	 *

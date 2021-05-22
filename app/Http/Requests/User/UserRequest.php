@@ -30,13 +30,19 @@ class UserRequest extends FormRequest
             $phoneRules .= '|unique:users';
             $emailRules .= '|unique:users';
         }
-        return [
+        $rules = [
             'name'          => 'required',
             'phone'           => $phoneRules,
             'email'           => $emailRules,
             'gender_id'       => 'required',
             'religion_id'     => 'required',
         ];
+        if(request()->has('is_admin'))
+        {
+            $rules['is_admin'] = 'required';
+        }
+        
+        return $rules;
     }
 
     /**
@@ -58,6 +64,10 @@ class UserRequest extends FormRequest
         if ($this->isPostRequest()) {
             $messages['phone.unique']  = 'This contact no. is already used';
             $messages['email.unique']  = 'This email is already used';
+        }
+        if(request()->has('is_admin'))
+        {
+            $messages['is_admin.required'] = "User type is required";
         }
         return $messages;
     }

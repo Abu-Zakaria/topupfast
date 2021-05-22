@@ -55,6 +55,8 @@ Route::group([
 		Route::post('/users/profile/avatar/{id}', 'UserProfileController@uploadImage')
 			->name('users.profile.avatar.update');
 		Route::post('/users', 'UserController@store')->name('users.store');
+		// added by Zakaria for users.index page
+		Route::post('/users/store_user', 'UserController@storeUser')->name('users.store_user');
 		Route::put('/users/{id}', 'UserController@update')->name('users.update');
 		Route::put('/updatewallet/{id}', 'UserController@updatewallet')->name('users.updatewallet');
 		Route::delete('/users/{id}', 'UserController@destroy')->name('users.destroy');
