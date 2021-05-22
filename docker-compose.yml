@@ -6,6 +6,8 @@ services:
     container_name: topupfast_app
     depends_on:
       - db
+    links:
+      - "db"
     volumes:
       - .:/var/www/html
     command: bash -c 'php artisan serve --host 0.0.0.0'
