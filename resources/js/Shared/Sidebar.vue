@@ -47,28 +47,28 @@
 					</inertia-link>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('brand.index')" :class="isUrl('brand') ? 'active' : ''">
 						<i class="feather icon-home"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Brand") }}</span>
 					</inertia-link>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('category.index')" :class="isUrl('category') ? 'active' : ''">
 						<i class="feather icon-home"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Category") }}</span>
 					</inertia-link>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('product.index')" :class="isUrl('product') ? 'active' : ''">
 						<i class="feather icon-home"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Product") }}</span>
 					</inertia-link>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('package.index')" :class="isUrl('package') ? 'active' : ''">
 						<i class="feather icon-home"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Package") }}</span>
@@ -76,14 +76,14 @@
 				</li>
 
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('paymentmethod.index')" :class="isUrl('paymentmethod') ? 'active' : ''">
 						<i class="feather icon-home"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Payment Method") }}</span>
 					</inertia-link>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('banner.index')" :class="isUrl('banner') ? 'active' : ''">
 						<i class="feather icon-home"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Banner") }}</span>
@@ -102,7 +102,10 @@
 				<li class="nav-item">
 					<inertia-link :href="route('order.index')" :class="isUrl('order') ? 'active' : ''">
 						<i class="feather icon-home"></i>
-						<span class="menu-title nav-link-text" data-i18n="">{{ __("Order") }}</span>
+						<span class="menu-title nav-link-text" data-i18n="">
+							<span v-if="is_admin">{{ __("Order") }}</span>
+							<span v-else>Global orders</span>
+						</span>
 					</inertia-link>
 				</li>
 
@@ -113,14 +116,14 @@
 					</inertia-link>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('users.index')" :class="isUrl('user') ? 'active' : ''">
 						<i class="feather icon-users"></i>
 						<span class="menu-title" data-i18n="">{{ __("Users") }}</span>
 					</inertia-link>
 				</li>
 
-				<li class="nav-item">
+				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('notice.index')" :class="isUrl('notice') ? 'active' : ''">
 						<i class="feather icon-users"></i>
 						<span class="menu-title" data-i18n="">{{ __("Notice") }}</span>
@@ -180,7 +183,13 @@
 export default {
 	name: "Sidebar",
 	props: {
-	    url: String,
+	    url: String
+	},
+	data()
+	{
+		return {
+			is_admin: false,
+		}
 	},
 	methods: {
 	    isUrl(...urls) {
@@ -190,7 +199,15 @@ export default {
 
 	      return urls.filter(url => this.url.startsWith(url)).length
 	    },
+	    checkAccess()
+	    {
+    		this.is_admin = this.$page.auth.is_admin == 1
+	    }
 	},
+	created()
+	{
+		this.checkAccess()
+	}
 };
 </script>
 

@@ -1,7 +1,7 @@
 <?php
 
 
-Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
+Route::post('/login', 'Auth\ApiAuthController@logins')->name('login.api');
 Route::post('/register','Auth\ApiAuthController@register')->name('register.api');
 Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
 
