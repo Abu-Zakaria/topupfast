@@ -14,8 +14,10 @@ class UsersTableSeeder extends Seeder
 	 */
 	public function run()
 	{
+		factory(App\User::class, 1)->create();
+		
 		DB::table('users')->insert([
-			'id' 		=> 1,
+			'id' 		=> 2,
 			'name' 		=> 'Jual Ahmed',
 			'slug' 		=> Str::slug('jual ahmed', '-'),
 			'phone' 	=> '01784622362',

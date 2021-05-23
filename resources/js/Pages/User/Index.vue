@@ -186,8 +186,9 @@
 							<select class="form-control"
 								:class="[errors.is_admin ? 'is-invalid' : '']"
 								v-model="form.is_admin">
-									<option>Select user type</option>
-
+									<option value="">Select user type</option>
+									<option value="1">Admin</option>
+									<option value="2">Seller</option>
 							</select>
 							<span v-if="errors.is_admin" class="invalid-feedback" style="display: block;" role="alert">
 								<strong>{{ errors.is_admin[0] }}</strong>
