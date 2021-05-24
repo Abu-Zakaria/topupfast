@@ -943,7 +943,7 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -954,6 +954,22 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1480,6 +1496,35 @@ var render = function() {
               1
             ),
             _vm._v(" "),
+            !_vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        class: _vm.isUrl("seller/orders") ? "active" : "",
+                        attrs: { href: _vm.route("seller.orders.index") }
+                      },
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_c("span", [_vm._v("My orders")])]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "li",
               { staticClass: "nav-item" },
@@ -1564,6 +1609,29 @@ var render = function() {
                   1
                 )
               : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    class: _vm.isUrl("withdraw") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw.index") }
+                  },
+                  [
+                    _c("i", { staticClass: "feather icon-users" }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
+                      [_vm._v("Withdraw")]
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.$can("subscription_access")
               ? _c(
@@ -7679,10 +7747,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.hidden_orders_accept.push(data.id);
       axios.post('seller/order/accept', data).then(function (res) {
-        if (res.data.success) {
+        if (res.data.success == true) {
           _this.$toast(res.data.message);
         } else {
-          _this.$toast(res.data.message);
+          _this.$toast(res.data.message, 'error');
         }
       })["catch"](function (error) {
         var index = _this.hidden_orders_accept.indexOf(data.id);
@@ -7962,9 +8030,9 @@ var render = function() {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(row.securitycode))]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(row.created_at))]),
-                          _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(row.status))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(row.created_at))]),
                           _vm._v(" "),
                           _vm.$page.auth.is_admin == 1
                             ? _c("td", { attrs: { width: "200" } }, [
@@ -7988,7 +8056,7 @@ var render = function() {
                           _vm.$page.auth.is_admin == 2 &&
                           !_vm.hidden_orders_accept.includes(row.id)
                             ? _c("td", { attrs: { width: "200" } }, [
-                                row.status == "pending"
+                                row.status == "pending" && row.accept_id == 0
                                   ? _c(
                                       "button",
                                       {

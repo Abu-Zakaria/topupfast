@@ -1,18 +1,18 @@
 webpackJsonp([8],{
 
-/***/ 175:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(502)
+  __webpack_require__(506)
 }
 var normalizeComponent = __webpack_require__(227)
 /* script */
-var __vue_script__ = __webpack_require__(504)
+var __vue_script__ = __webpack_require__(508)
 /* template */
-var __vue_template__ = __webpack_require__(505)
+var __vue_template__ = __webpack_require__(509)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/Pages/Shop/Customer.vue"
+Component.options.__file = "resources/js/Pages/Shop/Index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a456e6c4", Component.options)
+    hotAPI.createRecord("data-v-2aa07a42", Component.options)
   } else {
-    hotAPI.reload("data-v-a456e6c4", Component.options)
+    hotAPI.reload("data-v-2aa07a42", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -885,7 +885,7 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -897,6 +897,22 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1424,6 +1440,35 @@ var render = function() {
               1
             ),
             _vm._v(" "),
+            !_vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        class: _vm.isUrl("seller/orders") ? "active" : "",
+                        attrs: { href: _vm.route("seller.orders.index") }
+                      },
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_c("span", [_vm._v("My orders")])]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "li",
               { staticClass: "nav-item" },
@@ -1508,6 +1553,29 @@ var render = function() {
                   1
                 )
               : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    class: _vm.isUrl("withdraw") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw.index") }
+                  },
+                  [
+                    _c("i", { staticClass: "feather icon-users" }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
+                      [_vm._v("Withdraw")]
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.$can("subscription_access")
               ? _c(
@@ -2767,23 +2835,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 502:
+/***/ 506:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(503);
+var content = __webpack_require__(507);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("7cabc334", content, false, {});
+var update = __webpack_require__(228)("1960f0f0", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a456e6c4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Customer.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a456e6c4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Customer.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2aa07a42\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2aa07a42\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -2794,7 +2862,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 503:
+/***/ 507:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(148)(false);
@@ -2802,14 +2870,14 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 504:
+/***/ 508:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2998,73 +3066,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Index",
+  name: "ShopIndex",
   components: {
     Model: __WEBPACK_IMPORTED_MODULE_2__Components_Model___default.a,
     Layout: __WEBPACK_IMPORTED_MODULE_1__Shared_Layout___default.a
   },
   props: {
     success: String,
-    customers: Object,
+    error: String,
+    shops: Object,
     errors: Object
   },
   data: function data() {
     return {
       editMode: false,
-      modelTitle: "Create New Customer",
+      modelTitle: "Create Shop",
       form: {
         id: "",
         name: "",
-        phone: "",
-        email: "",
-        address: "",
-        initial_balance: "",
+        connection: "mysql",
         status: ""
       }
     };
@@ -3074,10 +3097,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.modelTitle = "Edit ".concat(data.name, "'s Information");
       this.editMode = true;
       this.form.name = data.name;
-      this.form.phone = data.phone;
-      this.form.email = data.email;
-      this.form.address = data.address;
-      this.form.initial_balance = data.initial_balance;
+      this.form.connection = data.connection;
       this.form.status = data.status;
       this.form.id = data.id;
       $("#default").modal("show");
@@ -3088,13 +3108,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     cleanForm: function cleanForm() {
       var _this = this;
 
-      this.modelTitle = "Create New Customer";
+      this.modelTitle = "Create Shop";
       this.editMode = false;
       this.form.name = "";
-      this.form.phone = "";
-      this.form.email = "";
-      this.form.address = "";
-      this.form.initial_balance = "";
+      this.form.connection = "mysql";
       this.form.id = "";
       this.form.status = "";
       Object.keys(this.errors).forEach(function (key, value) {
@@ -3110,40 +3127,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     store: function store() {
       var self = this;
-      this.$inertia.post(this.route("customers.store"), {
+      this.$inertia.post(this.route("shops.store"), {
         name: this.form.name,
-        phone: this.form.phone,
-        email: this.form.email,
-        address: this.form.address,
-        initial_balance: this.form.initial_balance
+        connection: this.form.connection
       }).then(function () {
         if (Object.keys(self.errors).length === 0) {
           self.closeModel();
           self.cleanForm();
-          self.$toast("Customer Created Successfully");
+          self.$toast("Database Created Successfully");
         }
       });
     },
+    edit: function edit(data) {},
     update: function update() {
       var self = this;
-      this.$inertia.post(this.route("customers.update", this.form.id), {
+      this.$inertia.post(this.route("shops.update", this.form.id), {
         name: this.form.name,
-        phone: this.form.phone,
-        email: this.form.email,
-        address: this.form.address,
-        initial_balance: this.form.initial_balance,
+        connection: this.form.connection,
         status: this.form.status,
         _method: "put"
       }).then(function () {
         if (Object.keys(self.errors).length === 0) {
           self.closeModel();
           self.cleanForm();
-          self.$toast("Customer Updated Successfully");
+          self.$toast("Database Updated Successfully");
         }
       });
     },
     remove: function () {
-      var _remove = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(customer) {
+      var _remove = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(database) {
         return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -3157,8 +3169,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                this.$inertia["delete"](this.route("customers.destroy", customer.id));
-                this.$toast("".concat(customer.name, " deleted successfully"));
+                this.$inertia["delete"](this.route("shops.destroy", database.id));
+                this.$toast("".concat(database.name, " deleted successfully"));
 
               case 5:
               case "end":
@@ -3179,14 +3191,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ 505:
+/***/ 509:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("layout", { attrs: { name: "Customer" } }, [
+  return _c("layout", { attrs: { name: "ShopIndex" } }, [
     _c(
       "section",
       { staticClass: "users-list-wrapper" },
@@ -3198,140 +3210,234 @@ var render = function() {
                 _vm.success
                   ? _c("div", { staticClass: "alert alert-success" }, [
                       _vm._v(
-                        "\n              " +
+                        "\n\t\t\t\t\t\t\t" +
                           _vm._s(_vm.success) +
-                          "\n            "
+                          "\n\t\t\t\t\t\t"
                       )
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.customers.data.length > 0
-                  ? _c("div", { staticClass: "table-responsive" }, [
-                      _c(
-                        "table",
-                        {
-                          staticClass:
-                            "table table-bordered display responsive nowrap mb-0",
-                          staticStyle: { width: "100%" },
-                          attrs: { id: "data-table" }
-                        },
-                        [
-                          _c("thead", [
-                            _c("tr", [
-                              _c("th", { attrs: { scope: "col" } }, [
-                                _vm._v("S.N.")
-                              ]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Name")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Contact No.")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Email")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Address")]),
-                              _vm._v(" "),
-                              _c("th", { staticClass: "text-right" }, [
-                                _vm._v("Initial Balance")
-                              ]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Created At")]),
-                              _vm._v(" "),
-                              _c("th", { staticClass: "text-center" }, [
-                                _vm._v("Status")
-                              ]),
-                              _vm._v(" "),
-                              _c("th", { staticClass: "text-center" }, [
-                                _vm._v("Actions")
-                              ])
-                            ])
+                _c("div", { staticClass: "table-responsive" }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-bordered display responsive nowrap mb-0",
+                      staticStyle: { width: "100%" },
+                      attrs: { id: "data-table" }
+                    },
+                    [
+                      _c("thead", [
+                        _c("tr", [
+                          _c("th", { attrs: { scope: "col" } }, [
+                            _vm._v("S.N.")
                           ]),
                           _vm._v(" "),
-                          _c(
+                          _c("th", [_vm._v("Name")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Contact No.")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Email")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Address")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Database")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Created At")]),
+                          _vm._v(" "),
+                          _c("th", { staticClass: "text-center" }, [
+                            _vm._v("Status")
+                          ]),
+                          _vm._v(" "),
+                          _c("th", { staticClass: "text-center" }, [
+                            _vm._v("Actions")
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm.shops.data.length > 0
+                        ? _c(
                             "tbody",
-                            _vm._l(_vm.customers.data, function(
-                              customer,
-                              index
-                            ) {
-                              return _c("tr", { key: customer.id }, [
+                            _vm._l(_vm.shops.data, function(shop, index) {
+                              return _c("tr", { key: shop.id }, [
                                 _c("th", [_vm._v(_vm._s(index + 1))]),
                                 _vm._v(" "),
-                                _c("th", [_vm._v(_vm._s(customer.name))]),
+                                _c("th", [_vm._v(_vm._s(shop.name))]),
                                 _vm._v(" "),
-                                _c("th", [_vm._v(_vm._s(customer.phone))]),
+                                _c("th", [_vm._v(_vm._s(shop.phone))]),
                                 _vm._v(" "),
-                                _c("th", [_vm._v(_vm._s(customer.email))]),
+                                _c("th", [_vm._v(_vm._s(shop.email))]),
                                 _vm._v(" "),
-                                _c("th", [_vm._v(_vm._s(customer.address))]),
+                                _c("th", [_vm._v(_vm._s(shop.address))]),
                                 _vm._v(" "),
-                                _c("th", { staticClass: "text-right" }, [
-                                  _vm._v(_vm._s(customer.initial_balance))
-                                ]),
+                                _c("th", [_vm._v(_vm._s(shop.database))]),
                                 _vm._v(" "),
                                 _c("td", [
-                                  _vm._v(_vm._s(customer.default_date_time))
+                                  _vm._v(_vm._s(shop.default_date_time))
                                 ]),
                                 _vm._v(" "),
                                 _c("td", {
                                   domProps: {
                                     innerHTML: _vm._s(
-                                      _vm.$options.filters.status(
-                                        customer.status
-                                      )
+                                      _vm.$options.filters.status(shop.status)
                                     )
                                   }
                                 }),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "text-center" }, [
-                                  _vm.$can("customer_edit")
-                                    ? _c(
-                                        "a",
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "btn-group dropdown actions-dropodown"
+                                    },
+                                    [
+                                      _c(
+                                        "button",
                                         {
-                                          staticClass: "text-info",
-                                          attrs: { href: "", role: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.setData(customer)
-                                            }
+                                          staticClass:
+                                            "btn btn-white dropdown-toggle waves-effect waves-light",
+                                          attrs: {
+                                            type: "button",
+                                            "data-toggle": "dropdown",
+                                            "aria-haspopup": "true",
+                                            "aria-expanded": "false"
                                           }
                                         },
                                         [
-                                          _c("i", {
-                                            staticClass: "feather icon-edit"
-                                          })
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t\tActions\n\t\t\t\t\t\t\t\t\t\t\t\t"
+                                          )
                                         ]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _vm.$can("customer_delete")
-                                    ? _c(
-                                        "a",
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
                                         {
-                                          staticClass: "text-warning",
-                                          attrs: { href: "", role: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.remove(customer)
-                                            }
+                                          staticClass: "dropdown-menu",
+                                          staticStyle: {
+                                            position: "absolute",
+                                            "will-change": "transform",
+                                            top: "0px",
+                                            left: "0px",
+                                            transform:
+                                              "translate3d(0px, 43px, 0px)"
+                                          },
+                                          attrs: {
+                                            "x-placement": "bottom-start"
                                           }
                                         },
                                         [
-                                          _c("i", {
-                                            staticClass: "feather icon-trash"
-                                          })
+                                          _vm.$can("shop_edit")
+                                            ? _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "dropdown-item text-info",
+                                                  attrs: {
+                                                    href: "",
+                                                    role: "button"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      $event.preventDefault()
+                                                      return _vm.edit(shop)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "feather icon-edit"
+                                                  }),
+                                                  _vm._v(" Edit")
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass:
+                                                "dropdown-item text-primary",
+                                              attrs: {
+                                                href: _vm.route(
+                                                  "shops.admin.create",
+                                                  shop.id
+                                                ),
+                                                role: "button"
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "feather icon-user"
+                                              }),
+                                              _vm._v(" Create Admin")
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm.$can("branch_access")
+                                            ? _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "dropdown-item text-primary",
+                                                  attrs: {
+                                                    href: _vm.route(
+                                                      "shops.branches.index"
+                                                    ),
+                                                    role: "button"
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "feather icon-user"
+                                                  }),
+                                                  _vm._v(" Branches")
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _vm.$can("shop_delete")
+                                            ? _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "dropdown-item text-warning",
+                                                  attrs: {
+                                                    href: "",
+                                                    role: "button"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      $event.preventDefault()
+                                                      return _vm.remove(shop)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "feather icon-trash"
+                                                  }),
+                                                  _vm._v(" Destory")
+                                                ]
+                                              )
+                                            : _vm._e()
                                         ]
                                       )
-                                    : _vm._e()
+                                    ]
+                                  )
                                 ])
                               ])
                             }),
                             0
                           )
-                        ]
-                      )
-                    ])
-                  : _vm._e()
+                        : _vm._e()
+                    ]
+                  )
+                ])
               ])
             ])
           ])
@@ -3392,7 +3498,7 @@ var render = function() {
               [
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Customer Name")]),
+                    _c("label", [_vm._v("Database Name")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -3405,7 +3511,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       class: [_vm.errors.name ? "is-invalid" : ""],
-                      attrs: { type: "text", placeholder: "Customer Name" },
+                      attrs: { type: "text", placeholder: "Database name" },
                       domProps: { value: _vm.form.name },
                       on: {
                         input: function($event) {
@@ -3426,179 +3532,6 @@ var render = function() {
                             attrs: { role: "alert" }
                           },
                           [_c("strong", [_vm._v(_vm._s(_vm.errors.name[0]))])]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [
-                      _vm._v("Contact No. "),
-                      _c("strong", { staticClass: "text-danger" }, [
-                        _vm._v("*")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.phone,
-                          expression: "form.phone"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: [_vm.errors.phone ? "is-invalid" : ""],
-                      attrs: { type: "text", placeholder: "Contact No." },
-                      domProps: { value: _vm.form.phone },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "phone", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors.phone
-                      ? _c(
-                          "span",
-                          {
-                            staticClass: "invalid-feedback",
-                            staticStyle: { display: "block" },
-                            attrs: { role: "alert" }
-                          },
-                          [_c("strong", [_vm._v(_vm._s(_vm.errors.phone[0]))])]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Email")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.email,
-                          expression: "form.email"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: [_vm.errors.email ? "is-invalid" : ""],
-                      attrs: { type: "text", placeholder: "Email" },
-                      domProps: { value: _vm.form.email },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "email", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors.email
-                      ? _c(
-                          "span",
-                          {
-                            staticClass: "invalid-feedback",
-                            staticStyle: { display: "block" },
-                            attrs: { role: "alert" }
-                          },
-                          [_c("strong", [_vm._v(_vm._s(_vm.errors.email[0]))])]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Initial Balance")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.initial_balance,
-                          expression: "form.initial_balance"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: [_vm.errors.initial_balance ? "is-invalid" : ""],
-                      attrs: { type: "number", placeholder: "Initial Balance" },
-                      domProps: { value: _vm.form.initial_balance },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "initial_balance",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors.initial_balance
-                      ? _c(
-                          "span",
-                          {
-                            staticClass: "invalid-feedback",
-                            staticStyle: { display: "block" },
-                            attrs: { role: "alert" }
-                          },
-                          [
-                            _c("strong", [
-                              _vm._v(_vm._s(_vm.errors.initial_balance[0]))
-                            ])
-                          ]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group mb-0" }, [
-                    _c("label", [_vm._v("Address")]),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.address,
-                          expression: "form.address"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: [_vm.errors.address ? "is-invalid" : ""],
-                      attrs: { placeholder: "Address", rows: "3" },
-                      domProps: { value: _vm.form.address },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "address", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors.address
-                      ? _c(
-                          "span",
-                          {
-                            staticClass: "invalid-feedback",
-                            staticStyle: { display: "block" },
-                            attrs: { role: "alert" }
-                          },
-                          [
-                            _c("strong", [
-                              _vm._v(_vm._s(_vm.errors.address[0]))
-                            ])
-                          ]
                         )
                       : _vm._e()
                   ]),
@@ -3653,9 +3586,9 @@ var render = function() {
                           }
                         }),
                         _vm._v(
-                          "\n            " +
+                          "\n\t\t\t\t\t\t" +
                             _vm._s(_vm.form.status ? "Active" : "Inactive") +
-                            "\n          "
+                            "\n\t\t\t\t\t"
                         )
                       ])
                     : _vm._e()
@@ -3670,9 +3603,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n            " +
+                        "\n\t\t\t\t\t\t" +
                           _vm._s(_vm.editMode ? "Update" : "Create") +
-                          "\n          "
+                          "\n\t\t\t\t\t"
                       )
                     ]
                   ),
@@ -3684,7 +3617,7 @@ var render = function() {
                       attrs: { type: "button", "data-dismiss": "modal" },
                       on: { click: _vm.cleanForm }
                     },
-                    [_vm._v("\n            Cancel\n          ")]
+                    [_vm._v("\n\t\t\t\t\t\tCancel\n\t\t\t\t\t")]
                   )
                 ])
               ]
@@ -3702,7 +3635,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-a456e6c4", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2aa07a42", module.exports)
   }
 }
 

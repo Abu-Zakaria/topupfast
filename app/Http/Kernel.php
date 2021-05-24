@@ -67,6 +67,7 @@ use Illuminate\Support\Facades\App;
         'lang' =>  \App\Http\Middleware\SetLocale::class,
         'is_admin_or_seller' => \App\Http\Middleware\IsAdminOrSeller::class,
         'is_admin' => \App\Http\Middleware\IsAdmin::class,
+        'is_seller' => \App\Http\Middleware\IsSeller::class,
     ];
 
     /**

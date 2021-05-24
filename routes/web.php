@@ -20,6 +20,11 @@ Route::group([
 	
 		Route::resource('order', 'OrderController');
 		Route::post('seller/order/accept', "SellerController@acceptOrder");
+
+		Route::middleware('is_seller')->resource('seller/orders', 'Seller\OrderController', [
+			'as' => 'seller'
+		]);
+		Route::resource('withdraw', "WithdrawController");
 		
 		Route::middleware(['is_admin'])->group(function() {
 			Route::resource('brand', 'BrandController');

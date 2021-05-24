@@ -58,13 +58,13 @@
 					                <td>{{ row.password }}</td>
 					                <td>{{ row.accounttype }}</td>
 					                <td>{{ row.securitycode }}</td>
-					                <td>{{ row.created_at }}</td>
 					                <td>{{ row.status }}</td>
+					                <td>{{ row.created_at }}</td>
 					                <td width="200" v-if="$page.auth.is_admin == 1">
 					                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
 					                </td>
 					                <td width="200" v-if="$page.auth.is_admin == 2 && !hidden_orders_accept.includes(row.id)">
-					                    <button @click="accept(row, this)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Accept</button>
+					                    <button @click="accept(row, this)" v-if="row.status=='pending' && row.accept_id == 0" class="btn btn-sm btn-primary">Accept</button>
 					                </td>
 					            </tr>
 					            <tr>
@@ -203,13 +203,13 @@
             	this.hidden_orders_accept.push(data.id)
             	axios.post('seller/order/accept', data)
 	            	.then(res => {
-	            		if(res.data.success)
+	            		if(res.data.success == true)
 	            		{
 	            			this.$toast(res.data.message)
 	            		}
 	            		else
 	            		{
-	            			this.$toast(res.data.message)
+	            			this.$toast(res.data.message, 'error')
 	            		}
 	            	})
 	            	.catch(error => {

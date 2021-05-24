@@ -109,6 +109,15 @@
 					</inertia-link>
 				</li>
 
+				<li class="nav-item" v-if="!is_admin">
+					<inertia-link :href="route('seller.orders.index')" :class="isUrl('seller/orders') ? 'active' : ''">
+						<i class="feather icon-home"></i>
+						<span class="menu-title nav-link-text" data-i18n="">
+							<span>My orders</span>
+						</span>
+					</inertia-link>
+				</li>
+
 				<li class="nav-item">
 					<inertia-link :href="route('invoice.index')" :class="isUrl('invoice') ? 'active' : ''">
 						<i class="feather icon-home"></i>
@@ -127,6 +136,13 @@
 					<inertia-link :href="route('notice.index')" :class="isUrl('notice') ? 'active' : ''">
 						<i class="feather icon-users"></i>
 						<span class="menu-title" data-i18n="">{{ __("Notice") }}</span>
+					</inertia-link>
+				</li>
+
+				<li>
+					<inertia-link :href="route('withdraw.index')" :class="isUrl('withdraw') ? 'active' : ''">
+						<i class="feather icon-users"></i>
+						<span class="menu-title" data-i18n="">Withdraw</span>
 					</inertia-link>
 				</li>
 

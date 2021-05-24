@@ -1,18 +1,18 @@
 webpackJsonp([13],{
 
-/***/ 157:
+/***/ 163:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(425)
+  __webpack_require__(454)
 }
 var normalizeComponent = __webpack_require__(227)
 /* script */
-var __vue_script__ = __webpack_require__(427)
+var __vue_script__ = __webpack_require__(456)
 /* template */
-var __vue_template__ = __webpack_require__(428)
+var __vue_template__ = __webpack_require__(457)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/Pages/BloodGroup/Index.vue"
+Component.options.__file = "resources/js/Pages/Gender/Index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8f7ec71e", Component.options)
+    hotAPI.createRecord("data-v-24d83fe6", Component.options)
   } else {
-    hotAPI.reload("data-v-8f7ec71e", Component.options)
+    hotAPI.reload("data-v-24d83fe6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -885,7 +885,7 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -897,6 +897,22 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1424,6 +1440,35 @@ var render = function() {
               1
             ),
             _vm._v(" "),
+            !_vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        class: _vm.isUrl("seller/orders") ? "active" : "",
+                        attrs: { href: _vm.route("seller.orders.index") }
+                      },
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_c("span", [_vm._v("My orders")])]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "li",
               { staticClass: "nav-item" },
@@ -1508,6 +1553,29 @@ var render = function() {
                   1
                 )
               : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    class: _vm.isUrl("withdraw") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw.index") }
+                  },
+                  [
+                    _c("i", { staticClass: "feather icon-users" }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
+                      [_vm._v("Withdraw")]
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.$can("subscription_access")
               ? _c(
@@ -2767,23 +2835,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 425:
+/***/ 454:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(426);
+var content = __webpack_require__(455);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("7b705541", content, false, {});
+var update = __webpack_require__(228)("7afc5807", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8f7ec71e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8f7ec71e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24d83fe6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24d83fe6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -2794,7 +2862,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 426:
+/***/ 455:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(148)(false);
@@ -2802,14 +2870,14 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 427:
+/***/ 456:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2916,13 +2984,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   props: {
     success: String,
-    blood_groups: Object,
+    genders: Object,
     errors: Object
   },
   data: function data() {
     return {
       editMode: false,
-      modelTitle: 'Create New Blood Group',
+      modelTitle: 'Create New Gender',
       form: {
         id: '',
         name: '',
@@ -2945,7 +3013,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     cleanForm: function cleanForm() {
       var _this = this;
 
-      this.modelTitle = 'Create New Blood Group';
+      this.modelTitle = 'Create New Gender';
       this.editMode = false;
       this.form.name = '';
       this.form.id = '';
@@ -2963,28 +3031,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     store: function store() {
       var self = this;
-      this.$inertia.post(this.route('blood-groups.store'), {
+      this.$inertia.post(this.route('genders.store'), {
         name: this.form.name
       }).then(function () {
-        self.closeModel();
-        self.cleanForm();
-        self.$toast('Blood Group Created Successfully');
+        if (Object.keys(self.errors).length === 0) {
+          self.closeModel();
+          self.cleanForm();
+          self.$toast('Gender Created Successfully');
+        }
       });
     },
     update: function update() {
       var self = this;
-      this.$inertia.post(this.route('blood-groups.update', this.form.id), {
+      this.$inertia.post(this.route('genders.update', this.form.id), {
         name: this.form.name,
         status: this.form.status,
         _method: "put"
       }).then(function () {
-        self.closeModel();
-        self.cleanForm();
-        self.$toast('Blood Group Updated Successfully');
+        if (Object.keys(self.errors).length === 0) {
+          self.closeModel();
+          self.cleanForm();
+          self.$toast('Gender Updated Successfully');
+        }
       });
     },
     remove: function () {
-      var _remove = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(blood_group) {
+      var _remove = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(gender) {
         return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2998,8 +3070,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                this.$inertia["delete"](this.route('blood-groups.destroy', blood_group.id));
-                this.$toast("".concat(blood_group.name, " deleted successfully"));
+                this.$inertia["delete"](this.route('genders.destroy', gender.id));
+                this.$toast("".concat(gender.name, " deleted successfully"));
 
               case 5:
               case "end":
@@ -3020,7 +3092,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ 428:
+/***/ 457:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -3046,7 +3118,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.blood_groups.data.length > 0
+                _vm.genders.data.length > 0
                   ? _c("div", { staticClass: "table-responsive" }, [
                       _c(
                         "table",
@@ -3079,25 +3151,20 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "tbody",
-                            _vm._l(_vm.blood_groups.data, function(
-                              blood_group,
-                              index
-                            ) {
-                              return _c("tr", { key: blood_group.id }, [
+                            _vm._l(_vm.genders.data, function(gender, index) {
+                              return _c("tr", { key: gender.id }, [
                                 _c("th", [_vm._v(_vm._s(index + 1))]),
                                 _vm._v(" "),
-                                _c("th", [_vm._v(_vm._s(blood_group.name))]),
+                                _c("th", [_vm._v(_vm._s(gender.name))]),
                                 _vm._v(" "),
                                 _c("td", [
-                                  _vm._v(_vm._s(blood_group.default_date_time))
+                                  _vm._v(_vm._s(gender.default_date_time))
                                 ]),
                                 _vm._v(" "),
                                 _c("td", {
                                   domProps: {
                                     innerHTML: _vm._s(
-                                      _vm.$options.filters.status(
-                                        blood_group.status
-                                      )
+                                      _vm.$options.filters.status(gender.status)
                                     )
                                   }
                                 }),
@@ -3111,7 +3178,7 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           $event.preventDefault()
-                                          return _vm.setData(blood_group)
+                                          return _vm.setData(gender)
                                         }
                                       }
                                     },
@@ -3130,7 +3197,7 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           $event.preventDefault()
-                                          return _vm.remove(blood_group)
+                                          return _vm.remove(gender)
                                         }
                                       }
                                     },
@@ -3220,7 +3287,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       class: [_vm.errors.name ? "is-invalid" : ""],
-                      attrs: { type: "text", placeholder: "Blood group Name" },
+                      attrs: { type: "text", placeholder: "Gender Name" },
                       domProps: { value: _vm.form.name },
                       on: {
                         input: function($event) {
@@ -3338,7 +3405,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8f7ec71e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-24d83fe6", module.exports)
   }
 }
 

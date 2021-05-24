@@ -1,18 +1,18 @@
 webpackJsonp([11],{
 
-/***/ 170:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(479)
+  __webpack_require__(488)
 }
 var normalizeComponent = __webpack_require__(227)
 /* script */
-var __vue_script__ = __webpack_require__(481)
+var __vue_script__ = __webpack_require__(490)
 /* template */
-var __vue_template__ = __webpack_require__(482)
+var __vue_template__ = __webpack_require__(491)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/Pages/Permission/Index.vue"
+Component.options.__file = "resources/js/Pages/Religion/Index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3c3b891b", Component.options)
+    hotAPI.createRecord("data-v-3c97ce3d", Component.options)
   } else {
-    hotAPI.reload("data-v-3c3b891b", Component.options)
+    hotAPI.reload("data-v-3c97ce3d", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -885,7 +885,7 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -897,6 +897,22 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1424,6 +1440,35 @@ var render = function() {
               1
             ),
             _vm._v(" "),
+            !_vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        class: _vm.isUrl("seller/orders") ? "active" : "",
+                        attrs: { href: _vm.route("seller.orders.index") }
+                      },
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_c("span", [_vm._v("My orders")])]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "li",
               { staticClass: "nav-item" },
@@ -1508,6 +1553,29 @@ var render = function() {
                   1
                 )
               : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    class: _vm.isUrl("withdraw") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw.index") }
+                  },
+                  [
+                    _c("i", { staticClass: "feather icon-users" }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
+                      [_vm._v("Withdraw")]
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.$can("subscription_access")
               ? _c(
@@ -2767,23 +2835,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 479:
+/***/ 488:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(480);
+var content = __webpack_require__(489);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("3a21bdde", content, false, {});
+var update = __webpack_require__(228)("0c6d8960", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3c3b891b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3c3b891b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3c97ce3d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3c97ce3d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Index.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -2794,7 +2862,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 480:
+/***/ 489:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(148)(false);
@@ -2802,14 +2870,14 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 481:
+/***/ 490:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2906,34 +2974,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PermissionIndex",
+  name: "Religion",
   components: {
     Model: __WEBPACK_IMPORTED_MODULE_2__Components_Model___default.a,
     Layout: __WEBPACK_IMPORTED_MODULE_1__Shared_Layout___default.a
   },
   props: {
     success: String,
-    permissions: Object,
+    religions: Object,
     errors: Object
   },
   data: function data() {
     return {
       editMode: false,
-      modelTitle: 'Create New Permission',
+      modelTitle: 'Create New Religion',
       form: {
         id: '',
         name: '',
         status: ''
-      },
-      query: ''
+      }
     };
   },
   methods: {
@@ -2951,7 +3013,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     cleanForm: function cleanForm() {
       var _this = this;
 
-      this.modelTitle = 'Create New Permission';
+      this.modelTitle = 'Create New Religion';
       this.editMode = false;
       this.form.name = '';
       this.form.id = '';
@@ -2969,19 +3031,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     store: function store() {
       var self = this;
-      this.$inertia.post(this.route('permissions.store'), {
+      this.$inertia.post(this.route('religions.store'), {
         name: this.form.name
       }).then(function () {
         if (Object.keys(self.errors).length === 0) {
           self.closeModel();
           self.cleanForm();
-          self.$toast('Permission Created Successfully');
+          self.$toast('Religion Created Successfully');
         }
       });
     },
     update: function update() {
       var self = this;
-      this.$inertia.post(this.route('permissions.update', this.form.id), {
+      this.$inertia.post(this.route('religions.update', this.form.id), {
         name: this.form.name,
         status: this.form.status,
         _method: "put"
@@ -2989,12 +3051,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         if (Object.keys(self.errors).length === 0) {
           self.closeModel();
           self.cleanForm();
-          self.$toast('Permission Updated Successfully');
+          self.$toast('Religion Updated Successfully');
         }
       });
     },
     remove: function () {
-      var _remove = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(permission) {
+      var _remove = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(religion) {
         return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -3008,8 +3070,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                this.$inertia["delete"](this.route('permissions.destroy', permission.id));
-                this.$toast("".concat(permission.name, " deleted successfully"));
+                this.$inertia["delete"](this.route('religions.destroy', religion.id));
+                this.$toast("".concat(religion.name, " deleted successfully"));
 
               case 5:
               case "end":
@@ -3024,31 +3086,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return remove;
-    }(),
-    search: function search() {
-      $("#default").modal('hide');
-      this.$inertia.replace(this.route('permissions.index'), {
-        method: 'get',
-        data: {
-          search: this.query
-        },
-        preserveState: true,
-        preserveScroll: true
-      });
-    }
+    }()
   }
 });
 
 /***/ }),
 
-/***/ 482:
+/***/ 491:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("layout", { attrs: { name: "PermissionIndex" } }, [
+  return _c("layout", { attrs: { name: "Religion" } }, [
     _c(
       "section",
       { staticClass: "users-list-wrapper" },
@@ -3067,136 +3118,109 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "table-container" }, [
-                  _c("div", { staticClass: "flex" }, [
-                    _c("input", {
-                      directives: [
+                _vm.religions.data.length > 0
+                  ? _c("div", { staticClass: "table-responsive" }, [
+                      _c(
+                        "table",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.query,
-                          expression: "query"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Search...." },
-                      domProps: { value: _vm.query },
-                      on: {
-                        keyup: _vm.search,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.query = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "table-responsive" }, [
-                    _c(
-                      "table",
-                      {
-                        staticClass:
-                          "table table-bordered display responsive nowrap mb-0",
-                        staticStyle: { width: "100%" },
-                        attrs: { id: "data-table" }
-                      },
-                      [
-                        _c("thead", [
-                          _c("tr", [
-                            _c("th", { attrs: { scope: "col" } }, [
-                              _vm._v("S.N.")
-                            ]),
-                            _vm._v(" "),
-                            _c("th", [_vm._v("Name")]),
-                            _vm._v(" "),
-                            _c("th", [_vm._v("Created At")]),
-                            _vm._v(" "),
-                            _c("th", { staticClass: "text-center" }, [
-                              _vm._v("Status")
-                            ]),
-                            _vm._v(" "),
-                            _c("th", { staticClass: "text-center" }, [
-                              _vm._v("Actions")
+                          staticClass:
+                            "table table-bordered display responsive nowrap mb-0",
+                          staticStyle: { width: "100%" },
+                          attrs: { id: "data-table" }
+                        },
+                        [
+                          _c("thead", [
+                            _c("tr", [
+                              _c("th", { attrs: { scope: "col" } }, [
+                                _vm._v("S.N.")
+                              ]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Name")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Created At")]),
+                              _vm._v(" "),
+                              _c("th", { staticClass: "text-center" }, [
+                                _vm._v("Status")
+                              ]),
+                              _vm._v(" "),
+                              _c("th", { staticClass: "text-center" }, [
+                                _vm._v("Actions")
+                              ])
                             ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm.permissions.data.length > 0
-                          ? _c(
-                              "tbody",
-                              _vm._l(_vm.permissions.data, function(
-                                permission,
-                                index
-                              ) {
-                                return _c("tr", { key: permission.id }, [
-                                  _c("th", [_vm._v(_vm._s(index + 1))]),
-                                  _vm._v(" "),
-                                  _c("th", [_vm._v(_vm._s(permission.name))]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._v(_vm._s(permission.default_date_time))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", {
-                                    domProps: {
-                                      innerHTML: _vm._s(
-                                        _vm.$options.filters.status(
-                                          permission.status
-                                        )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.religions.data, function(
+                              religion,
+                              index
+                            ) {
+                              return _c("tr", { key: religion.id }, [
+                                _c("th", [_vm._v(_vm._s(index + 1))]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v(_vm._s(religion.name))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(religion.default_date_time))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", {
+                                  domProps: {
+                                    innerHTML: _vm._s(
+                                      _vm.$options.filters.status(
+                                        religion.status
                                       )
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "text-center" }, [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "text-info",
-                                        attrs: { href: "", role: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            return _vm.setData(permission)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "feather icon-edit"
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "text-warning",
-                                        attrs: { href: "", role: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            return _vm.remove(permission)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "feather icon-trash"
-                                        })
-                                      ]
                                     )
-                                  ])
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "text-info",
+                                      attrs: { href: "", role: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.setData(religion)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "feather icon-edit"
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "text-warning",
+                                      attrs: { href: "", role: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.remove(religion)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "feather icon-trash"
+                                      })
+                                    ]
+                                  )
                                 ])
-                              }),
-                              0
-                            )
-                          : _vm._e()
-                      ]
-                    )
-                  ])
-                ])
+                              ])
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e()
               ])
             ])
           ])
@@ -3268,7 +3292,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       class: [_vm.errors.name ? "is-invalid" : ""],
-                      attrs: { type: "text", placeholder: "Permission Name" },
+                      attrs: { type: "text", placeholder: "Religion Name" },
                       domProps: { value: _vm.form.name },
                       on: {
                         input: function($event) {
@@ -3386,7 +3410,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3c3b891b", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3c97ce3d", module.exports)
   }
 }
 
