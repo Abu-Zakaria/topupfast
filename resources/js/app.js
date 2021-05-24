@@ -1,3 +1,4 @@
+require('./axios.js')
 import { InertiaApp } from "@inertiajs/inertia-vue";
 import Vue from "vue";
 Vue.use(InertiaApp);

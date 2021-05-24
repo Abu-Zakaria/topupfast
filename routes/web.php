@@ -19,6 +19,7 @@ Route::group([
 	Route::middleware(['auth','is_admin_or_seller'])->group(function () {
 	
 		Route::resource('order', 'OrderController');
+		Route::post('seller/order/accept', "SellerController@acceptOrder");
 		
 		Route::middleware(['is_admin'])->group(function() {
 			Route::resource('brand', 'BrandController');

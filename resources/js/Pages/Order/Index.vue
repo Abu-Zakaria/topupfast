@@ -1,5 +1,5 @@
 <template>
-<layout name="Brand">
+<layout name="Order">
 	<section class="users-list-wrapper">
   		<div id="basic-examples">
 			<div class="card">
@@ -60,8 +60,11 @@
 					                <td>{{ row.securitycode }}</td>
 					                <td>{{ row.created_at }}</td>
 					                <td>{{ row.status }}</td>
-					                <td width="200">
+					                <td width="200" v-if="$page.auth.is_admin == 1">
 					                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
+					                </td>
+					                <td width="200" v-if="$page.auth.is_admin == 2 && !hidden_orders_accept.includes(row.id)">
+					                    <button @click="accept(row, this)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Accept</button>
 					                </td>
 					            </tr>
 					            <tr>
@@ -120,7 +123,7 @@
 	import throttle from 'lodash/throttle'
 	import mapValues from 'lodash/mapValues'
 	export default {
-		name: "Product",
+		name: "Order",
 		components: {Layout,Pagination},
 		props: {
 	      	msg: String,
@@ -150,7 +153,8 @@
 		        options: {
 		          format: 'DD/MM/YYYY',
 		          useCurrent: false,
-		        }  
+		        },
+		        hidden_orders_accept: []
             }
         },
         watch: {
@@ -194,6 +198,26 @@
                 this.form = Object.assign({}, data);
                 this.editMode = true;
                 this.openModal();
+            },
+            accept: function (data) {
+            	this.hidden_orders_accept.push(data.id)
+            	axios.post('seller/order/accept', data)
+	            	.then(res => {
+	            		if(res.data.success)
+	            		{
+	            			this.$toast(res.data.message)
+	            		}
+	            		else
+	            		{
+	            			this.$toast(res.data.message)
+	            		}
+	            	})
+	            	.catch(error => {
+	            		let index = this.hidden_orders_accept.indexOf(data.id)
+	            		this.hidden_orders_accept.splice(index, 1);
+	            		this.$toast("Something went wrong", 'error')
+	            		console.error('>', error)
+	            	})
             },
             update: function (data) {
                 data._method = 'PUT';
