@@ -44,7 +44,7 @@ class ProductController extends Controller
         }else{
             $name = null;
         }
-        
+
         Product::create([
             'name'         =>Request::all()['name'],
             'brand_id'     =>Request::all()['brand_id'],
@@ -57,8 +57,9 @@ class ProductController extends Controller
             'is_shop'      =>Request::all()['is_shop'],
             'quantity'     =>Request::all()['quantity'],
             'type'         =>Request::all()['type'],
+            'seller_commission' =>Request::all()['seller_commission'],
         ]);
-        
+
         return redirect()
                 ->route('product.index')
                 ->with('success', 'Product Created successfully!');
@@ -96,6 +97,7 @@ class ProductController extends Controller
             'is_shop'      =>Request::all()['is_shop'],
             'quantity'     =>Request::all()['quantity'],
             'type'         =>Request::all()['type'],
+            'seller_commission' =>Request::all()['seller_commission'],
         ];
 
         $product->update($data);
