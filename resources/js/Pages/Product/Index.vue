@@ -52,7 +52,7 @@
 
 				                <div class="modal-content">
 				                    <div class="modal-header">
-				                        <h4 class="modal-title">New Contact</h4>
+				                        <h4 class="modal-title">New Product</h4>
 				                    </div>
 				                    <div class="modal-body">
 
