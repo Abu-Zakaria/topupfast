@@ -68,7 +68,7 @@
 								                        >
 								                          <strong>{{ errors.name[0] }}</strong>
 								                        </span>
-						                        </div>	
+						                        </div>
 
 						                       <div class="form-group">
 						                        	<label for="name"><b>Category</b></label>
@@ -114,6 +114,11 @@
 								                          <strong>{{ errors.logo[0] }}</strong>
 								                        </span>
 						                        </div>
+
+                                    <div class="form-group">
+                                      <label for="name"><b>Seller Commission</b></label>
+                                      <input class="form-control" required id="seller_commission" placeholder="Enter Seller Commission" v-model="form.seller_commission"/>
+                                    </div>
 				                    		</div>
 
 
@@ -121,9 +126,9 @@
 				                    			<div class="form-group">
 						                        	<label for="name"><b>Brand</b></label>
 						                            <select v-model="form.brand_id" :error="errors.brand_id" class="form-control">
-											            <option :value="null" />
-											            <option v-for="row in brand" :value="row.id">{{ row.name }}</option>
-											        </select>
+                                            <option :value="null" />
+                                            <option v-for="row in brand" :value="row.id">{{ row.name }}</option>
+                                        </select>
 						                        </div>
 
 						                        <div class="form-group">
@@ -239,6 +244,7 @@
                     is_shop: null,
                     type: null,
                     quantity: null,
+                    seller_commission: null,
                 },
             }
         },
@@ -267,6 +273,7 @@
                     is_shop: null,
                     type: null,
                     quantity: null,
+                    seller_commission: null,
                 }
             },
             save: function (data) {
@@ -281,6 +288,7 @@
 				formData.append("is_shop", data.is_shop);
 				formData.append("type", data.type);
 				formData.append("quantity", data.quantity);
+				formData.append("seller_commission", data.seller_commission);
 				formData.append("logo", data.logo);
                 this.$inertia.post('/product', formData)
                 this.reset();
@@ -305,6 +313,7 @@
 				formData.append("is_shop", data.is_shop);
 				formData.append("type", data.type);
 				formData.append("quantity", data.quantity);
+				formData.append("seller_commission", data.seller_commission);
 				formData.append("logo", data.logo);
 				formData.append("_method", 'PUT');
                 this.$inertia.post('/product/' + data.id, formData)

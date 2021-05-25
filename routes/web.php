@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-	
+
 Auth::routes(['verify' => true]);
 
 Route::get('/sendsms', "OtherController@sendsms");
@@ -17,7 +17,7 @@ Route::group([
 	'middleware' => 'lang'
 ], function () {
 	Route::middleware(['auth','is_admin_or_seller'])->group(function () {
-	
+
 		Route::resource('order', 'OrderController');
 		Route::post('seller/order/accept', "SellerController@acceptOrder");
 
@@ -25,7 +25,7 @@ Route::group([
 			'as' => 'seller'
 		]);
 		Route::resource('withdraw', "WithdrawController");
-		
+
 		Route::middleware(['is_admin'])->group(function() {
 			Route::resource('brand', 'BrandController');
 			Route::resource('category', 'CategoryController');
@@ -46,6 +46,7 @@ Route::group([
 				Route::post('/users/profile/avatar/{id}', 'UserProfileController@uploadImage')
 					->name('users.profile.avatar.update');
 				Route::post('/users', 'UserController@store')->name('users.store');
+
 				// added by Zakaria for users.index page
 				Route::post('/users/store_user', 'UserController@storeUser')->name('users.store_user');
 				Route::put('/users/{id}', 'UserController@update')->name('users.update');
