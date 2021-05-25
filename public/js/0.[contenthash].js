@@ -525,7 +525,7 @@ var content = __webpack_require__(232);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("03a0949b", content, false, {});
+var update = __webpack_require__(228)("cd3590b0", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -615,7 +615,7 @@ var staticRenderFns = [
         "span",
         { staticClass: "float-md-left d-block d-md-inline-block mt-25" },
         [
-          _vm._v("COPYRIGHT © 2019\r\n\t\t\t\t"),
+          _vm._v("COPYRIGHT © 2019\n\t\t\t\t"),
           _c(
             "a",
             {
@@ -624,7 +624,7 @@ var staticRenderFns = [
             },
             [_vm._v("Team Mahal,")]
           ),
-          _vm._v("\r\n\t\t\t\tAll rights Reserved\r\n\t\t\t")
+          _vm._v("\n\t\t\t\tAll rights Reserved\n\t\t\t")
         ]
       ),
       _vm._v(" "),
@@ -730,7 +730,7 @@ var content = __webpack_require__(238);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("24565851", content, false, {});
+var update = __webpack_require__(228)("6fcb4f38", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -904,7 +904,7 @@ var content = __webpack_require__(242);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("880366ac", content, false, {});
+var update = __webpack_require__(228)("de8b6212", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -928,7 +928,7 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1117,10 +1117,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Sidebar",
   props: {
     url: String
+  },
+  data: function data() {
+    return {
+      is_admin: false
+    };
   },
   methods: {
     isUrl: function isUrl() {
@@ -1137,7 +1161,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return urls.filter(function (url) {
         return _this.url.startsWith(url);
       }).length;
+    },
+    checkAccess: function checkAccess() {
+      this.is_admin = this.$page.auth.is_admin == 1;
     }
+  },
+  created: function created() {
+    this.checkAccess();
   }
 });
 
@@ -1219,167 +1249,179 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _c(
-                  "inertia-link",
-                  {
-                    class: _vm.isUrl("brand") ? "active" : "",
-                    attrs: { href: _vm.route("brand.index") }
-                  },
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
                   [
-                    _c("i", { staticClass: "feather icon-home" }),
-                    _vm._v(" "),
                     _c(
-                      "span",
+                      "inertia-link",
                       {
-                        staticClass: "menu-title nav-link-text",
-                        attrs: { "data-i18n": "" }
+                        class: _vm.isUrl("brand") ? "active" : "",
+                        attrs: { href: _vm.route("brand.index") }
                       },
-                      [_vm._v(_vm._s(_vm.__("Brand")))]
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Brand")))]
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ],
-              1
-            ),
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _c(
-                  "inertia-link",
-                  {
-                    class: _vm.isUrl("category") ? "active" : "",
-                    attrs: { href: _vm.route("category.index") }
-                  },
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
                   [
-                    _c("i", { staticClass: "feather icon-home" }),
-                    _vm._v(" "),
                     _c(
-                      "span",
+                      "inertia-link",
                       {
-                        staticClass: "menu-title nav-link-text",
-                        attrs: { "data-i18n": "" }
+                        class: _vm.isUrl("category") ? "active" : "",
+                        attrs: { href: _vm.route("category.index") }
                       },
-                      [_vm._v(_vm._s(_vm.__("Category")))]
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Category")))]
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ],
-              1
-            ),
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _c(
-                  "inertia-link",
-                  {
-                    class: _vm.isUrl("product") ? "active" : "",
-                    attrs: { href: _vm.route("product.index") }
-                  },
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
                   [
-                    _c("i", { staticClass: "feather icon-home" }),
-                    _vm._v(" "),
                     _c(
-                      "span",
+                      "inertia-link",
                       {
-                        staticClass: "menu-title nav-link-text",
-                        attrs: { "data-i18n": "" }
+                        class: _vm.isUrl("product") ? "active" : "",
+                        attrs: { href: _vm.route("product.index") }
                       },
-                      [_vm._v(_vm._s(_vm.__("Product")))]
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Product")))]
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ],
-              1
-            ),
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _c(
-                  "inertia-link",
-                  {
-                    class: _vm.isUrl("package") ? "active" : "",
-                    attrs: { href: _vm.route("package.index") }
-                  },
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
                   [
-                    _c("i", { staticClass: "feather icon-home" }),
-                    _vm._v(" "),
                     _c(
-                      "span",
+                      "inertia-link",
                       {
-                        staticClass: "menu-title nav-link-text",
-                        attrs: { "data-i18n": "" }
+                        class: _vm.isUrl("package") ? "active" : "",
+                        attrs: { href: _vm.route("package.index") }
                       },
-                      [_vm._v(_vm._s(_vm.__("Package")))]
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Package")))]
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ],
-              1
-            ),
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _c(
-                  "inertia-link",
-                  {
-                    class: _vm.isUrl("paymentmethod") ? "active" : "",
-                    attrs: { href: _vm.route("paymentmethod.index") }
-                  },
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
                   [
-                    _c("i", { staticClass: "feather icon-home" }),
-                    _vm._v(" "),
                     _c(
-                      "span",
+                      "inertia-link",
                       {
-                        staticClass: "menu-title nav-link-text",
-                        attrs: { "data-i18n": "" }
+                        class: _vm.isUrl("paymentmethod") ? "active" : "",
+                        attrs: { href: _vm.route("paymentmethod.index") }
                       },
-                      [_vm._v(_vm._s(_vm.__("Payment Method")))]
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Payment Method")))]
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ],
-              1
-            ),
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _c(
-                  "inertia-link",
-                  {
-                    class: _vm.isUrl("banner") ? "active" : "",
-                    attrs: { href: _vm.route("banner.index") }
-                  },
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
                   [
-                    _c("i", { staticClass: "feather icon-home" }),
-                    _vm._v(" "),
                     _c(
-                      "span",
+                      "inertia-link",
                       {
-                        staticClass: "menu-title nav-link-text",
-                        attrs: { "data-i18n": "" }
+                        class: _vm.isUrl("banner") ? "active" : "",
+                        attrs: { href: _vm.route("banner.index") }
                       },
-                      [_vm._v(_vm._s(_vm.__("Banner")))]
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Banner")))]
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ],
-              1
-            ),
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "li",
@@ -1427,13 +1469,46 @@ var render = function() {
                         staticClass: "menu-title nav-link-text",
                         attrs: { "data-i18n": "" }
                       },
-                      [_vm._v(_vm._s(_vm.__("Order")))]
+                      [
+                        _vm.is_admin
+                          ? _c("span", [_vm._v(_vm._s(_vm.__("Order")))])
+                          : _c("span", [_vm._v("Global orders")])
+                      ]
                     )
                   ]
                 )
               ],
               1
             ),
+            _vm._v(" "),
+            !_vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        class: _vm.isUrl("seller/orders") ? "active" : "",
+                        attrs: { href: _vm.route("seller.orders.index") }
+                      },
+                      [
+                        _c("i", { staticClass: "feather icon-home" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title nav-link-text",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_c("span", [_vm._v("My orders")])]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "li",
@@ -1462,39 +1537,72 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item" },
-              [
-                _c(
-                  "inertia-link",
-                  {
-                    class: _vm.isUrl("user") ? "active" : "",
-                    attrs: { href: _vm.route("users.index") }
-                  },
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
                   [
-                    _c("i", { staticClass: "feather icon-users" }),
-                    _vm._v(" "),
                     _c(
-                      "span",
-                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
-                      [_vm._v(_vm._s(_vm.__("Users")))]
+                      "inertia-link",
+                      {
+                        class: _vm.isUrl("user") ? "active" : "",
+                        attrs: { href: _vm.route("users.index") }
+                      },
+                      [
+                        _c("i", { staticClass: "feather icon-users" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Users")))]
+                        )
+                      ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ],
-              1
-            ),
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.is_admin
+              ? _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        class: _vm.isUrl("notice") ? "active" : "",
+                        attrs: { href: _vm.route("notice.index") }
+                      },
+                      [
+                        _c("i", { staticClass: "feather icon-users" }),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "menu-title",
+                            attrs: { "data-i18n": "" }
+                          },
+                          [_vm._v(_vm._s(_vm.__("Notice")))]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "li",
-              { staticClass: "nav-item" },
               [
                 _c(
                   "inertia-link",
                   {
-                    class: _vm.isUrl("notice") ? "active" : "",
-                    attrs: { href: _vm.route("notice.index") }
+                    class: _vm.isUrl("withdraw") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw.index") }
                   },
                   [
                     _c("i", { staticClass: "feather icon-users" }),
@@ -1502,7 +1610,7 @@ var render = function() {
                     _c(
                       "span",
                       { staticClass: "menu-title", attrs: { "data-i18n": "" } },
-                      [_vm._v(_vm._s(_vm.__("Notice")))]
+                      [_vm._v("Withdraw")]
                     )
                   ]
                 )
@@ -2048,7 +2156,7 @@ var render = function() {
                                 },
                                 [
                                   _c("i", { staticClass: "feather icon-user" }),
-                                  _vm._v(" Profile\r\n\t\t\t\t\t\t\t\t")
+                                  _vm._v(" Profile\n\t\t\t\t\t\t\t\t")
                                 ]
                               ),
                               _vm._v(" "),
@@ -2334,7 +2442,7 @@ var content = __webpack_require__(250);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("c3dd8234", content, false, {});
+var update = __webpack_require__(228)("7e3e050e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -3142,7 +3250,7 @@ var content = __webpack_require__(272);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("71b6ec7e", content, false, {});
+var update = __webpack_require__(228)("6ae1c3ea", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -7602,7 +7710,7 @@ var content = __webpack_require__(531);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(228)("3625c875", content, false, {});
+var update = __webpack_require__(228)("792766d6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -7626,7 +7734,7 @@ exports = module.exports = __webpack_require__(148)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -7659,6 +7767,24 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7902,7 +8028,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         district: null,
         upazilla: null,
         address: '',
-        status: ''
+        status: '',
+        is_admin: ''
       },
       searchfrom: {
         user_id: this.filters.user_id,
@@ -7960,6 +8087,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.form.id = data.id;
       $("#default").modal('show');
     },
+    createUser: function createUser() {
+      this.modelTitle = "Create New User";
+      this.form.name = "";
+      this.form.status = "";
+      this.form.birth_date = "";
+      this.form.id = "";
+      this.editMode = false;
+      $("#default").modal('show');
+    },
     closeModel: function closeModel() {
       $("#default").modal('hide');
     },
@@ -7979,7 +8115,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.editMode) {
         this.update();
       } else {
-        this.store();
+        // this is being commented out by Zakaria
+        // this.store();
+        // added by Zakaria
+        this.storeUser();
       }
     },
     store: function store() {
@@ -7991,6 +8130,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           self.closeModel();
           self.cleanForm();
           self.$toast('User Created Successfully');
+        }
+      });
+    },
+    // added by Zakaria, for seller/admin user
+    storeUser: function storeUser() {
+      var self = this;
+      this.$inertia.post(this.route('users.store_user'), {
+        name: this.form.name,
+        phone: this.form.phone,
+        guardian_phone: this.form.guardian_phone,
+        gender_id: this.form.gender_id,
+        religion_id: this.form.religion_id,
+        blood_group_id: this.form.blood_group_id,
+        birth_date: this.form.birth_date,
+        email: this.form.email,
+        is_admin: this.form.is_admin
+      }).then(function () {
+        if (Object.keys(self.errors).length === 0) {
+          self.closeModel();
+          self.cleanForm();
+          self.$toast('User Created Successfully');
+        } else {
+          console.log(error.response.data);
         }
       });
     },
@@ -11030,7 +11192,21 @@ var render = function() {
                 return _vm.searchphone($event.target.value)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "float-right btn btn-sm btn-primary",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.createUser($event)
+                }
+              }
+            },
+            [_vm._v("Create User")]
+          )
         ]),
         _vm._v(" "),
         _c("div", { attrs: { id: "basic-examples" } }, [
@@ -11040,9 +11216,7 @@ var render = function() {
                 _vm.success
                   ? _c("div", { staticClass: "alert alert-success" }, [
                       _vm._v(
-                        "\r\n\t\t\t\t\t\t" +
-                          _vm._s(_vm.success) +
-                          "\r\n\t\t\t\t\t"
+                        "\n\t\t\t\t\t\t" + _vm._s(_vm.success) + "\n\t\t\t\t\t"
                       )
                     ])
                   : _vm._e(),
@@ -11603,6 +11777,7 @@ var render = function() {
                         [
                           _c("date-picker", {
                             class: [_vm.errors.birth_date ? "is-invalid" : ""],
+                            attrs: { placeholder: "Birth date" },
                             model: {
                               value: _vm.form.birth_date,
                               callback: function($$v) {
@@ -11679,6 +11854,76 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.is_admin,
+                                expression: "form.is_admin"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: [_vm.errors.is_admin ? "is-invalid" : ""],
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "is_admin",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "" } }, [
+                              _vm._v("Select user type")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Admin")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2" } }, [
+                              _vm._v("Seller")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.errors.is_admin
+                          ? _c(
+                              "span",
+                              {
+                                staticClass: "invalid-feedback",
+                                staticStyle: { display: "block" },
+                                attrs: { role: "alert" }
+                              },
+                              [
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.errors.is_admin[0]))
+                                ])
+                              ]
+                            )
+                          : _vm._e()
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _vm.editMode
                     ? _c("label", { staticClass: "float-left mt-2" }, [
                         _c("input", {
@@ -11729,9 +11974,9 @@ var render = function() {
                           }
                         }),
                         _vm._v(
-                          "\r\n\t\t\t\t\t" +
+                          "\n\t\t\t\t\t" +
                             _vm._s(_vm.form.status ? "Active" : "Inactive") +
-                            "\r\n\t\t\t\t"
+                            "\n\t\t\t\t"
                         )
                       ])
                     : _vm._e()

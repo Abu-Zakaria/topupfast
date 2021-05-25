@@ -33040,6 +33040,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+__webpack_require__(552);
+
 
 
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1__inertiajs_inertia_vue__["InertiaApp"]);
@@ -63654,107 +63656,107 @@ module.exports = function (css) {
 var map = {
 	"./Auth/Email": [
 		151,
-		29
+		30
 	],
 	"./Auth/Email.vue": [
 		151,
-		29
+		30
 	],
 	"./Auth/Login": [
 		152,
-		28
+		29
 	],
 	"./Auth/Login.vue": [
 		152,
-		28
+		29
 	],
 	"./Auth/PasswordReset": [
 		153,
-		27
+		28
 	],
 	"./Auth/PasswordReset.vue": [
 		153,
-		27
+		28
 	],
 	"./Auth/Register": [
 		154,
-		26
+		27
 	],
 	"./Auth/Register.vue": [
 		154,
-		26
+		27
 	],
 	"./Auth/Subscription": [
 		155,
-		25
+		26
 	],
 	"./Auth/Subscription.vue": [
 		155,
-		25
+		26
 	],
 	"./Banner/Index": [
 		156,
-		21
+		22
 	],
 	"./Banner/Index.vue": [
 		156,
-		21
+		22
 	],
 	"./BloodGroup/Index": [
 		157,
-		13
+		14
 	],
 	"./BloodGroup/Index.vue": [
 		157,
-		13
+		14
 	],
 	"./Brand/Create": [
 		158,
-		24
+		25
 	],
 	"./Brand/Create.vue": [
 		158,
-		24
+		25
 	],
 	"./Brand/Index": [
 		159,
-		20
+		21
 	],
 	"./Brand/Index.vue": [
 		159,
-		20
+		21
 	],
 	"./Category/Index": [
 		160,
-		19
+		20
 	],
 	"./Category/Index.vue": [
 		160,
-		19
+		20
 	],
 	"./Dashboard": [
 		162,
-		23
+		24
 	],
 	"./Dashboard.vue": [
 		162,
-		23
+		24
 	],
 	"./Dashboard/AdminDashboard": [
 		161,
-		14
+		15
 	],
 	"./Dashboard/AdminDashboard.vue": [
 		161,
-		14
+		15
 	],
 	"./Gender/Index": [
 		163,
-		12
+		13
 	],
 	"./Gender/Index.vue": [
 		163,
-		12
+		13
 	],
 	"./Invoice/Index": [
 		164,
@@ -63766,19 +63768,19 @@ var map = {
 	],
 	"./LandingPage": [
 		165,
-		32
+		68
 	],
 	"./LandingPage.vue": [
 		165,
-		32
+		68
 	],
 	"./Notice/Index": [
 		166,
-		18
+		19
 	],
 	"./Notice/Index.vue": [
 		166,
-		18
+		19
 	],
 	"./Order/Index": [
 		167,
@@ -63798,83 +63800,91 @@ var map = {
 	],
 	"./Paymentmethod/Index": [
 		169,
-		17
+		18
 	],
 	"./Paymentmethod/Index.vue": [
 		169,
-		17
+		18
 	],
 	"./Permission/Index": [
 		170,
-		11
+		12
 	],
 	"./Permission/Index.vue": [
 		170,
-		11
+		12
 	],
 	"./Product/Index": [
 		171,
-		16
+		17
 	],
 	"./Product/Index.vue": [
 		171,
-		16
+		17
 	],
 	"./Religion/Index": [
 		172,
-		10
+		11
 	],
 	"./Religion/Index.vue": [
 		172,
-		10
+		11
 	],
 	"./Role/Index": [
 		173,
-		5
+		6
 	],
 	"./Role/Index.vue": [
 		173,
+		6
+	],
+	"./Seller/MyOrders/Index": [
+		555,
+		5
+	],
+	"./Seller/MyOrders/Index.vue": [
+		555,
 		5
 	],
 	"./Shop/Branch": [
 		174,
-		9
+		10
 	],
 	"./Shop/Branch.vue": [
 		174,
-		9
+		10
 	],
 	"./Shop/Customer": [
 		175,
-		8
+		9
 	],
 	"./Shop/Customer.vue": [
 		175,
-		8
+		9
 	],
 	"./Shop/Index": [
 		176,
-		7
+		8
 	],
 	"./Shop/Index.vue": [
 		176,
-		7
+		8
 	],
 	"./Shop/InvoiceType": [
 		177,
-		6
+		7
 	],
 	"./Shop/InvoiceType.vue": [
 		177,
-		6
+		7
 	],
 	"./Shop/ShopAdmin": [
 		178,
-		22
+		23
 	],
 	"./Shop/ShopAdmin.vue": [
 		178,
-		22
+		23
 	],
 	"./Transaction/Index": [
 		179,
@@ -63886,19 +63896,19 @@ var map = {
 	],
 	"./User/Create": [
 		180,
-		31
+		32
 	],
 	"./User/Create.vue": [
 		180,
-		31
+		32
 	],
 	"./User/Edit": [
 		181,
-		30
+		31
 	],
 	"./User/Edit.vue": [
 		181,
-		30
+		31
 	],
 	"./User/Index": [
 		182,
@@ -63910,11 +63920,19 @@ var map = {
 	],
 	"./User/Profile": [
 		183,
-		15
+		16
 	],
 	"./User/Profile.vue": [
 		183,
-		15
+		16
+	],
+	"./Withdraw/Index": [
+		558,
+		69
+	],
+	"./Withdraw/Index.vue": [
+		558,
+		69
 	]
 };
 function webpackAsyncContext(req) {
@@ -63936,6 +63954,356 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+window.axios = __webpack_require__(189);
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 
 /***/ })
 /******/ ]);

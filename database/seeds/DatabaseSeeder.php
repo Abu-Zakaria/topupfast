@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
            UsersTableSeeder::class,
            // PermissionSeeder::class,
            // PermissionRoleSeeder::class,
+           BloodGroupSeeder::class,
+           GenderSeeder::class,
+           ReligionSeeder::class,
+           OrderSeeder::class,
          ]);
     }
 }

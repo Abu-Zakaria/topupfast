@@ -7,6 +7,7 @@
 		<input class="relative w-full px-2 py-1 rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="User Id" :value="searchfrom.user_id" @input="check($event.target.value)">
 		<input class="relative w-full px-2 py-1 rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Email" :value="searchfrom.email" @input="searchemail($event.target.value)">
 		<input class="relative w-full px-2 py-1 rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Phone" :value="searchfrom.phone" @input="searchphone($event.target.value)">
+		<button class="float-right btn btn-sm btn-primary" @click.prevent="createUser">Create User</button>
 	</div>
 
 	<div id="basic-examples">
@@ -158,7 +159,7 @@
 						<div class="form-group">
 							<date-picker
 								v-model="form.birth_date"
-								:class="[errors.birth_date ? 'is-invalid' : '']">
+								:class="[errors.birth_date ? 'is-invalid' : '']" placeholder="Birth date">
 							</date-picker>
 							<span v-if="errors.birth_date" class="invalid-feedback" style="display: block;" role="alert">
 									<strong>{{ errors.birth_date[0] }}</strong>
@@ -175,6 +176,23 @@
 							<span v-if="errors.email" class="invalid-feedback" style="display: block;" role="alert">
 									<strong>{{ errors.email[0] }}</strong>
 								</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<select class="form-control"
+								:class="[errors.is_admin ? 'is-invalid' : '']"
+								v-model="form.is_admin">
+									<option value="">Select user type</option>
+									<option value="1">Admin</option>
+									<option value="2">Seller</option>
+							</select>
+							<span v-if="errors.is_admin" class="invalid-feedback" style="display: block;" role="alert">
+								<strong>{{ errors.is_admin[0] }}</strong>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -238,6 +256,7 @@
 					upazilla: null,
 					address: '',
 					status: '',
+					is_admin: ''
 				},
 				searchfrom: {
 					user_id: this.filters.user_id,
@@ -291,6 +310,17 @@
 				this.form.id = data.id;
 				$("#default").modal('show');
 			},
+			createUser()
+			{
+				this.modelTitle = "Create New User";
+				this.form.name = "";
+				this.form.status = "";
+				this.form.birth_date = "";
+				this.form.id = "";
+				this.editMode = false;
+
+				$("#default").modal('show');
+			},
 			closeModel: function () {
 				$("#default").modal('hide');
 			},
@@ -308,7 +338,10 @@
 				if (this.editMode) {
 					this.update();
 				}else {
-					this.store();
+					// this is being commented out by Zakaria
+					// this.store();
+					// added by Zakaria
+					this.storeUser();
 				}
 			},
 			store: function () {
@@ -322,6 +355,33 @@
 						self.$toast('User Created Successfully');
 					}
 				});
+			},
+			// added by Zakaria, for seller/admin user
+			storeUser()
+			{
+				const self = this;
+				this.$inertia.post(this.route('users.store_user'),
+				{
+					name: this.form.name,
+					phone: this.form.phone,
+					guardian_phone: this.form.guardian_phone,
+					gender_id: this.form.gender_id,
+					religion_id: this.form.religion_id,
+					blood_group_id: this.form.blood_group_id,
+					birth_date: this.form.birth_date,
+					email: this.form.email,
+					is_admin: this.form.is_admin
+				}).then(() => {
+					if (Object.keys(self.errors).length === 0) {
+						self.closeModel();
+						self.cleanForm();
+						self.$toast('User Created Successfully');
+					}
+					else
+					{
+						console.log(error.response.data);
+					}
+				})
 			},
 			update: function () {
 				const self = this;

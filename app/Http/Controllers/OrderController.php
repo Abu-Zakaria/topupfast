@@ -59,7 +59,14 @@ class OrderController extends Controller
             'filters'       => Request::all('user_id'),
             'totalbuy'      => $totalbuy,
             'totalsale'     => $totalsale,
-            'orders'        => $result->orderBy('id','DESC')
+            // 'orders'        => $result->orderBy('id','DESC')
+            'orders'        => $result
+                ->orderByRaw("CASE status
+                                WHEN \"pending\" THEN 1
+                                WHEN \"complete\" THEN 2
+                                WHEN \"cancel\" THEN 3
+                                END
+                            ")
                 ->paginate(),
         ]);
 

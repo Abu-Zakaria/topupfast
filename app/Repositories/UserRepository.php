@@ -129,6 +129,10 @@ class UserRepository
 
     $user->blood_group_id = $request->blood_group_id;
     $user->religion_id = $request->religion_id;
+    if($request->has('is_admin'))
+    {
+      $user->is_admin = $request->is_admin;
+    }
     $user->gender_id = $request->gender_id;
 
     return $user;

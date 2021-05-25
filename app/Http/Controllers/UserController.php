@@ -8,6 +8,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use App\User;
+use App\Models\Users\Gender;
+use App\Models\Users\Religion;
+use App\Models\Users\BloodGroup;
 use Illuminate\Support\Facades\Request;
 
 class UserController extends Controller
@@ -54,10 +57,17 @@ class UserController extends Controller
 		    $result = $result->where('phone', $phone);
 		}
 
+		$genders = Gender::where('status', true)->get();
+		$religions = Religion::where('status', true)->get();
+		$blood_groups = BloodGroup::where('status', true)->get();
+
 		return Inertia::render('User/Index', [
             'filters' 	=> Request::all('user_id'),
             'users' 	=> $result->orderBy('id','DESC')
                 ->paginate(),
+            'genders' => $genders,
+            'religions' => $religions,
+            'blood_groups' => $blood_groups
         ]);
 	}
 
@@ -87,6 +97,17 @@ class UserController extends Controller
 				->route('users.index')
 				->with('success', 'User registration completed successfully!');
 		}
+	}
+
+	public function storeUser(UserRequest $request)
+	{
+		$user = $this->userRepository->store($request);
+
+		if ($user->save()) {
+			return redirect()
+				->route('users.index')
+				->with('success', 'User created successfully!');
+		}	
 	}
 
 	/**
