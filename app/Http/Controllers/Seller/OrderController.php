@@ -17,10 +17,10 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::where('accept_id', auth()->user()->id)
+                        ->where('status', '!=', 'pending')
                         ->orderByRaw("CASE status
-                            WHEN \"pending\" THEN 1
-                            WHEN \"complete\" THEN 2
-                            WHEN \"cancel\" THEN 3
+                            WHEN \"complete\" THEN 1
+                            WHEN \"cancel\" THEN 2
                             END
                         ")
                         ->get();

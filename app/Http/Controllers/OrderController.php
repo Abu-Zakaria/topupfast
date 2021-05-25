@@ -19,7 +19,7 @@ class OrderController extends Controller
         $status = Request::all('status');
         $start_date = Request::all('start_date');
         $end_date = Request::all('end_date');
-        $result = Order::with('package')->with('user');
+        $result = Order::with('package')->with('user')->with("accept_by");
         $result1 = Order::query();
       
 

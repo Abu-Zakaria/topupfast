@@ -18,4 +18,9 @@ class Order extends Model
     {
     	return $this->belongsTo("App\User");
     }
+
+    public function accept_by()
+    {
+        return $this->belongsTo("App\User", "accept_id", "id");
+    }
 }

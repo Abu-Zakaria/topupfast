@@ -60,11 +60,17 @@
 					                <td>{{ row.securitycode }}</td>
 					                <td>{{ row.status }}</td>
 					                <td>{{ row.created_at }}</td>
-					                <td width="200" v-if="$page.auth.is_admin == 1">
-					                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
+					                <td width="200" v-if="((isOrderAccepted(row) && row.accept_id == $page.auth.id) || (!isOrderAccepted(row) && $page.auth.is_admin == 1)) && row.status =='pending'">
+					                    <button @click="edit(row)" class="btn btn-sm btn-primary">Edit</button>
 					                </td>
-					                <td width="200" v-if="$page.auth.is_admin == 2 && !hidden_orders_accept.includes(row.id)">
-					                    <button @click="accept(row, this)" v-if="row.status=='pending' && row.accept_id == 0" class="btn btn-sm btn-primary">Accept</button>
+					                <td width="200" v-if="isOrderAccepted(row) && row.status != 'pending'">
+					                	<span v-if="row.accept_by.id != $page.auth.id">
+					                		Ordered by {{ row.accept_by.name }}
+					                	</span>
+					                	<span v-if="row.accept_by.id == $page.auth.id && row.status != 'pending'">Ordered by you</span>
+					                </td>
+					                <td width="200" v-if="showAcceptButton(row)">
+					                    <button @click="accept(row, this)" class="btn btn-sm btn-primary">Accept</button>
 					                </td>
 					            </tr>
 					            <tr>
@@ -168,6 +174,25 @@
 			},
 		},
         methods: {
+        	showAcceptButton(product)
+        	{
+        		if(this.$page.auth.is_admin == 2
+        			&& !this.hidden_orders_accept.includes(product.id)
+        			&& product.status=='pending'
+        			&& product.accept_id == 0)
+        		{
+        			return true;
+        		}
+        		return false;
+        	},
+        	isOrderAccepted(product)
+        	{
+        		if(product.accept_id != 0)
+        		{
+        			return true;
+        		}
+        		return false;
+        	},
         	check(a){
 				this.searchfrom.user_id=a
 			},
