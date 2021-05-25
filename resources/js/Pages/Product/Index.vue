@@ -22,6 +22,7 @@
 				                <th>Name</th>
 				                <th>Buy Price</th>
 				                <th>Sale Price</th>
+				                <th>Seller Commission</th>
 				                <th>Is shop</th>
 				                <th>Type</th>
 				                <th>Tag line</th>
@@ -34,6 +35,7 @@
 				                <td>{{ row.name }}</td>
 				                <td>{{ row.buy_price }}</td>
 				                <td>{{ row.sale_price }}</td>
+				                <td>{{ row.seller_commission }}</td>
 				                <td>{{ row.is_shop }}</td>
 				                <td>{{ row.type }}</td>
 				                <td>{{ row.tag_line }}</td>
