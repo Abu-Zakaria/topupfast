@@ -307,7 +307,6 @@
           this.reset();
           this.closeModal();
       }
-   }
 }
 </script>
 
