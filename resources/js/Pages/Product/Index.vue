@@ -163,6 +163,7 @@
 											            <option :value="null" />
 											            <option value="0">Is Shop</option>
 											            <option value="1">Is Top Up</option>
+											            <option value="2">Disabled</option>
 											        </select>
 						                        </div>
 

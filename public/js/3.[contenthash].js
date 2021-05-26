@@ -7518,7 +7518,7 @@ exports = module.exports = __webpack_require__(149)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -7539,6 +7539,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_throttle__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__);
+//
+//
 //
 //
 //
@@ -7697,7 +7699,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         order_id: this.filters.order_id,
         start_date: this.filters.start_date,
         end_date: this.filters.end_date,
-        status: this.filters.status
+        status: this.filters.status,
+        accept_id: this.filters.accept_id
       },
       options: {
         format: 'DD/MM/YYYY',
@@ -7738,6 +7741,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     searchemail: function searchemail(a) {
       this.searchfrom.order_id = a;
+    },
+    searchseller: function searchseller(a) {
+      this.searchfrom.accept_id = a;
     },
     openModal: function openModal() {
       $('#modal').modal('show');
@@ -7848,7 +7854,8 @@ var render = function() {
                   [
                     _c("input", {
                       staticClass:
-                        "relative w-full px-2 py-1 rounded-r focus:shadow-outline",
+                        "relative w-full rounded-r focus:shadow-outline",
+                      staticStyle: { width: "15%", "margin-right": "3px" },
                       attrs: {
                         autocomplete: "off",
                         type: "text",
@@ -7864,7 +7871,8 @@ var render = function() {
                     _vm._v(" "),
                     _c("input", {
                       staticClass:
-                        "relative w-full px-2 py-1 rounded-r focus:shadow-outline",
+                        "relative w-full rounded-r focus:shadow-outline",
+                      staticStyle: { width: "15%", "margin-right": "3px" },
                       attrs: {
                         autocomplete: "off",
                         type: "text",
@@ -7878,9 +7886,37 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
+                    _c("input", {
+                      staticClass:
+                        "relative w-full rounded-r focus:shadow-outline",
+                      staticStyle: { width: "15%", "margin-right": "3px" },
+                      attrs: {
+                        autocomplete: "off",
+                        type: "text",
+                        placeholder: "Seller ID"
+                      },
+                      domProps: { value: _vm.searchfrom.accept_id },
+                      on: {
+                        input: function($event) {
+                          return _vm.searchseller($event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass:
+                        "relative w-full rounded-r focus:shadow-outline",
+                      staticStyle: { width: "15%", "margin-right": "3px" },
+                      attrs: {
+                        autocomplete: "off",
+                        type: "text",
+                        placeholder: "Product Name"
+                      }
+                    }),
+                    _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "px-2" },
+                      { staticStyle: { width: "15%", "margin-right": "3px" } },
                       [
                         _c("date-picker", {
                           staticStyle: { padding: "25px" },
@@ -7902,7 +7938,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "px-2" },
+                      { staticStyle: { width: "15%", "margin-right": "3px" } },
                       [
                         _c("date-picker", {
                           staticStyle: { padding: "25px" },
@@ -7933,12 +7969,8 @@ var render = function() {
                             expression: "searchfrom.status"
                           }
                         ],
-                        staticClass: "mt-1 w-full form-select form-control",
-                        staticStyle: {
-                          padding: "20px",
-                          "margin-bottom": "-10px",
-                          width: "140px"
-                        },
+                        staticClass: "w-full form-select form-control",
+                        staticStyle: { padding: "25px", width: "15%" },
                         on: {
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
