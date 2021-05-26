@@ -63684,43 +63684,43 @@ module.exports = function (css) {
 var map = {
 	"./Auth/Email": [
 		152,
-		31
+		32
 	],
 	"./Auth/Email.vue": [
 		152,
-		31
+		32
 	],
 	"./Auth/Login": [
 		153,
-		30
+		31
 	],
 	"./Auth/Login.vue": [
 		153,
-		30
+		31
 	],
 	"./Auth/PasswordReset": [
 		154,
-		29
+		30
 	],
 	"./Auth/PasswordReset.vue": [
 		154,
-		29
+		30
 	],
 	"./Auth/Register": [
 		155,
-		28
+		29
 	],
 	"./Auth/Register.vue": [
 		155,
-		28
+		29
 	],
 	"./Auth/Subscription": [
 		156,
-		27
+		28
 	],
 	"./Auth/Subscription.vue": [
 		156,
-		27
+		28
 	],
 	"./Banner/Index": [
 		157,
@@ -63740,11 +63740,11 @@ var map = {
 	],
 	"./Brand/Create": [
 		159,
-		24
+		25
 	],
 	"./Brand/Create.vue": [
 		159,
-		24
+		25
 	],
 	"./Brand/Index": [
 		160,
@@ -63764,11 +63764,11 @@ var map = {
 	],
 	"./Dashboard": [
 		163,
-		23
+		24
 	],
 	"./Dashboard.vue": [
 		163,
-		23
+		24
 	],
 	"./Dashboard/AdminDashboard": [
 		162,
@@ -63868,11 +63868,11 @@ var map = {
 	],
 	"./Seller/MyOrders/Index": [
 		175,
-		26
+		27
 	],
 	"./Seller/MyOrders/Index.vue": [
 		175,
-		26
+		27
 	],
 	"./Shop/Branch": [
 		176,
@@ -63908,19 +63908,19 @@ var map = {
 	],
 	"./Shop/ShopAdmin": [
 		180,
-		22
+		23
 	],
 	"./Shop/ShopAdmin.vue": [
 		180,
-		22
+		23
 	],
 	"./Sms/Index": [
 		181,
-		34
+		22
 	],
 	"./Sms/Index.vue": [
 		181,
-		34
+		22
 	],
 	"./Transaction/Index": [
 		182,
@@ -63932,19 +63932,19 @@ var map = {
 	],
 	"./User/Create": [
 		183,
-		33
+		34
 	],
 	"./User/Create.vue": [
 		183,
-		33
+		34
 	],
 	"./User/Edit": [
 		184,
-		32
+		33
 	],
 	"./User/Edit.vue": [
 		184,
-		32
+		33
 	],
 	"./User/Index": [
 		185,
@@ -63964,11 +63964,11 @@ var map = {
 	],
 	"./Withdraw/Index": [
 		187,
-		25
+		26
 	],
 	"./Withdraw/Index.vue": [
 		187,
-		25
+		26
 	]
 };
 function webpackAsyncContext(req) {

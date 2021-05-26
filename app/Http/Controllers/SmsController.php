@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +15,10 @@ class SmsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Sms/Index');
+      $users = User::query()->get();
+      return Inertia::render('Sms/Index',[
+        'users' => $users,
+      ]);
     }
 
     /**
