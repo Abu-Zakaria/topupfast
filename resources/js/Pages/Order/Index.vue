@@ -17,7 +17,7 @@
                   <input class="relative w-full rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Order Id" :value="searchfrom.order_id" @input="searchemail($event.target.value)" style="width: 15%;margin-right: 3px;">
                   <input class="relative w-full rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="User Id" :value="searchfrom.user_id" @input="check($event.target.value)" style="width: 15%;margin-right: 3px;">
                   <input class="relative w-full rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Seller ID" :value="searchfrom.accept_id" @input="searchseller($event.target.value)" style="width: 15%;margin-right: 3px;">
-                  <input class="relative w-full rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Product Name" style="width: 15%;margin-right: 3px;">
+                  <input class="relative w-full rounded-r focus:shadow-outline" :value="searchfrom.product_id" @input="searchproduct($event.target.value)" autocomplete="off" type="text" placeholder="Product Name" style="width: 15%;margin-right: 3px;">
                 <div style="width: 15%;margin-right: 3px;">
                   <date-picker v-model="searchfrom.start_date" :config="options" placeholder="Start Date" style="padding: 25px;"></date-picker>
                 </div>
@@ -158,6 +158,7 @@
 					end_date  : this.filters.end_date,
 					status  : this.filters.status,
           accept_id  : this.filters.accept_id,
+          product_id  : this.filters.product_id,
 				},
         options: {
           format: 'DD/MM/YYYY',
@@ -204,6 +205,9 @@
 			},
       searchseller(a){
         this.searchfrom.accept_id=a
+      },
+      searchproduct(a){
+        this.searchfrom.product_id=a
       },
       openModal: function () {
           $('#modal').modal('show')

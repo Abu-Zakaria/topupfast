@@ -17,6 +17,9 @@ class TransactionController extends Controller
 
     $user_id = Request::all('user_id');
     $number = Request::all('number');
+    $status = Request::all('status');
+    $start_date = Request::all('start_date');
+    $end_date = Request::all('end_date');
     $result = Transaction::with('paymentmethod');
     $result1 = Transaction::with('paymentmethod');
 
@@ -28,6 +31,25 @@ class TransactionController extends Controller
     if ($number['number']!=NULL) {
       $result = $result->where('number', $number);
       $result1 = $result1->where('number', $number);
+    }
+
+    if ($status['status']!=NULL) {
+      $result = $result->where('status', $status);
+      $result1 = $result1->where('status', $status);
+    }
+
+    if ($start_date['start_date']!=NULL) {
+      $start_date['start_date'] = str_replace('/', '-', $start_date['start_date']);
+      $start_date['start_date'] = date('Y-m-d', strtotime($start_date['start_date']));
+      $result = $result->where('created_at','>=',$start_date['start_date']);
+      $result1 = $result1->where('created_at','>=',$start_date['start_date']);
+    }
+
+    if ($end_date['end_date']!=NULL) {
+      $end_date['end_date'] = str_replace('/', '-', $end_date['end_date']);
+      $end_date['end_date'] = date('Y-m-d', strtotime($end_date['end_date']));
+      $result = $result->where('created_at','<=',$end_date['end_date']);
+      $result1 = $result1->where('created_at','<=',$end_date['end_date']);
     }
 
     $amount = $result1->where('status','!=','cancel')->sum('amount');

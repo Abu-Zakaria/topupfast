@@ -19,9 +19,10 @@ class OrderController extends Controller
         $status = Request::all('status');
         $start_date = Request::all('start_date');
         $end_date = Request::all('end_date');
+        $accept_id = Request::all('accept_id');
+        $product_id = Request::all('product_id');
         $result = Order::with('package')->with('user')->with("accept_by");
         $result1 = Order::query();
-      
 
         if ($id['order_id']!=NULL) {
             $result = $result->where('id', $id);
@@ -50,6 +51,23 @@ class OrderController extends Controller
             $end_date['end_date'] = date('Y-m-d', strtotime($end_date['end_date']));
             $result = $result->where('created_at','<=',$end_date['end_date']);
             $result1 = $result1->where('created_at','<=',$end_date['end_date']);
+        }
+
+        if ($accept_id['accept_id']!=NULL) {
+          $result = $result->where('accept_id', $accept_id);
+          $result1 = $result1->where('accept_id', $accept_id);
+        }
+
+        if ($product_id['product_id']!=NULL) {
+
+          $products = Product::where('name','like','%'.$product_id['product_id'].'%')->with('package')->get();
+
+          $package_ids = [];
+          foreach ($products as $product){
+            $package_ids[] = $product->package->id;
+          }
+          $result = $result->whereIn('package_id', $package_ids);
+          $result1 = $result1->whereIn('package_id', $package_ids);
         }
 
         $totalbuy = $result1->where('status','!=','cancel')->sum('buy_price');

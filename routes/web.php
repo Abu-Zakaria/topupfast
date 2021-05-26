@@ -34,6 +34,7 @@ Route::group([
 			Route::resource('paymentmethod', 'PaymentmethodController');
 			Route::resource('banner', 'BannerController');
 			Route::resource('notice', 'NoticeController');
+			Route::resource('sms', 'SmsController');
 			Route::get('/canclealltransaction', 'TransactionController@canclealltransaction')->name('canclealltransaction');
 			Route::get('/users', 'UserController@index')->name('users.index');
 
