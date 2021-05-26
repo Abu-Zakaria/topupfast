@@ -139,6 +139,13 @@
 					</inertia-link>
 				</li>
 
+        <li class="nav-item" v-if="is_admin">
+          <inertia-link :href="route('sms.index')" :class="isUrl('sms') ? 'active' : ''">
+            <i class="feather icon-send"></i>
+            <span class="menu-title" data-i18n="">{{ __("Send SMS") }}</span>
+          </inertia-link>
+        </li>
+
 				<li>
 					<inertia-link :href="route('withdraw.index')" :class="isUrl('withdraw') ? 'active' : ''">
 						<i class="feather icon-users"></i>
@@ -154,7 +161,7 @@
 						}}</span>
 					</inertia-link>
 				</li>
-				
+
 				<li class="nav-item" v-if="$can('role_access')">
 					<inertia-link :href="route('roles.index')">
 						<i class="feather icon-unlock"></i>
@@ -189,7 +196,7 @@
 						<span class="menu-title" data-i18n="">{{ __("Blood Group") }}</span>
 					</inertia-link>
 				</li>
-				
+
 			</ul>
 		</div>
 	</div>
