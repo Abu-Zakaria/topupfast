@@ -17,7 +17,6 @@
 	<link rel="stylesheet" href="{{ asset('css/themes/dark-layout.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/themes/semi-dark-layout.css') }}">
 	{{-- {!! Helper::applClasses() !!} --}}
-	<meta name="csrf-token" content="{{ csrf_token() }}">
 	@php
 		$configData = Helper::applClasses();
 	@endphp

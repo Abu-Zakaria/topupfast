@@ -89,7 +89,6 @@ class UserRepository
     $user = (new User())->setConnection('mysql');
     $user = $this->setupData($user, $request);
     $user->email_verified_at = date('Y-m-d H:i:s');
-    $user->password = Hash::make("12345678");
     $user->created_at = date('Y-m-d H:i:s');
     if ($user->save()) {
       return $user;
@@ -114,10 +113,12 @@ class UserRepository
     $user->slug = Str::slug($request->name, "-");
     $user->phone = $request->phone;
     $user->email = $request->email;
+    $user->password = $request->has('password') ? Hash::make($request->password) : Hash::make("12345678");
     $user->address = $request->address;
     $user->birth_date = date('Y-m-d', strtotime($request->birth_date));
     $user->nationality = $request->nationality;
     $user->connection = $request->connection;
+    $user->status = ($request->has('status')) ? $request->status : 0;
 
     if ($request->has('shop_id')) {
       $user->shop_id = $request->shop_id;

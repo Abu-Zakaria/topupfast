@@ -178,6 +178,18 @@
 								</span>
 						</div>
 					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<input type="password"
+										 placeholder="Password"
+										 class="form-control"
+										 :class="[errors.password ? 'is-invalid' : '']"
+										 v-model="form.password">
+							<span v-if="errors.password" class="invalid-feedback" style="display: block;" role="alert">
+									<strong>{{ errors.password[0] }}</strong>
+								</span>
+						</div>
+					</div>
 				</div>
 
 				<div class="row">
@@ -197,7 +209,7 @@
 					</div>
 				</div>
 
-				<label class="float-left mt-2" v-if="editMode">
+				<label class="float-left mt-2">
 					<input type="checkbox" v-model="form.status" :checked="[form.status ? true : false]">
 					{{ form.status ? 'Active' : 'Inactive'}}
 				</label>
@@ -246,6 +258,7 @@
 					phone: '',
 					guardian_phone: '',
 					email: '',
+					password: '',
 					gender_id: '',
 					religion_id: '',
 					blood_group_id: '',
@@ -370,7 +383,9 @@
 					blood_group_id: this.form.blood_group_id,
 					birth_date: this.form.birth_date,
 					email: this.form.email,
-					is_admin: this.form.is_admin
+					password: this.form.password,
+					is_admin: this.form.is_admin,
+					status: this.form.status
 				}).then(() => {
 					if (Object.keys(self.errors).length === 0) {
 						self.closeModel();
