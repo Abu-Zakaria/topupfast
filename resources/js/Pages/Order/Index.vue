@@ -54,23 +54,30 @@
 					                <td width="20%">{{ row.user_id }} (<span v-if="row.user"> {{ row.user.phone }} </span>)</td>
 					                <td>{{ row.buy_price }}</td>
 					                <td>{{ row.sale_price }}</td>
-					                <td>{{ row.playerid }}</td>
-					                <td>{{ row.password }}</td>
+					                <td><span @click="copyClipboard(row.playerid)">{{ row.playerid }}</span></td>
+					                <td @click="copyClipboard(row.password)">{{ row.password }}</td>
 					                <td>{{ row.accounttype }}</td>
-					                <td>{{ row.securitycode }}</td>
+					                <td @click="copyClipboard(row.securitycode)">{{ row.securitycode }}</td>
 					                <td>{{ row.status }}</td>
 					                <td>{{ row.created_at }}</td>
 					                <td width="200" v-if="((isOrderAccepted(row) && row.accept_id == $page.auth.id) || (!isOrderAccepted(row) && $page.auth.is_admin == 1)) && row.status =='pending'">
 					                    <button @click="edit(row)" class="btn btn-sm btn-primary">Edit</button>
 					                </td>
-					                <td width="200" v-if="isOrderAccepted(row) && row.status != 'pending'">
-					                	<span v-if="row.accept_by.id != $page.auth.id">
-					                		Ordered by {{ row.accept_by.name }}
-					                	</span>
-					                	<span v-if="row.accept_by.id == $page.auth.id && row.status != 'pending'">Ordered by you</span>
-					                </td>
-					                <td width="200" v-if="showAcceptButton(row)">
+					                <td width="200" v-else-if="showAcceptButton(row)">
 					                    <button @click="accept(row, this)" class="btn btn-sm btn-primary">Accept</button>
+					                </td>
+					                <td width="200" v-else-if="isOrderAccepted(row)">
+					                	<span v-if="row.accept_id != 0 && row.accept_id != $page.auth.id">
+					                		Accepted by {{ row.accept_by.name }}
+					                	</span>
+					                	<span v-if="(row.accept_id == $page.auth.id && row.status != 'pending')">Accepted by you</span>
+					                </td>
+					                <!-- for admin's actions -->
+					                <td width="200" v-else-if="row.accept_id == 0 && row.status != 'pending' && $page.auth.is_admin == 1">
+					                	Accepted by you
+					                </td>
+					                <td width="200" v-else-if="row.status != 'pending'">
+					                	Accepted by admin
 					                </td>
 					            </tr>
 					            <tr>
@@ -174,6 +181,22 @@
 			},
 		},
         methods: {
+        	copyClipboard(text)
+        	{
+        		console.log('text', text);
+        		let el = document.createElement("textarea");
+        		el.value = text;
+
+        		el.setAttribute('readonly', '');
+				el.style.position = 'absolute';
+				el.style.left = '-9999px';
+				document.body.appendChild(el);
+				el.select();
+				document.execCommand('copy');
+
+				document.body.removeChild(el);
+				this.$toast("Copied to clipboard!")
+        	},
         	showAcceptButton(product)
         	{
         		if(this.$page.auth.is_admin == 2
@@ -231,10 +254,13 @@
 	            		if(res.data.success == true)
 	            		{
 	            			this.$toast(res.data.message)
+	            			data.accept_id = this.$page.auth.id
 	            		}
 	            		else
 	            		{
 	            			this.$toast(res.data.message, 'error')
+	            			let index = this.hidden_orders_accept.indexOf(data.id)
+	            			this.hidden_orders_accept.splice(index, 1);
 	            		}
 	            	})
 	            	.catch(error => {

@@ -153,11 +153,11 @@ class OrderController extends Controller
 
   public function update()
   {
-    $aaaaaaaaaaaa  = Order::find(Request::all()['id']);
-    $user   = User::find($aaaaaaaaaaaa->user_id);
+    $order  = Order::find(Request::all()['id']);
+    $user   = User::find($order->user_id);
     if(Request::all()['status']=='cancel'){
 
-      $package = Package::find($aaaaaaaaaaaa->package_id);
+      $package = Package::find($order->package_id);
 
       $product = Product::find($package->product_id);
 
@@ -165,17 +165,17 @@ class OrderController extends Controller
       $product->update();
 
 
-      $user->wallet = $user->wallet+$aaaaaaaaaaaa->sale_price;
+      $user->wallet = $user->wallet+$order->sale_price;
       $user->update();
     }
-    $aaaaaaaaaaaa->status=Request::all()['status'];
-    $aaaaaaaaaaaa->update();
+    $order->status=Request::all()['status'];
+    $order->update();
 
     if (Request::all()['status'] == 'cancel') {
-      $message = "Hello ".$user->name.",\n\nYour Order No ".$aaaaaaaaaaaa->id." Has been Canceled. Please Place a New Order.\n\nOur Facebook Page: https://m.me/TopupFastCom\n\nhttps://TopupFast.Com";
+      $message = "Hello ".$user->name.",\n\nYour Order No ".$order->id." Has been Canceled. Please Place a New Order.\n\nOur Facebook Page: https://m.me/TopupFastCom\n\nhttps://TopupFast.Com";
       $this->sms(["recipient"=>$user->phone,"messagedata"=>$message]);
     }elseif(Request::all()['status'] == 'complete'){
-      $message = "Hello ".$user->name.",\n\nYour order No ".$aaaaaaaaaaaa->id." is now Completed. Please leave a review.\n\nStay with https://TopupFast.Com for Cheap Price and Fast Delivery.";
+      $message = "Hello ".$user->name.",\n\nYour order No ".$order->id." is now Completed. Please leave a review.\n\nStay with https://TopupFast.Com for Cheap Price and Fast Delivery.";
       $this->sms(["recipient"=>$user->phone,"messagedata"=>$message]);
     }
 

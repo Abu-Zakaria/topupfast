@@ -15,7 +15,7 @@ class IsAdminOrSeller
      */
     public function handle($request, Closure $next)
     {
-        if(in_array(auth()->user()->is_admin, [1, 2]))
+        if(in_array(auth()->user()->is_admin, [1, 2]) && auth()->user()->status == 1)
         {
             return $next($request);
         }

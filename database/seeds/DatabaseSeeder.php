@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
            BloodGroupSeeder::class,
            GenderSeeder::class,
            ReligionSeeder::class,
+           ProductSeeder::class,
+           PackageSeeder::class,
            OrderSeeder::class,
          ]);
     }
