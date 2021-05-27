@@ -49,28 +49,28 @@
 
 				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('brand.index')" :class="isUrl('brand') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-box"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Brand") }}</span>
 					</inertia-link>
 				</li>
 
 				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('category.index')" :class="isUrl('category') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-aperture"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Category") }}</span>
 					</inertia-link>
 				</li>
 
 				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('product.index')" :class="isUrl('product') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-gift"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Product") }}</span>
 					</inertia-link>
 				</li>
 
 				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('package.index')" :class="isUrl('package') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-package"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Package") }}</span>
 					</inertia-link>
 				</li>
@@ -78,14 +78,14 @@
 
 				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('paymentmethod.index')" :class="isUrl('paymentmethod') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-dollar-sign"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Payment Method") }}</span>
 					</inertia-link>
 				</li>
 
 				<li class="nav-item" v-if="is_admin">
 					<inertia-link :href="route('banner.index')" :class="isUrl('banner') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-sliders"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Banner") }}</span>
 					</inertia-link>
 				</li>
@@ -93,7 +93,7 @@
 
 				<li class="nav-item">
 					<inertia-link :href="route('transaction.index')" :class="isUrl('transaction') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-sliders"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Transaction") }}</span>
 					</inertia-link>
 				</li>
@@ -101,7 +101,7 @@
 
 				<li class="nav-item">
 					<inertia-link :href="route('order.index')" :class="isUrl('order') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-shopping-cart"></i>
 						<span class="menu-title nav-link-text" data-i18n="">
 							<span v-if="is_admin">{{ __("Order") }}</span>
 							<span v-else>Global orders</span>
@@ -111,7 +111,7 @@
 
 				<li class="nav-item" v-if="!is_admin">
 					<inertia-link :href="route('seller.orders.index')" :class="isUrl('seller/orders') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-shopping-cart"></i>
 						<span class="menu-title nav-link-text" data-i18n="">
 							<span>My orders</span>
 						</span>
@@ -120,7 +120,7 @@
 
 				<li class="nav-item">
 					<inertia-link :href="route('invoice.index')" :class="isUrl('invoice') ? 'active' : ''">
-						<i class="feather icon-home"></i>
+						<i class="feather icon-printer"></i>
 						<span class="menu-title nav-link-text" data-i18n="">{{ __("Invoice") }}</span>
 					</inertia-link>
 				</li>
