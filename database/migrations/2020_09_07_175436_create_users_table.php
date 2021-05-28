@@ -18,19 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('phone')->unique();
-            // adding these columns (by Zakaria)
-            // address columns seems missing (from UserRepository)
-            $table->string('address')->nullable();
-            // birth_date columns seems missing (from UserRepository)
-            $table->string('birth_date')->nullable();
-            // blood_group_id columns seems missing (from UserRepository)
-            $table->string('blood_group_id')->nullable();
-            // religion_id columns seems missing (from UserRepository)
-            $table->string('religion_id')->nullable();
-            // nationality columns seems missing (from UserRepository)
-            $table->string('nationality')->nullable();
-            // connection columns seems missing (from UserRepository)
-            $table->string('connection')->nullable();
             $table->integer('gender_id');   
             $table->string('email')->unique();
             $table->integer('role_id');

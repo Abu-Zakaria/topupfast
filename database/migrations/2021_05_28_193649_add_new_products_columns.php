@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSellerCommissionToProducts extends Migration
+class AddNewProductsColumns extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddSellerCommissionToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-          $table->double('seller_commission')->nullable();
+            $table->integer('seller_commission')->nullable()->after('type');
         });
     }
 
