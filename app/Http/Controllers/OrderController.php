@@ -187,6 +187,7 @@ class OrderController extends Controller
       $user->update();
     }
     $order->status=Request::all()['status'];
+    $order->comment=Request::all()['comment'];
     $order->update();
 
     if (Request::all()['status'] == 'cancel') {

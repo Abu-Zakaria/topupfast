@@ -98,7 +98,7 @@
 
 				                <div class="modal-content">
 				                    <div class="modal-header">
-				                        <h4 class="modal-title">New Contact</h4>
+				                        <h4 class="modal-title">Edit Order</h4>
 				                    </div>
 				                    <div class="modal-body">
 				                        <div class="form-group">
@@ -110,6 +110,10 @@
 									            <option value="cancel">cancel</option>
 									        </select>
 				                        </div>
+				                        <div class="form-group">
+					                    		<label><b>Comment</b></label>
+					                    		<input type="text" v-model="form.comment" :error="errors.comment" class="form-control">
+					                    	</div>
 				                    </div>
 				                    <div class="modal-footer">
 				                        <button type="button" class="btn btn-default" @click="closeModal()">Close</button>
@@ -155,6 +159,7 @@
         form: {
             status:null,
             id:null,
+            comment: '',
             start_date: new Date(),
             end_date: new Date(),
         },

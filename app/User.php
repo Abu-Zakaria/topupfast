@@ -41,4 +41,23 @@ class User extends Authenticatable implements MustVerifyEmail
 		// {
 		//     $this->notify(new ResetPasswordNotification($token));
 		// }
+
+		public function getWalletBalance()
+		{
+			if($this->is_admin == 1)
+			{
+				return false;
+			}
+			$total_income = 0;
+			$orders = Order::where('accept_id', $this->id)->where('status', 'complete')->with("package.product")->get();
+
+			foreach($orders as $order)
+            {
+                $total_income += $order->package->product->seller_commission;
+            }
+            $withdraw_amount = WithdrawRequest::where('user_id', auth()->user()->id)
+						                        ->where('status', 'approved')
+						                        ->sum('withdraw_amount');
+            return $total_income - $withdraw_amount;
+		}
 }

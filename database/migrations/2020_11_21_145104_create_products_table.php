@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->integer('is_shop')->nullable();
             $table->float('quantity')->nullable();
             $table->integer('type')->nullable();
+            $table->integer('seller_commission')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
