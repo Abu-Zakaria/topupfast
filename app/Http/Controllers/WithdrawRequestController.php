@@ -32,14 +32,24 @@ class WithdrawRequestController extends Controller
             }
             else
             {
-                $requests = WithdrawRequest::where('status', 'pending');
+                $requests = WithdrawRequest::orderByRaw("CASE status
+                                WHEN \"pending\" THEN 1
+                                WHEN \"approved\" THEN 2
+                                WHEN \"cancel\" THEN 3
+                                END
+                            ");
                 $requests->with('user');
             }
         }
         else if(auth()->user()->is_admin == 2)
         {
             $requests = WithdrawRequest::where('user_id', auth()->user()->id)
-                                        ->where('status', 'pending')
+                                        ->orderByRaw("CASE status
+                                            WHEN \"pending\" THEN 1
+                                            WHEN \"approved\" THEN 2
+                                            WHEN \"cancel\" THEN 3
+                                            END
+                                        ")
                                         ->latest();
             $wallet_balance = auth()->user()->getWalletBalance();
             $response_data['wallet_balance'] = $wallet_balance;

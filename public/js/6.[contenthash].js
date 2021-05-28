@@ -7672,26 +7672,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("Layout", { attrs: { name: "Withdraw" } }, [
     _c("section", { staticClass: "users-list-wrapper" }, [
-      _vm.is_admin()
-        ? _c("div", { staticClass: "mb-6 flex justify-between items-center" }, [
-            _c("input", {
-              staticClass:
-                "relative w-full px-2 py-1 rounded-r focus:shadow-outline",
-              attrs: {
-                autocomplete: "off",
-                type: "text",
-                placeholder: "User name"
-              },
-              domProps: { value: _vm.searchform.user },
-              on: {
-                input: function($event) {
-                  return _vm.searchUser($event.target.value)
-                }
-              }
-            })
-          ])
-        : _vm._e(),
-      _vm._v(" "),
       _c("div", { attrs: { id: "basic-examples" } }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-content" }, [
@@ -7712,6 +7692,30 @@ var render = function() {
                       "\n\t\t\t\t\t\t\t" + _vm._s(_vm.error) + "\n\t\t\t\t\t\t"
                     )
                   ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.is_admin()
+                ? _c(
+                    "div",
+                    { staticClass: "mb-6 flex justify-between items-center" },
+                    [
+                      _c("input", {
+                        staticClass:
+                          "relative w-full px-2 py-1 mb-2 rounded-r focus:shadow-outline",
+                        attrs: {
+                          autocomplete: "off",
+                          type: "text",
+                          placeholder: "User name"
+                        },
+                        domProps: { value: _vm.searchform.user },
+                        on: {
+                          input: function($event) {
+                            return _vm.searchUser($event.target.value)
+                          }
+                        }
+                      })
+                    ]
+                  )
                 : _vm._e(),
               _vm._v(" "),
               _vm.is_seller()
@@ -7780,39 +7784,45 @@ var render = function() {
                             _vm._v(" "),
                             _vm.is_admin()
                               ? _c("td", [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-sm btn-success",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.approve(request)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t        \t\t\t\tApprove\n\t\t\t\t\t\t        \t\t\t"
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-sm btn-danger",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.decline(request)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t                    \tDecline\n\t\t\t\t\t\t                    "
-                                      )
-                                    ]
-                                  )
+                                  request.status == "pending"
+                                    ? _c("span", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-sm btn-success",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.approve(request)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t        \t\t\t\tApprove\n\t\t\t\t\t\t\t        \t\t\t"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-sm btn-danger",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.decline(request)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t                    \tDecline\n\t\t\t\t\t\t\t                    "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ])
                               : _vm._e()
                           ])

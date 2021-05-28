@@ -17,7 +17,14 @@ class SellerController extends Controller
             ];
         }
 
-        $update = Order::find($request->id)->update(['accept_id' => auth()->user()->id]);
+        $order = Order::find($request->id);
+
+        $seller_commision = ($order->package->product->seller_commission);
+
+        $update = $order->update([
+            'accept_id' => auth()->user()->id,
+            'seller_commission' => $seller_commision,
+        ]);
 
         if($update)
         {
