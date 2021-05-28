@@ -9,45 +9,45 @@
               <div v-if="success" class="alert alert-success">
                 {{ success }}
               </div>
-
-              <div>
-                <table class="table table-sm table-bordered display responsive nowrap mb-0" style="width: 100%">
-                  <thead>
-                    <tr class="bg-light">
-                      <th width="5%">
-                        <input type="checkbox" v-model="my_status" checked @change="checkChange" />
-                      </th>
-                      <th>Name</th>
-                      <th width="20%">Phone</th>
-                      <th width="20%">wallet</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tbody">
-                    <tr v-for="(user,index) in users" :key="index">
-                        <td>
-                          <input type="checkbox" class="selected" checked />
-                        </td>
-                        <td>
-                          {{ user.name }}
-                        </td>
-                        <td>
-                          {{ user.phone }}
-                        </td>
-                        <td>
-                          {{user.wallet}}
-                        </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <br>
-                <textarea placeholder="Enter Message" v-model="message" class="form-control"></textarea>
-                <div style="text-align: center;margin-top: 16px;">
-                  <button type="submit" class="btn btn-primary btn-md">
-                    <i class="feather icon-send"></i> Send Message
-                  </button>
+              <form @submit.prevent="sendMessage">
+                <div>
+                  <table class="table table-sm table-bordered display responsive nowrap mb-0" style="width: 100%">
+                    <thead>
+                      <tr class="bg-light">
+                        <th width="5%">
+                          <input type="checkbox" v-model="selectAll" />
+                        </th>
+                        <th>Name</th>
+                        <th width="20%">Phone</th>
+                        <th width="20%">wallet</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody">
+                      <tr v-for="(user,index) in users" :key="index">
+                          <td>
+                            <input type="checkbox" class="selected" v-model="selected" :value="user"  />
+                          </td>
+                          <td>
+                            {{ user.name }}
+                          </td>
+                          <td>
+                            {{ user.phone }}
+                          </td>
+                          <td>
+                            {{user.wallet}}
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <textarea placeholder="Enter Message" v-model="message" class="form-control"></textarea>
+                  <div style="text-align: center;margin-top: 16px;">
+                    <button type="submit" class="btn btn-primary btn-md">
+                      <i class="feather icon-send"></i> Send Message
+                    </button>
+                  </div>
                 </div>
-              </div>
-
+              </form>
             </div>
           </div>
         </div>
@@ -71,6 +71,25 @@ export default {
     return {
       my_status: true,
       message: '',
+      selected: [],
+    }
+  },
+  computed: {
+    selectAll: {
+      get(){
+        return this.users ? this.selected.length == this.users.length : false;
+      },
+      set(value){
+        let selected = [];
+
+        if (value) {
+          this.users.forEach(function (user) {
+            selected.push(user);
+          });
+        }
+
+        this.selected = selected;
+      }
     }
   },
   methods: {
@@ -83,6 +102,20 @@ export default {
           tr.setAttribute('checked','checked');
         }
       }
+    },
+    sendMessage(){
+      const self = this;
+      this.$inertia.post(this.route('sms.create'),{
+        users: self.users,
+      }).then(() => {
+        if (Object.keys(self.errors).length === 0) {
+          self.$toast('Message Sent Successfully');
+        }
+        else
+        {
+          console.log(error.response.data);
+        }
+      })
     }
   },
 }

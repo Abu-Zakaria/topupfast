@@ -2819,8 +2819,27 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   data: function data() {
     return {
       my_status: true,
-      message: ''
+      message: '',
+      selected: []
     };
+  },
+  computed: {
+    selectAll: {
+      get: function get() {
+        return this.users ? this.selected.length == this.users.length : false;
+      },
+      set: function set(value) {
+        var selected = [];
+
+        if (value) {
+          this.users.forEach(function (user) {
+            selected.push(user);
+          });
+        }
+
+        this.selected = selected;
+      }
+    }
   },
   methods: {
     checkChange: function checkChange() {
@@ -2844,6 +2863,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       } finally {
         _iterator.f();
       }
+    },
+    sendMessage: function sendMessage() {
+      var self = this;
+      this.$inertia.post(this.route('sms.create'), {
+        users: self.users
+      }).then(function () {
+        if (Object.keys(self.errors).length === 0) {
+          self.$toast('Message Sent Successfully');
+        } else {
+          console.log(error.response.data);
+        }
+      });
     }
   }
 });
@@ -2873,162 +2904,208 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", [
-                _c(
-                  "table",
-                  {
-                    staticClass:
-                      "table table-sm table-bordered display responsive nowrap mb-0",
-                    staticStyle: { width: "100%" }
-                  },
-                  [
-                    _c("thead", [
-                      _c("tr", { staticClass: "bg-light" }, [
-                        _c("th", { attrs: { width: "5%" } }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.my_status,
-                                expression: "my_status"
-                              }
-                            ],
-                            attrs: { type: "checkbox", checked: "" },
-                            domProps: {
-                              checked: Array.isArray(_vm.my_status)
-                                ? _vm._i(_vm.my_status, null) > -1
-                                : _vm.my_status
-                            },
-                            on: {
-                              change: [
-                                function($event) {
-                                  var $$a = _vm.my_status,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        (_vm.my_status = $$a.concat([$$v]))
-                                    } else {
-                                      $$i > -1 &&
-                                        (_vm.my_status = $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1)))
-                                    }
-                                  } else {
-                                    _vm.my_status = $$c
-                                  }
-                                },
-                                _vm.checkChange
-                              ]
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Name")]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { width: "20%" } }, [
-                          _vm._v("Phone")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { width: "20%" } }, [
-                          _vm._v("wallet")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      { attrs: { id: "tbody" } },
-                      _vm._l(_vm.users, function(user, index) {
-                        return _c("tr", { key: index }, [
-                          _c("td", [
-                            _c("input", {
-                              staticClass: "selected",
-                              attrs: { type: "checkbox", checked: "" }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(user.name) +
-                                "\n                      "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(user.phone) +
-                                "\n                      "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                        " +
-                                _vm._s(user.wallet) +
-                                "\n                      "
-                            )
-                          ])
-                        ])
-                      }),
-                      0
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.message,
-                      expression: "message"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { placeholder: "Enter Message" },
-                  domProps: { value: _vm.message },
+              _c(
+                "form",
+                {
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.message = $event.target.value
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.sendMessage($event)
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticStyle: {
-                      "text-align": "center",
-                      "margin-top": "16px"
-                    }
-                  },
-                  [
+                },
+                [
+                  _c("div", [
                     _c(
-                      "button",
+                      "table",
                       {
-                        staticClass: "btn btn-primary btn-md",
-                        attrs: { type: "submit" }
+                        staticClass:
+                          "table table-sm table-bordered display responsive nowrap mb-0",
+                        staticStyle: { width: "100%" }
                       },
                       [
-                        _c("i", { staticClass: "feather icon-send" }),
-                        _vm._v(" Send Message\n                ")
+                        _c("thead", [
+                          _c("tr", { staticClass: "bg-light" }, [
+                            _c("th", { attrs: { width: "5%" } }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.selectAll,
+                                    expression: "selectAll"
+                                  }
+                                ],
+                                attrs: { type: "checkbox" },
+                                domProps: {
+                                  checked: Array.isArray(_vm.selectAll)
+                                    ? _vm._i(_vm.selectAll, null) > -1
+                                    : _vm.selectAll
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.selectAll,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.selectAll = $$a.concat([$$v]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.selectAll = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.selectAll = $$c
+                                    }
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Name")]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { width: "20%" } }, [
+                              _vm._v("Phone")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { width: "20%" } }, [
+                              _vm._v("wallet")
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          { attrs: { id: "tbody" } },
+                          _vm._l(_vm.users, function(user, index) {
+                            return _c("tr", { key: index }, [
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selected,
+                                      expression: "selected"
+                                    }
+                                  ],
+                                  staticClass: "selected",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    value: user,
+                                    checked: Array.isArray(_vm.selected)
+                                      ? _vm._i(_vm.selected, user) > -1
+                                      : _vm.selected
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.selected,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = user,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.selected = $$a.concat([$$v]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.selected = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.selected = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                          " +
+                                    _vm._s(user.name) +
+                                    "\n                        "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                          " +
+                                    _vm._s(user.phone) +
+                                    "\n                        "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                          " +
+                                    _vm._s(user.wallet) +
+                                    "\n                        "
+                                )
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.message,
+                          expression: "message"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { placeholder: "Enter Message" },
+                      domProps: { value: _vm.message },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.message = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          "text-align": "center",
+                          "margin-top": "16px"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary btn-md",
+                            attrs: { type: "submit" }
+                          },
+                          [
+                            _c("i", { staticClass: "feather icon-send" }),
+                            _vm._v(" Send Message\n                  ")
+                          ]
+                        )
                       ]
                     )
-                  ]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ])
         ])
