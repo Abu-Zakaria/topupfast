@@ -70,7 +70,7 @@
 					                </td>
 					                <td width="200" v-else-if="isOrderAccepted(row)">
 					                	<span v-if="row.accept_id != 0 && row.accept_id != $page.auth.id">
-					                		Accepted by {{ row.accept_by.name }}
+					                		Accepted by {{ (row.accept_by) ? row.accept_by.name : '' }}
 					                	</span>
 					                	<span v-if="(row.accept_id == $page.auth.id && row.status != 'pending')">Accepted by you</span>
 					                </td>
