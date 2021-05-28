@@ -1,5 +1,5 @@
 <template>
-<layout name="Brand">
+<layout name="Transaction">
 	<section class="users-list-wrapper">
   		<div id="basic-examples">
 			<div class="card">
@@ -84,10 +84,14 @@
 				                        	<input type="hidden" v-model="form.id">
 				                        	<label for="name"><b>Status</b></label>
 				                            <select v-model="form.status" :error="errors.status" class="form-control">
-									            <option value="pending">pending</option>
-									            <option value="complete">complete</option>
-									            <option value="cancel">cancel</option>
-									        </select>
+													            <option value="pending">pending</option>
+													            <option value="complete">complete</option>
+													            <option value="cancel">cancel</option>
+													        </select>
+				                        </div>
+				                        <div class="form-group">
+				                        	<label><b>Comment</b></label>
+				                        	<input type="text" v-model="form.comment" class="form-control" :error="errors.comment">
 				                        </div>
 				                    </div>
 				                    <div class="modal-footer">
@@ -131,6 +135,7 @@
             return {
                 editMode: false,
                 form: {
+                		comment: '',
                     status: null,
                     id: null,
                     start_date: new Date(),
@@ -161,6 +166,14 @@
             },
         },
         methods: {
+        	is_admin()
+        	{
+        		return this.$page.auth.is_admin == 1
+        	},
+        	is_seller()
+        	{
+        		return this.$page.auth.is_admin == 2
+        	},
         	check(a){
             this.searchfrom.user_id=a
           },

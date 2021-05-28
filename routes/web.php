@@ -24,7 +24,7 @@ Route::group([
 		Route::middleware('is_seller')->resource('seller/orders', 'Seller\OrderController', [
 			'as' => 'seller'
 		]);
-		Route::resource('withdraw', "WithdrawController");
+		Route::resource('withdraw_requests', "WithdrawRequestController");
 
 		Route::middleware(['is_admin'])->group(function() {
 			Route::resource('brand', 'BrandController');

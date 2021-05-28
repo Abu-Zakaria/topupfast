@@ -23,6 +23,12 @@ class TransactionController extends Controller
     $result = Transaction::with('paymentmethod');
     $result1 = Transaction::with('paymentmethod');
 
+    // if(auth()->user()->is_admin == 2)
+    // {
+    //   $result->where('user_id', auth()->user()->id);
+    //   $result1->where('user_id', auth()->user()->id);
+    // }
+
     if ($user_id['user_id']!=NULL) {
       $result = $result->where('user_id', $user_id);
       $result1 = $result1->where('user_id', $user_id);
@@ -118,6 +124,8 @@ class TransactionController extends Controller
 
     }
     $transaction->status=Request::all()['status'];
+    $transaction->accept_id = auth()->user()->id;
+    $transaction->comment = Request::all()['comment'];
     $transaction->save();
 
     if (Request::all()['status'] == 'cancel') {

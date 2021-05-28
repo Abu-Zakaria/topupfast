@@ -147,9 +147,9 @@
         </li>
 
 				<li>
-					<inertia-link :href="route('withdraw.index')" :class="isUrl('withdraw') ? 'active' : ''">
+					<inertia-link :href="route('withdraw_requests.index')" :class="isUrl('withdraw') ? 'active' : ''">
 						<i class="feather icon-users"></i>
-						<span class="menu-title" data-i18n="">Withdraw</span>
+						<span class="menu-title" data-i18n="">Withdraw Requests</span>
 					</inertia-link>
 				</li>
 

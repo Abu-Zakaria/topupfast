@@ -20,6 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->integer('amount');
             $table->string('purpose');
             $table->string('number');
+            $table->integer('accept_id')->default(0);
+            $table->text('comment')->nullable();
             $table->enum('status', ['pending', 'complete','cancel']);
             $table->timestamps();
         });

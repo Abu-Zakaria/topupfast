@@ -86,6 +86,23 @@
 					</div>
 				</div>
 
+				<div class="col-lg-3 col-md-6 col-12" v-if="$page.auth.is_admin == 2">
+					<div class="card">
+						<div class="card-header d-flex flex-column align-items-start pb-0">
+							<div class="avatar bg-rgba-primary p-50 m-0">
+								<div class="avatar-content">
+									<i class="feather icon-users text-primary font-medium-5"></i>
+								</div>
+							</div>
+							<h2 class="text-bold-700 mt-1 mb-25">{{ withdraw_amount }}</h2>
+							<p class="mb-0">Withdraw Amount</p>
+						</div>
+						<div class="card-content">
+							<div id="subscribe-gain-chart"></div>
+						</div>
+					</div>
+				</div>
+
 				<div class="col-lg-3 col-md-6 col-12" v-if="$page.auth.is_admin == 1">
 					<div class="card">
 						<div class="card-header d-flex flex-column align-items-start pb-0">
@@ -113,7 +130,7 @@
 					<div class="card">
 
 						<div class="card-header">
-							<h4 class="mb-0">Orders</h4>
+							<h4 class="mb-0"><span v-if="is_seller()">Global </span>Orders</h4>
 						</div>
 
 						<div class="card-content">
@@ -145,8 +162,17 @@
 						                <td>{{ row.accounttype }}</td>
 						                <td>{{ row.securitycode }}</td>
 						                <td>{{ row.status }}</td>
-						                <td width="200">
-						                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
+						                <td width="200" v-if="is_admin() || (row.accept_id == $page.auth.id && row.status=='pending')">
+						                    <button @click="edit(row)" v-if="" class="btn btn-sm btn-primary">Edit</button>
+						                </td>
+						                <td width="200" v-if="is_seller() && row.accept_id == 0 && row.status=='pending'">
+						                	<button @click="accept(row)" class="btn btn-sm btn-primary">Accept</button>
+						                </td>
+						                <td width="200" v-if="row.accept_id != 0 && row.accept_id != $page.auth.id">
+						                	<span>Accepted by {{ row.accept_by.name }}</span>
+						                </td>
+						                <td width="200" v-if="row.status != 'pending' && row.accept_id == $page.auth.id">
+						                	Accepted by you
 						                </td>
 						            </tr>
 						        </table>
@@ -250,13 +276,16 @@
 	                    </div>
 	                    <div class="modal-body">
 	                        <div class="form-group">
-	                        	<input type="text" v-model="form.id">
 	                        	<label for="name"><b>Status</b></label>
 	                            <select v-model="form.status" class="form-control">
 						            <option value="pending">pending</option>
 						            <option value="complete">complete</option>
 						            <option value="cancel">cancel</option>
 						        </select>
+	                        </div>
+	                        <div class="form-group">
+	                        	<label><b>Comment</b></label>
+	                        	<input type="text" v-model="form.comment" class="form-control">
 	                        </div>
 	                    </div>
 	                    <div class="modal-footer">
@@ -280,17 +309,45 @@
 	export default {
 		name: "Dashboard",
 		components: {Layout},
-		props: ['msg','users','orders','usertoday','ordertoday','wallet','tenorder','tenwallet','success','invoice', 'seller_wallet'],
+		props: ['msg','users','orders','usertoday','ordertoday','wallet','tenorder','tenwallet','success','invoice', 'seller_wallet', 'withdraw_amount'],
 		data() {
             return {
                 editMode: true,
                 form: {
+                	comment: '',
                     status:'',
                     id:null,
                 },
             }
         },
         methods: {
+        	accept(order)
+        	{
+        		axios.post('seller/order/accept', order)
+	            	.then(res => {
+	            		if(res.data.success == true)
+	            		{
+	            			this.$toast(res.data.message)
+	            			order.accept_id = this.$page.auth.id
+	            		}
+	            		else
+	            		{
+	            			this.$toast(res.data.message, 'error')
+	            		}
+	            	})
+	            	.catch(error => {
+	            		this.$toast("Something went wrong", 'error')
+	            		console.error('>', error)
+	            	})
+        	},
+        	is_admin()
+        	{
+        		return this.$page.auth.is_admin == 1;
+        	},
+        	is_seller()
+        	{
+        		return this.$page.auth.is_admin == 2;
+        	},
         	check(a){
 				this.searchfrom.user_id=a
 			},

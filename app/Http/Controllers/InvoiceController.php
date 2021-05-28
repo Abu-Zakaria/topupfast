@@ -18,6 +18,11 @@ class InvoiceController extends Controller
         $status = Request::all('status');
         $result = Invoice::with('product')->with('user');
 
+        if(auth()->user()->is_admin == 2)
+        {
+            $result->where('user_id', auth()->user()->id);
+        }
+
         if ($id['order_id']!=NULL) {
             $result = $result->where('id', $id);
         }
