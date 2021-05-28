@@ -2884,6 +2884,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Layout__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Shared_Layout__);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1d017f7ae2d9a05b794716d5de73d93cc2f9573e
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Pagination__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Shared_Pagination__);
 //
@@ -2891,6 +2894,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+<<<<<<< HEAD
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+=======
+>>>>>>> 1d017f7ae2d9a05b794716d5de73d93cc2f9573e
 //
 //
 //
@@ -2982,6 +3017,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Brand",
   components: {
@@ -3005,6 +3041,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1d017f7ae2d9a05b794716d5de73d93cc2f9573e
     setLogo: function setLogo(e) {
       this.form.logo = e.target.files[0];
     },
@@ -3054,6 +3093,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$inertia.post('/brand/' + data.id, data);
       this.reset();
       this.closeModal();
+<<<<<<< HEAD
+=======
 =======
     sendMessage: function sendMessage() {
       var self = this;
@@ -3068,6 +3109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
       });
 >>>>>>> 73ebe20a851cea9eb9b6f0b922a02747b3a1ce94
+>>>>>>> 1d017f7ae2d9a05b794716d5de73d93cc2f9573e
     }
   }
 });
