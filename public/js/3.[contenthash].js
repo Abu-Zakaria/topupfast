@@ -8252,7 +8252,11 @@ var render = function() {
                                   ? _c("span", [
                                       _vm._v(
                                         "\n\t\t\t\t\t                \t\tAccepted by " +
-                                          _vm._s(row.accept_by.name) +
+                                          _vm._s(
+                                            row.accept_by
+                                              ? row.accept_by.name
+                                              : ""
+                                          ) +
                                           "\n\t\t\t\t\t                \t"
                                       )
                                     ])

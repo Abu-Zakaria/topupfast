@@ -169,7 +169,7 @@
 						                	<button @click="accept(row)" class="btn btn-sm btn-primary">Accept</button>
 						                </td>
 						                <td width="200" v-if="row.accept_id != 0 && row.accept_id != $page.auth.id">
-						                	<span>Accepted by {{ row.accept_by.name }}</span>
+						                	<span>Accepted by {{ (row.accept_by) ? row.accept_by.name : '' }}</span>
 						                </td>
 						                <td width="200" v-if="row.status != 'pending' && row.accept_id == $page.auth.id">
 						                	Accepted by you
