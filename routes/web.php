@@ -48,7 +48,9 @@ Route::group([
 					->name('users.profile.avatar.update');
 				Route::post('/users', 'UserController@store')->name('users.store');
 
-				// added by Zakaria for users.index page
+				Route::post('/sms/send_message', 'SmsController@sendMessage')->name('sms.send_message');
+
+      // added by Zakaria for users.index page
 				Route::post('/users/store_user', 'UserController@storeUser')->name('users.store_user');
 				Route::put('/users/{id}', 'UserController@update')->name('users.update');
 				Route::put('/updatewallet/{id}', 'UserController@updatewallet')->name('users.updatewallet');

@@ -2883,6 +2883,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Layout__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Layout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Shared_Layout__);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Pagination__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Shared_Pagination__);
 //
@@ -2914,6 +2915,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+=======
+>>>>>>> 73ebe20a851cea9eb9b6f0b922a02747b3a1ce94
 //
 //
 //
@@ -3001,6 +3004,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   methods: {
+<<<<<<< HEAD
     setLogo: function setLogo(e) {
       this.form.logo = e.target.files[0];
     },
@@ -3050,6 +3054,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$inertia.post('/brand/' + data.id, data);
       this.reset();
       this.closeModal();
+=======
+    sendMessage: function sendMessage() {
+      var self = this;
+      this.$inertia.post(this.route('sms.send_message'), {
+        users: self.selected,
+        message: self.message
+      }).then(function () {
+        if (Object.keys(self.errors).length === 0) {
+          self.$toast('Message Sent Successfully');
+        } else {
+          console.log(error.response.data);
+        }
+      });
+>>>>>>> 73ebe20a851cea9eb9b6f0b922a02747b3a1ce94
     }
   }
 });

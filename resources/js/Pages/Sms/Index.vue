@@ -93,20 +93,11 @@ export default {
     }
   },
   methods: {
-    checkChange(){
-      let trs = document.getElementById("tbody").querySelectorAll('input.selected');
-      for (let tr of trs){
-        if (tr.hasAttribute('checked')){
-          tr.removeAttribute('checked');
-        }else{
-          tr.setAttribute('checked','checked');
-        }
-      }
-    },
     sendMessage(){
       const self = this;
-      this.$inertia.post(this.route('sms.create'),{
-        users: self.users,
+      this.$inertia.post(this.route('sms.send_message'),{
+        users: self.selected,
+        message: self.message,
       }).then(() => {
         if (Object.keys(self.errors).length === 0) {
           self.$toast('Message Sent Successfully');
