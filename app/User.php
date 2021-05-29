@@ -49,11 +49,11 @@ class User extends Authenticatable implements MustVerifyEmail
 				return false;
 			}
 			$total_income = 0;
-			$orders = Order::where('accept_id', $this->id)->where('status', 'complete')->with("package.product")->get();
+			$orders = Order::where('accept_id', $this->id)->where('status', 'complete')->get();
 
 			foreach($orders as $order)
             {
-                $total_income += $order->package->product->seller_commission;
+                $total_income += $order->seller_commission;
             }
             $withdraw_amount = WithdrawRequest::where('user_id', auth()->user()->id)
 						                        ->where('status', 'approved')

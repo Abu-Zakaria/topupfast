@@ -1,13 +1,6 @@
 <template>
 	<Layout name="Withdraw">
 		<section class="users-list-wrapper">
-
-			<div class="mb-6 flex justify-between items-center" v-if="is_admin()">
-				<input class="relative w-full px-2 py-1 rounded-r focus:shadow-outline" autocomplete="off"
-					type="text" placeholder="User name" :value="searchform.user"
-					@input="searchUser($event.target.value)">
-			</div>
-
 	  		<div id="basic-examples">
 				<div class="card">
 					<div class="card-content">
@@ -18,6 +11,11 @@
 							</div>
 							<div v-if="error" class="alert alert-warning">
 								{{ error }}
+							</div>
+							<div class="mb-6 flex justify-between items-center" v-if="is_admin()">
+								<input class="relative w-full px-2 py-1 mb-2 rounded-r focus:shadow-outline" autocomplete="off"
+									type="text" placeholder="User name" :value="searchform.user"
+									@input="searchUser($event.target.value)">
 							</div>
 							<div class="mb-2 text-right" v-if="is_seller()">
 					        	<button class="btn btn-sm btn-primary" @click="openModal()">Create request</button>
@@ -44,12 +42,14 @@
 							        		<td>{{ request.status }}</td>
 							        		<td>{{ request.created_at }}</td>
 							        		<td v-if="is_admin()">
-							        			<button @click="approve(request)" class="btn btn-sm btn-success">
-							        				Approve
-							        			</button>
-							                    <button @click="decline(request)" class="btn btn-sm btn-danger">
-							                    	Decline
-							                    </button>
+							        			<span v-if="request.status == 'pending'">
+								        			<button @click="approve(request)" class="btn btn-sm btn-success">
+								        				Approve
+								        			</button>
+								                    <button @click="decline(request)" class="btn btn-sm btn-danger">
+								                    	Decline
+								                    </button>
+							        			</span>
 							        		</td>
 							        	</tr>
 							        </tbody>

@@ -25,8 +25,6 @@ class CreateOrdersTable extends Migration
             $table->string('accounttype');
             $table->string('securitycode');
             $table->enum('status', ['pending', 'complete','cancel']);
-            $table->integer('accept_id');
-            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
