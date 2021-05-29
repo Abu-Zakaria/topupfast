@@ -3546,14 +3546,10 @@ var render = function() {
                           ? _c("td", { attrs: { width: "200" } }, [
                               _c("span", [
                                 _vm._v(
-<<<<<<< HEAD
-                                  "Accepted by " + _vm._s(row.accept_by.name)
-=======
                                   "Accepted by " +
                                     _vm._s(
                                       row.accept_by ? row.accept_by.name : ""
                                     )
->>>>>>> 1d017f7ae2d9a05b794716d5de73d93cc2f9573e
                                 )
                               ])
                             ])
