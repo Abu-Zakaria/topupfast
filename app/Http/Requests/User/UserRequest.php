@@ -25,17 +25,19 @@ class UserRequest extends FormRequest
     {
         $phoneRules = 'required';
         $emailRules = 'required';
-
+        $passwordRules = '';
         if ($this->isPostRequest()) {
             $phoneRules .= '|unique:users';
-            $emailRules .= '|unique:users';
+            $passwordRules .= "required";
         }
+        $emailRules .= '|unique:users,email,' . $this->id . ',id';
         $rules = [
             'name'          => 'required',
             'phone'           => $phoneRules,
             'email'           => $emailRules,
             'gender_id'       => 'required',
             'religion_id'     => 'required',
+            'password'      => $passwordRules,
         ];
         if(request()->has('is_admin'))
         {

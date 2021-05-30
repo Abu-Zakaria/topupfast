@@ -9,6 +9,9 @@
 						<div v-if="success" class="alert alert-success">
 							{{ success }}
 						</div>
+						<div v-if="error" class="alert alert-danger">
+							{{ error }}
+						</div>
 
 				        <div class="mb-2 text-right d-none">
 				        	<button class="btn btn-sm btn-primary" @click="openModal()">Add New</button>
@@ -70,16 +73,18 @@
 					                </td>
 					                <td width="200" v-else-if="isOrderAccepted(row)">
 					                	<span v-if="row.accept_id != 0 && row.accept_id != $page.auth.id">
-					                		Accepted by {{ (row.accept_by) ? row.accept_by.name : '' }}
+					                		{{ getStatusVerb(row) }} by {{ (row.accept_by) ? row.accept_by.name : '' }}
 					                	</span>
-					                	<span v-if="(row.accept_id == $page.auth.id && row.status != 'pending')">Accepted by you</span>
+					                	<span v-if="(row.accept_id == $page.auth.id && row.status != 'pending')">
+					                		{{ getStatusVerb(row) }} by you
+					                	</span>
 					                </td>
 					                <!-- for admin's actions -->
 					                <td width="200" v-else-if="row.accept_id == 0 && row.status != 'pending' && $page.auth.is_admin == 1">
-					                	Accepted by you
+					                	{{ getStatusVerb(row) }} by you
 					                </td>
 					                <td width="200" v-else-if="row.status != 'pending'">
-					                	Accepted by admin
+					                	{{ getStatusVerb(row) }} by admin
 					                </td>
 					            </tr>
 					            <tr>
@@ -148,6 +153,7 @@
       msg: String,
       orders: Object,
       success: String,
+      error: String,
       errors: Object,
 			filters: Object,
 			totalbuy: Number,
@@ -190,6 +196,21 @@
 			},
 		},
         methods: {
+        	getStatusVerb(data)
+        	{
+        		if(data.status == 'pending')
+        		{
+        			return 'Accepted';
+        		}
+        		else if(data.status == 'complete')
+        		{
+        			return 'Completed';
+        		}
+        		else if(data.status == 'cancel')
+        		{
+        			return 'Canceled';
+        		}
+        	},
         	copyClipboard(text)
         	{
         		console.log('text', text);
@@ -262,58 +283,46 @@
           this.editMode = true;
           this.openModal();
       },
-            accept: function (data) {
-            	this.hidden_orders_accept.push(data.id)
-            	axios.post('seller/order/accept', data)
-	            	.then(res => {
-	            		if(res.data.success == true)
-	            		{
-	            			this.$toast(res.data.message)
-	            			data.accept_id = this.$page.auth.id
-	            		}
-	            		else
-	            		{
-	            			this.$toast(res.data.message, 'error')
-	            			let index = this.hidden_orders_accept.indexOf(data.id)
-	            			this.hidden_orders_accept.splice(index, 1);
-	            		}
-	            	})
-	            	.catch(error => {
-	            		let index = this.hidden_orders_accept.indexOf(data.id)
-	            		this.hidden_orders_accept.splice(index, 1);
-	            		this.$toast("Something went wrong", 'error')
-	            		console.error('>', error)
-	            	})
-            },
-            update: function (data) {
-                data._method = 'PUT';
-                this.$inertia.post('/order/' + data.id, data)
-                this.reset();
-                this.closeModal();
-            },
-            deleteRow: function (data) {
-                if (!confirm('Sure')) return;
-                data._method = 'DELETE';
-                this.$inertia.post('/product/' + data.id, data)
-                this.reset();
-                this.closeModal();
-            }
-      },
-      update: function (data) {
-          data._method = 'PUT';
-          this.$inertia.post('/order/' + data.id, data)
-          this.reset();
-          this.closeModal();
-      },
-      deleteRow: function (data) {
-          if (!confirm('Sure')) return;
-          data._method = 'DELETE';
-          this.$inertia.post('/product/' + data.id, data)
-          this.reset();
-          this.closeModal();
+        accept: function (data) {
+        	this.hidden_orders_accept.push(data.id)
+        	axios.post('seller/order/accept', data)
+          	.then(res => {
+          		if(res.data.success == true)
+          		{
+          			this.$toast(res.data.message)
+          			data.accept_id = this.$page.auth.id
+          		}
+          		else
+          		{
+          			this.$toast(res.data.message, 'error')
+          			let index = this.hidden_orders_accept.indexOf(data.id)
+          			this.hidden_orders_accept.splice(index, 1);
+          		}
+          	})
+          	.catch(error => {
+          		let index = this.hidden_orders_accept.indexOf(data.id)
+          		this.hidden_orders_accept.splice(index, 1);
+          		this.$toast("Something went wrong", 'error')
+          		console.error('>', error)
+          	})
+        },
+        update: function (data) {
+            data._method = 'PUT';
+            this.$inertia.post('/order/' + data.id, data)
+            this.reset();
+            this.closeModal();
+        },
+        deleteRow: function (data) {
+            if (!confirm('Sure')) return;
+            data._method = 'DELETE';
+            this.$inertia.post('/product/' + data.id, data)
+            this.reset();
+            this.closeModal();
+        }
       }
 }
 </script>
 
 <style>
 </style>
+

@@ -12,4 +12,9 @@ class Transaction extends Model
     {
     	return $this->belongsTo('App\Paymentmethod');
     }
+
+    public function accept_by()
+    {
+        return $this->belongsTo('App\User', 'accept_id');
+    }
 }

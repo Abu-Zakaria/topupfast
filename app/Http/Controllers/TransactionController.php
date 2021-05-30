@@ -20,8 +20,8 @@ class TransactionController extends Controller
     $status = Request::all('status');
     $start_date = Request::all('start_date');
     $end_date = Request::all('end_date');
-    $result = Transaction::with('paymentmethod');
-    $result1 = Transaction::with('paymentmethod');
+    $result = Transaction::with('paymentmethod')->with('accept_by');
+    $result1 = Transaction::with('paymentmethod')->with('accept_by');
 
     // if(auth()->user()->is_admin == 2)
     // {

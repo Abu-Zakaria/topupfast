@@ -7598,7 +7598,7 @@ exports = module.exports = __webpack_require__(149)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -7619,6 +7619,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_throttle__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7791,6 +7796,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
+    getStatusVerb: function getStatusVerb(data) {
+      if (data.status == 'pending') {
+        return 'Accepted';
+      } else if (data.status == 'complete') {
+        return 'Completed';
+      } else if (data.status == 'cancel') {
+        return 'Canceled';
+      }
+    },
     is_admin: function is_admin() {
       return this.$page.auth.is_admin == 1;
     },
@@ -8079,6 +8093,8 @@ var render = function() {
                         _vm._v(" "),
                         _c("th", [_vm._v("Paymentmethod")]),
                         _vm._v(" "),
+                        _c("td", [_vm._v("Comment")]),
+                        _vm._v(" "),
                         _c("th", [_vm._v("Status")]),
                         _vm._v(" "),
                         _c("th", [_vm._v("Created At")]),
@@ -8100,6 +8116,21 @@ var render = function() {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(row.paymentmethod.name))]),
                           _vm._v(" "),
+                          _c("td", { attrs: { title: row.comment } }, [
+                            _vm._v(
+                              "\n\t\t\t\t\t                \t" +
+                                _vm._s(
+                                  row.comment ? row.comment.substr(0, 6) : ""
+                                ) +
+                                _vm._s(
+                                  row.comment && row.comment.length > 6
+                                    ? "..."
+                                    : ""
+                                ) +
+                                "\n\t\t\t\t\t                "
+                            )
+                          ]),
+                          _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(row.status))]),
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(row.created_at))]),
@@ -8118,7 +8149,17 @@ var render = function() {
                                   },
                                   [_vm._v("Edit")]
                                 )
-                              : _vm._e(),
+                              : _c("p", [
+                                  _vm._v(
+                                    _vm._s(_vm.getStatusVerb(row)) +
+                                      " by " +
+                                      _vm._s(
+                                        row.accept_by.id == _vm.$page.auth.id
+                                          ? "you"
+                                          : row.accept_by.name
+                                      )
+                                  )
+                                ]),
                             _vm._v(" "),
                             _c(
                               "button",

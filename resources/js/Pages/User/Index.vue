@@ -318,9 +318,9 @@
 			setData: function (data) {
 				this.modelTitle = `Edit ${data.name}'s Information`;
 				this.editMode = true;
-				this.form.name = data.name;
-				this.form.status = data.status;
-				this.form.id = data.id;
+				this.form = data;
+				// this.form.status = data.status;
+				// this.form.id = data.id;
 				$("#default").modal('show');
 			},
 			createUser()
@@ -400,10 +400,19 @@
 			},
 			update: function () {
 				const self = this;
-				this.$inertia.post(this.route('users.update', this.form.id), {
+				this.$inertia.put(this.route('users.update', this.form.id), {
+					id: this.form.id,
 					name: this.form.name,
-					status: this.form.status,
-					_method: "put"
+					phone: this.form.phone,
+					guardian_phone: this.form.guardian_phone,
+					gender_id: this.form.gender_id,
+					religion_id: this.form.religion_id,
+					blood_group_id: this.form.blood_group_id,
+					birth_date: this.form.birth_date,
+					email: this.form.email,
+					password: this.form.password,
+					is_admin: this.form.is_admin,
+					status: this.form.status
 				}).then(function () {
 					if (Object.keys(self.errors).length === 0) {
 						self.closeModel();

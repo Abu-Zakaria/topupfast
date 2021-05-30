@@ -9,15 +9,15 @@ class SellerController extends Controller
 {
     public function acceptOrder(Request $request)
     {
-        if($request->accept_id != 0)
+        $order = Order::find($request->id);
+
+        if($request->accept_id != 0 || $order->status != 'pending')
         {
             return [
                 'success' => false,
                 'message' => "Someone else have accepted this order!"
             ];
         }
-
-        $order = Order::find($request->id);
 
         $seller_commision = ($order->package->product->seller_commission);
 

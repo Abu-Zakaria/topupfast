@@ -172,6 +172,10 @@ class OrderController extends Controller
   public function update()
   {
     $order  = Order::find(Request::all()['id']);
+    if($order->accept_id != 0 && $order->status == 'pending' && $order->accept_id != auth()->user()->id)
+    {
+      return redirect()->back()->with('error', 'Someone else took the order!');
+    }
     $user   = User::find($order->user_id);
     if(Request::all()['status']=='cancel'){
 

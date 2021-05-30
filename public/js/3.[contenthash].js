@@ -7555,7 +7555,7 @@ exports = module.exports = __webpack_require__(149)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -7713,6 +7713,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -7728,6 +7733,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     msg: String,
     orders: Object,
     success: String,
+    error: String,
     errors: Object,
     filters: Object,
     totalbuy: Number,
@@ -7772,6 +7778,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
+    getStatusVerb: function getStatusVerb(data) {
+      if (data.status == 'pending') {
+        return 'Accepted';
+      } else if (data.status == 'complete') {
+        return 'Completed';
+      } else if (data.status == 'cancel') {
+        return 'Canceled';
+      }
+    },
     copyClipboard: function copyClipboard(text) {
       console.log('text', text);
       var el = document.createElement("textarea");
@@ -7875,19 +7890,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.reset();
       this.closeModal();
     }
-  },
-  update: function update(data) {
-    data._method = 'PUT';
-    this.$inertia.post('/order/' + data.id, data);
-    this.reset();
-    this.closeModal();
-  },
-  deleteRow: function deleteRow(data) {
-    if (!confirm('Sure')) return;
-    data._method = 'DELETE';
-    this.$inertia.post('/product/' + data.id, data);
-    this.reset();
-    this.closeModal();
   }
 });
 
@@ -7913,6 +7915,16 @@ var render = function() {
                       _vm._v(
                         "\n\t\t\t\t\t\t\t" +
                           _vm._s(_vm.success) +
+                          "\n\t\t\t\t\t\t"
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.error
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t\t" +
+                          _vm._s(_vm.error) +
                           "\n\t\t\t\t\t\t"
                       )
                     ])
@@ -8251,7 +8263,9 @@ var render = function() {
                                 row.accept_id != _vm.$page.auth.id
                                   ? _c("span", [
                                       _vm._v(
-                                        "\n\t\t\t\t\t                \t\tAccepted by " +
+                                        "\n\t\t\t\t\t                \t\t" +
+                                          _vm._s(_vm.getStatusVerb(row)) +
+                                          " by " +
                                           _vm._s(
                                             row.accept_by
                                               ? row.accept_by.name
@@ -8264,7 +8278,13 @@ var render = function() {
                                 _vm._v(" "),
                                 row.accept_id == _vm.$page.auth.id &&
                                 row.status != "pending"
-                                  ? _c("span", [_vm._v("Accepted by you")])
+                                  ? _c("span", [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t                \t\t" +
+                                          _vm._s(_vm.getStatusVerb(row)) +
+                                          " by you\n\t\t\t\t\t                \t"
+                                      )
+                                    ])
                                   : _vm._e()
                               ])
                             : row.accept_id == 0 &&
@@ -8272,13 +8292,17 @@ var render = function() {
                               _vm.$page.auth.is_admin == 1
                             ? _c("td", { attrs: { width: "200" } }, [
                                 _vm._v(
-                                  "\n\t\t\t\t\t                \tAccepted by you\n\t\t\t\t\t                "
+                                  "\n\t\t\t\t\t                \t" +
+                                    _vm._s(_vm.getStatusVerb(row)) +
+                                    " by you\n\t\t\t\t\t                "
                                 )
                               ])
                             : row.status != "pending"
                             ? _c("td", { attrs: { width: "200" } }, [
                                 _vm._v(
-                                  "\n\t\t\t\t\t                \tAccepted by admin\n\t\t\t\t\t                "
+                                  "\n\t\t\t\t\t                \t" +
+                                    _vm._s(_vm.getStatusVerb(row)) +
+                                    " by admin\n\t\t\t\t\t                "
                                 )
                               ])
                             : _vm._e()

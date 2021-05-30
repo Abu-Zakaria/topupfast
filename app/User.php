@@ -42,6 +42,26 @@ class User extends Authenticatable implements MustVerifyEmail
 		//     $this->notify(new ResetPasswordNotification($token));
 		// }
 
+		public function gender()
+		{
+			return $this->belongsTo(\App\Models\Users\Gender::class);
+		}
+
+		public function religion()
+		{
+			return $this->belongsTo(\App\Models\Users\Religion::class);
+		}
+
+		public function blood_group()
+		{
+			return $this->belongsTo(\App\Models\Users\BloodGroup::class);
+		}
+
+		public function role()
+		{
+			return $this->belongsTo(\App\Models\Users\Role::class);
+		}
+
 		public function getWalletBalance()
 		{
 			if($this->is_admin == 1)

@@ -56,13 +56,13 @@ class UserRepository
       'religion',
       'blood_group',
       'role',
-      'address' => function ($query) {
-        $query->with([
-          'upazilla',
-          'district',
-          'division'
-        ]);
-      },
+      // 'address' => function ($query) {
+      //   $query->with([
+      //     'upazilla',
+      //     'district',
+      //     'division'
+      //   ]);
+      // },
     ])->find($rowId);
   }
 
@@ -113,12 +113,19 @@ class UserRepository
     $user->slug = Str::slug($request->name, "-");
     $user->phone = $request->phone;
     $user->email = $request->email;
-    $user->password = $request->has('password') ? Hash::make($request->password) : Hash::make("12345678");
+    if($request->method() != 'PUT')
+    {
+      $user->password = $request->has('password') ? Hash::make($request->password) : Hash::make("12345678");
+    }
+    else if($request->has('password') && $request->password != '')
+    {
+      $user->password = Hash::make($request->password);
+    }
     $user->address = $request->address;
     $user->birth_date = date('Y-m-d', strtotime($request->birth_date));
     $user->nationality = $request->nationality;
     $user->connection = $request->connection;
-    $user->status = ($request->has('status')) ? $request->status : 0;
+    $user->status = ($request->has('status') && $request->status != '') ? $request->status : 0;
 
     if ($request->has('shop_id')) {
       $user->shop_id = $request->shop_id;

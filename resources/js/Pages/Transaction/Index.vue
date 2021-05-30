@@ -45,6 +45,7 @@
 					                <th>Amount</th>
 					                <th>Number</th>
 					                <th>Paymentmethod</th>
+					                <td>Comment</td>
 					                <th>Status</th>
 									<th>Created At</th>
 					                <th>Action</th>
@@ -56,10 +57,14 @@
 					                <td>{{ row.amount }}</td>
 					                <td>{{ row.number }}</td>
 					                <td>{{ row.paymentmethod.name }}</td>
+					                <td :title="row.comment">
+					                	{{ (row.comment) ? row.comment.substr(0, 6) : "" }}{{ (row.comment && row.comment.length > 6) ? "..." : "" }}
+					                </td>
 					                <td>{{ row.status }}</td>
 									<td>{{ row.created_at }}</td>
 					                <td width="200">
 					                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
+					                    <p v-else>{{ getStatusVerb(row) }} by {{ row.accept_by.id == $page.auth.id ? "you" : row.accept_by.name }}</p>
 					                    <button @click="deleteRow(row)" class="btn btn-sm btn-danger d-none">Del</button>
 					                </td>
 					            </tr>
@@ -166,6 +171,21 @@
             },
         },
         methods: {
+        	getStatusVerb(data)
+        	{
+        		if(data.status == 'pending')
+        		{
+        			return 'Accepted';
+        		}
+        		else if(data.status == 'complete')
+        		{
+        			return 'Completed';
+        		}
+        		else if(data.status == 'cancel')
+        		{
+        			return 'Canceled';
+        		}
+        	},
         	is_admin()
         	{
         		return this.$page.auth.is_admin == 1
