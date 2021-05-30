@@ -8154,9 +8154,12 @@ var render = function() {
                                     _vm._s(_vm.getStatusVerb(row)) +
                                       " by " +
                                       _vm._s(
-                                        row.accept_by.id == _vm.$page.auth.id
-                                          ? "you"
-                                          : row.accept_by.name
+                                        row.accept_by
+                                          ? row.accept_by.id ==
+                                            _vm.$page.auth.id
+                                            ? "you"
+                                            : row.accept_by.name
+                                          : "N/A"
                                       )
                                   )
                                 ]),
