@@ -34,7 +34,7 @@ class DashboardController extends Controller
         $usertoday = User::whereDate('created_at', Carbon::today())->count();
         $wallet = User::sum('wallet');
         $tenorder = Order::orderBy('id', 'desc')->with('accept_by')->take(10)->get();
-        $tenwallet = Transaction::with('paymentmethod')->orderBy('id', 'desc')->take(10)->get();
+        $tenwallet = Transaction::with('paymentmethod')->with('accept_by')->orderBy('id', 'desc')->take(10)->get();
 
         $seller_wallet = 0;
         $withdraw_amount = 0;

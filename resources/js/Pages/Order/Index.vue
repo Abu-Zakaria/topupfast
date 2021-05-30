@@ -238,9 +238,9 @@
         		}
         		return false;
         	},
-        	isOrderAccepted(product)
+        	isOrderAccepted(order)
         	{
-        		if(product.accept_id != 0)
+        		if(order.accept_id != 0)
         		{
         			return true;
         		}

@@ -124,6 +124,9 @@
 			<div v-if="success" class="alert alert-success">
 				{{ success }}
 			</div>
+			<div v-if="error" class="alert alert-danger">
+				{{ error }}
+			</div>
 
 			<div class="row">
 				<div class="col-12">
@@ -162,17 +165,26 @@
 						                <td>{{ row.accounttype }}</td>
 						                <td>{{ row.securitycode }}</td>
 						                <td>{{ row.status }}</td>
-						                <td width="200" v-if="is_admin() || (row.accept_id == $page.auth.id && row.status=='pending')">
+						                <td width="200" v-if="((isOrderAccepted(row) && row.accept_id == $page.auth.id) || (!isOrderAccepted(row) && $page.auth.is_admin == 1)) && row.status =='pending'">
 						                    <button @click="edit(row)" v-if="" class="btn btn-sm btn-primary">Edit</button>
 						                </td>
-						                <td width="200" v-if="is_seller() && row.accept_id == 0 && row.status=='pending'">
-						                	<button @click="accept(row)" class="btn btn-sm btn-primary">Accept</button>
+						                <td width="200" v-else-if="showAcceptButton(row)">
+						                    <button @click="accept(row, this)" class="btn btn-sm btn-primary">Accept</button>
 						                </td>
-						                <td width="200" v-if="row.accept_id != 0 && row.accept_id != $page.auth.id">
-						                	<span>Accepted by {{ (row.accept_by) ? row.accept_by.name : '' }}</span>
+						                <td width="200" v-else-if="isOrderAccepted(row)">
+						                	<span v-if="row.accept_id != 0 && row.accept_id != $page.auth.id">
+						                		{{ getStatusVerb(row) }} by {{ (row.accept_by) ? row.accept_by.name : '' }}
+						                	</span>
+						                	<span v-if="(row.accept_id == $page.auth.id && row.status != 'pending')">
+						                		{{ getStatusVerb(row) }} by you
+						                	</span>
 						                </td>
-						                <td width="200" v-if="row.status != 'pending' && row.accept_id == $page.auth.id">
-						                	Accepted by you
+						                <!-- for admin's actions -->
+						                <td width="200" v-else-if="row.accept_id == 0 && row.status != 'pending' && $page.auth.is_admin == 1">
+						                	{{ getStatusVerb(row) }} by you
+						                </td>
+						                <td width="200" v-else-if="row.status != 'pending'">
+						                	{{ getStatusVerb(row) }} by admin
 						                </td>
 						            </tr>
 						        </table>
@@ -203,6 +215,7 @@
 						                <th>Amount</th>
 						                <th>Number</th>
 						                <th>Paymentmethod</th>
+						                <th>Comment</th>
 						                <th>Status</th>
 										<th>Created At</th>
 						                <th>Action</th>
@@ -215,10 +228,14 @@
 						                <td>{{ row.amount }}</td>
 						                <td>{{ row.number }}</td>
 						                <td>{{ row.paymentmethod.name }}</td>
+						                <td :title="row.comment">
+						                	{{ (row.comment) ? row.comment.substr(0, 6) : "" }}{{ (row.comment && row.comment.length > 6) ? "..." : "" }}
+						                </td>
 						                <td>{{ row.status }}</td>
 										<td>{{ row.created_at }}</td>
 						                <td width="200">
 						                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
+						                    <p v-else>{{ getStatusVerb(row) }} by {{ row.accept_by.id == $page.auth.id ? "you" : row.accept_by.name }}</p>
 						                    <button @click="deleteRow(row)" class="btn btn-sm btn-danger d-none">Del</button>
 						                </td>
 							        </tr>
@@ -309,7 +326,7 @@
 	export default {
 		name: "Dashboard",
 		components: {Layout},
-		props: ['msg','users','orders','usertoday','ordertoday','wallet','tenorder','tenwallet','success','invoice', 'seller_wallet', 'withdraw_amount'],
+		props: ['msg','users','orders','usertoday','ordertoday','wallet','tenorder','tenwallet','success','error','invoice', 'seller_wallet', 'withdraw_amount'],
 		data() {
             return {
                 editMode: true,
@@ -318,11 +335,47 @@
                     status:'',
                     id:null,
                 },
+			    hidden_orders_accept: []
             }
         },
         methods: {
+        	showAcceptButton(product)
+        	{
+        		if(this.$page.auth.is_admin == 2
+        			&& !this.hidden_orders_accept.includes(product.id)
+        			&& product.status=='pending'
+        			&& product.accept_id == 0)
+        		{
+        			return true;
+        		}
+        		return false;
+        	},
+        	isOrderAccepted(order)
+        	{
+        		if(order.accept_id != 0)
+        		{
+        			return true;
+        		}
+        		return false;
+        	},
+        	getStatusVerb(data)
+        	{
+        		if(data.status == 'pending')
+        		{
+        			return 'Accepted';
+        		}
+        		else if(data.status == 'complete')
+        		{
+        			return 'Completed';
+        		}
+        		else if(data.status == 'cancel')
+        		{
+        			return 'Canceled';
+        		}
+        	},
         	accept(order)
         	{
+        		this.hidden_orders_accept.push(order.id)
         		axios.post('seller/order/accept', order)
 	            	.then(res => {
 	            		if(res.data.success == true)
@@ -333,9 +386,13 @@
 	            		else
 	            		{
 	            			this.$toast(res.data.message, 'error')
+	            			let index = this.hidden_orders_accept.indexOf(order.id)
+		          			this.hidden_orders_accept.splice(index, 1);
 	            		}
 	            	})
 	            	.catch(error => {
+	            		let index = this.hidden_orders_accept.indexOf(order.id)
+		          		this.hidden_orders_accept.splice(index, 1);
 	            		this.$toast("Something went wrong", 'error')
 	            		console.error('>', error)
 	            	})

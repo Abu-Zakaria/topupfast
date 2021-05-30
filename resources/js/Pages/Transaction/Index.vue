@@ -47,7 +47,7 @@
 					                <th>Paymentmethod</th>
 					                <td>Comment</td>
 					                <th>Status</th>
-									<th>Created At</th>
+													<th>Created At</th>
 					                <th>Action</th>
 					            </tr>
 					            <tr v-for="(row , index) in transaction.data" :key="index">
@@ -61,7 +61,7 @@
 					                	{{ (row.comment) ? row.comment.substr(0, 6) : "" }}{{ (row.comment && row.comment.length > 6) ? "..." : "" }}
 					                </td>
 					                <td>{{ row.status }}</td>
-									<td>{{ row.created_at }}</td>
+													<td>{{ row.created_at }}</td>
 					                <td width="200">
 					                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
 					                    <p v-else>{{ getStatusVerb(row) }} by {{ row.accept_by.id == $page.auth.id ? "you" : row.accept_by.name }}</p>

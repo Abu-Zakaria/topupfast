@@ -7807,8 +7807,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       return false;
     },
-    isOrderAccepted: function isOrderAccepted(product) {
-      if (product.accept_id != 0) {
+    isOrderAccepted: function isOrderAccepted(order) {
+      if (order.accept_id != 0) {
         return true;
       }
 
