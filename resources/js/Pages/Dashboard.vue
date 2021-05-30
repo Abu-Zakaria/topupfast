@@ -235,7 +235,7 @@
 										<td>{{ row.created_at }}</td>
 						                <td width="200">
 						                    <button @click="edit(row)" v-if="row.status=='pending'" class="btn btn-sm btn-primary">Edit</button>
-						                    <p v-else>{{ getStatusVerb(row) }} by {{ row.accept_by.id == $page.auth.id ? "you" : row.accept_by.name }}</p>
+						                    <p v-else>{{ getStatusVerb(row) }} by {{ row.accept_by ? ( row.accept_by.id == $page.auth.id ? "you" : row.accept_by.name) : 'N/A' }}</p>
 						                    <button @click="deleteRow(row)" class="btn btn-sm btn-danger d-none">Del</button>
 						                </td>
 							        </tr>
