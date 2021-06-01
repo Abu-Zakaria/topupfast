@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\WithdrawRequest;
+use App\WithdrawOrder;
 use App\User;
 use Illuminate\Http\Request;
 
-class WithdrawRequestController extends Controller
+class WithdrawOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,13 +26,13 @@ class WithdrawRequestController extends Controller
                 $user_ids = User::where('name', 'like', '%' . request()->user . '%')
                                 ->pluck('id');
 
-                $requests = WithdrawRequest::where('status', 'pending')
+                $requests = WithdrawOrder::where('status', 'pending')
                                         ->whereIn('user_id', $user_ids)
                                         ->with('user');
             }
             else
             {
-                $requests = WithdrawRequest::orderByRaw("CASE status
+                $requests = WithdrawOrder::orderByRaw("CASE status
                                 WHEN \"pending\" THEN 1
                                 WHEN \"approved\" THEN 2
                                 WHEN \"cancel\" THEN 3
@@ -43,7 +43,7 @@ class WithdrawRequestController extends Controller
         }
         else if(auth()->user()->is_admin == 2)
         {
-            $requests = WithdrawRequest::where('user_id', auth()->user()->id)
+            $requests = WithdrawOrder::where('user_id', auth()->user()->id)
                                         ->orderByRaw("CASE status
                                             WHEN \"pending\" THEN 1
                                             WHEN \"approved\" THEN 2
@@ -51,13 +51,13 @@ class WithdrawRequestController extends Controller
                                             END
                                         ")
                                         ->latest();
-            $wallet_balance = auth()->user()->getWalletBalance();
+            $wallet_balance = auth()->user()->getOrdersWalletBalance();
             $response_data['wallet_balance'] = $wallet_balance;
         }
 
         $response_data['requests'] = $requests->paginate();
 
-        return inertia()->render('WithdrawRequest/Index', $response_data);
+        return inertia()->render('WithdrawOrder/Index', $response_data);
     }
 
     /**
@@ -78,35 +78,38 @@ class WithdrawRequestController extends Controller
      */
     public function store(Request $request)
     {
-        $exists = WithdrawRequest::where('user_id', auth()->user()->id)->where('status', 'pending')->first();
+        $exists = WithdrawOrder::where('user_id', auth()->user()->id)->where('status', 'pending')->first();
 
         if($exists)
         {
-            return redirect()->route('withdraw_requests.index')
+            return redirect()->route('withdraw_orders.index')
                     ->with(
                         'error',
                         "You already have a pending withdraw request. You can't submit a request now."
                     );
         }
 
-        $wallet_balance = auth()->user()->getWalletBalance();
+        $wallet_balance = auth()->user()->getOrdersWalletBalance();
 
         $validated = $request->validate([
             'amount' => 'required|integer|min:1|max:' . $wallet_balance,
+            'comment' => 'max:125',
         ]);
 
         $amount = $validated['amount'];
+        $comment = $validated['comment'];
 
-        WithdrawRequest::insert([
+        WithdrawOrder::insert([
             'user_id'   => auth()->user()->id,
             'withdraw_amount'    => $amount,
+            'comment'    => $comment,
             'status'    => 'pending',
             'admin_id'  => 0,
             'created_at' => date('Y-m-d H:i:s', time()),
         ]);
 
-        return redirect()->route('withdraw_requests.index')
-            ->with('success', "Successfully submitted your Withdraw Request!");
+        return redirect()->route('withdraw_orders.index')
+            ->with('success', "Successfully submitted your Withdraw Order Request!");
     }
 
     /**
@@ -142,28 +145,29 @@ class WithdrawRequestController extends Controller
     {
         if(auth()->user()->is_admin != 1)
         {
-            return redirect()->route('withdraw_requests.index')
+            return redirect()->route('withdraw_orders.index')
                     ->with('error', "You can't perform that action!");
         }
 
         $validated = $request->validate([
             'status' => 'required',
+            'comment' => 'max:120',
         ]);
 
-        WithdrawRequest::find($id)->update($validated);
+        WithdrawOrder::find($id)->update($validated);
 
         if($validated['status'] == 'approved')
         {
             $response_type = 'success';
-            $response_text = "Successfully approved the withdraw request";
+            $response_text = "Successfully approved the withdraw order request";
         }
         else
         {
             $response_type = 'error';
-            $response_text = "Declined the withdraw request";
+            $response_text = "Declined the withdraw order request";
         }
 
-        return redirect()->route('withdraw_requests.index')
+        return redirect()->route('withdraw_orders.index')
                 ->with($response_type, $response_text);
     }
 

@@ -1,94 +1,4 @@
-webpackJsonp([6],Array(187).concat([
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(231)
-/* script */
-var __vue_script__ = __webpack_require__(560)
-/* template */
-var __vue_template__ = __webpack_require__(561)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/Pages/WithdrawRequest/Index.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8162e722", Component.options)
-  } else {
-    hotAPI.reload("data-v-8162e722", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */,
-/* 226 */,
-/* 227 */,
-/* 228 */,
-/* 229 */,
-/* 230 */,
+webpackJsonp([6],Array(231).concat([
 /* 231 */
 /***/ (function(module, exports) {
 
@@ -1637,34 +1547,29 @@ var render = function() {
                 )
               : _vm._e(),
             _vm._v(" "),
-            _vm.is_admin
-              ? _c(
-                  "li",
-                  { staticClass: "nav-item" },
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    class: _vm.isUrl("notice") ? "active" : "",
+                    attrs: { href: _vm.route("notice.index") }
+                  },
                   [
+                    _c("i", { staticClass: "feather icon-users" }),
+                    _vm._v(" "),
                     _c(
-                      "inertia-link",
-                      {
-                        class: _vm.isUrl("notice") ? "active" : "",
-                        attrs: { href: _vm.route("notice.index") }
-                      },
-                      [
-                        _c("i", { staticClass: "feather icon-users" }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass: "menu-title",
-                            attrs: { "data-i18n": "" }
-                          },
-                          [_vm._v(_vm._s(_vm.__("Notice")))]
-                        )
-                      ]
+                      "span",
+                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
+                      [_vm._v(_vm._s(_vm.__("Notice")))]
                     )
-                  ],
-                  1
+                  ]
                 )
-              : _vm._e(),
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.is_admin
               ? _c(
@@ -1701,8 +1606,8 @@ var render = function() {
                 _c(
                   "inertia-link",
                   {
-                    class: _vm.isUrl("withdraw") ? "active" : "",
-                    attrs: { href: _vm.route("withdraw_requests.index") }
+                    class: _vm.isUrl("withdraw_orders") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw_orders.index") }
                   },
                   [
                     _c("i", { staticClass: "feather icon-users" }),
@@ -1710,7 +1615,7 @@ var render = function() {
                     _c(
                       "span",
                       { staticClass: "menu-title", attrs: { "data-i18n": "" } },
-                      [_vm._v("Withdraw Requests")]
+                      [_vm._v("Withdraw orders")]
                     )
                   ]
                 )
@@ -7467,7 +7372,58 @@ module.exports = toNumber;
 /* 557 */,
 /* 558 */,
 /* 559 */,
-/* 560 */
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(231)
+/* script */
+var __vue_script__ = __webpack_require__(565)
+/* template */
+var __vue_template__ = __webpack_require__(566)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/Pages/WithdrawOrder/Index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-17b4b8a4", Component.options)
+  } else {
+    hotAPI.reload("data-v-17b4b8a4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 565 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7576,7 +7532,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "WithdrawRequest",
+  name: "WithdrawOrder",
   components: {
     Layout: __WEBPACK_IMPORTED_MODULE_0__Shared_Layout___default.a,
     Pagination: __WEBPACK_IMPORTED_MODULE_1__Shared_Pagination___default.a
@@ -7607,7 +7563,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       handler: __WEBPACK_IMPORTED_MODULE_3_lodash_throttle___default()(function () {
         var query = __WEBPACK_IMPORTED_MODULE_2_lodash_pickBy___default()(this.searchform);
         console.log(this.searchform);
-        this.$inertia.replace(this.route('withdraw_requests.index', Object.keys(query).length ? query : {
+        this.$inertia.replace(this.route('withdraw_orders.index', Object.keys(query).length ? query : {
           remember: 'forget'
         }));
       }, 150),
@@ -7619,12 +7575,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.searchform.user = name;
     },
     approve: function approve(request) {
-      this.$inertia.put('/withdraw_requests/' + request.id, {
+      this.$inertia.put('/withdraw_orders/' + request.id, {
         status: 'approved'
       });
     },
     decline: function decline(request) {
-      this.$inertia.put('/withdraw_requests/' + request.id, {
+      this.$inertia.put('/withdraw_orders/' + request.id, {
         status: 'cancel'
       });
     },
@@ -7642,7 +7598,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.form_amount_error = "";
       }
 
-      this.$inertia.post('/withdraw_requests', form);
+      this.$inertia.post('/withdraw_orders', form);
       this.reset();
       this.closeModal();
     },
@@ -7663,7 +7619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 561 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -7842,7 +7798,7 @@ var render = function() {
                   _c("div", { staticClass: "modal-content" }, [
                     _c("div", { staticClass: "modal-header" }, [
                       _c("h4", { staticClass: "modal-title" }, [
-                        _vm._v("New Withdraw Request")
+                        _vm._v("New Withdraw Order")
                       ])
                     ]),
                     _vm._v(" "),
@@ -7959,7 +7915,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8162e722", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-17b4b8a4", module.exports)
   }
 }
 

@@ -12,6 +12,7 @@ $factory->define(Transaction::class, function (Faker $faker) {
     return [
         'user_id' => $user->id,
         'paymentmethod_id' => $faker->numberBetween(1, 4),
+        'payment_number' => $faker->e164PhoneNumber(),
         'amount' => $faker->numberBetween(100, 1000),
         'purpose' => $faker->colorName(),
         'number' => $faker->e164PhoneNumber(),

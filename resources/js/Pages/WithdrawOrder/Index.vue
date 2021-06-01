@@ -1,5 +1,5 @@
 <template>
-	<Layout name="Withdraw">
+	<Layout name="WithdrawOrder">
 		<section class="users-list-wrapper">
 	  		<div id="basic-examples">
 				<div class="card">
@@ -29,6 +29,7 @@
 							            	<th v-if="is_admin()">Requested by</th>
 							            	<th>Withdraw amount</th>
 							            	<th>Status</th>
+							            	<th>Comment</th>
 							            	<th>Requested at</th>
 							            	<th v-if="is_admin()">Action</th>
 							            </tr>
@@ -39,11 +40,16 @@
 							        		<td>{{ request.id }}</td>
 							        		<td v-if="is_admin()">{{ request.user.name }}</td>
 							        		<td>{{ request.withdraw_amount }}</td>
-							        		<td>{{ request.status }}</td>
+							        		<td>
+							        			{{ request.status }}
+							        		</td>
+							        		<td>
+							        			<b>{{ get_comment_subject(request) }}</b> - {{ request.comment }}
+							        		</td>
 							        		<td>{{ request.created_at }}</td>
 							        		<td v-if="is_admin()">
 							        			<span v-if="request.status == 'pending'">
-								        			<button @click="approve(request)" class="btn btn-sm btn-success">
+								        			<button @click="openAcceptModal(request)" class="btn btn-sm btn-success">
 								        				Approve
 								        			</button>
 								                    <button @click="decline(request)" class="btn btn-sm btn-danger">
@@ -61,7 +67,7 @@
 					            <div class="modal-dialog">
 					                <div class="modal-content">
 					                    <div class="modal-header">
-					                        <h4 class="modal-title">New Withdraw Request</h4>
+					                        <h4 class="modal-title">New Withdraw Order</h4>
 					                    </div>
 					                    <div class="modal-body">
 					                        <div class="form-group">
@@ -69,12 +75,41 @@
 					                        	<label for="name"><b>Amount</b></label>
 					                        	<input type="number" v-model="form.amount" :error="errors.amount" class="form-control" :max="wallet_balance" min="0" />
 					                        	<p v-if="form_amount_error" class="text-danger font-weight-bold">{{ form_amount_error }}</p>
+
+					                        	<label for="name"><b>Comment</b></label>
+										        <input type="text" :error="errors.comment" class="form-control"
+										        	v-model="form.comment">
 					                        </div>
 					                    </div>
 					                    <div class="modal-footer">
 					                        <button type="button" class="btn btn-default" @click="closeModal()">Close</button>
 					                        <button type="submit" class="btn btn-primary" @click="submitRequest(form)">
 					                        	Submit Request
+					                        </button>
+					                    </div>
+					                </div><!-- /.modal-content -->
+
+					            </div><!-- /.modal-dialog -->
+					        </div><!-- /.modal -->
+
+
+					        <div class="modal fade" id="modal_accept">
+					            <div class="modal-dialog">
+					                <div class="modal-content">
+					                    <div class="modal-header">
+					                        <h4 class="modal-title">Accept the order</h4>
+					                    </div>
+					                    <div class="modal-body">
+					                        <div class="form-group">
+					                        	<input type="hidden" v-model="accept_form.id">
+					                        	<label for="name"><b>Comment</b></label>
+										        <input type="text" :error="errors.comment" class="form-control"
+										        	v-model="accept_form.comment">
+					                        </div>
+					                    </div>
+					                    <div class="modal-footer">
+					                        <button type="button" class="btn btn-default" @click="closeAcceptModal()">Close</button>
+					                        <button type="submit" class="btn btn-primary" @click="acceptRequest(accept_form)">Accept
 					                        </button>
 					                    </div>
 					                </div><!-- /.modal-content -->
@@ -96,7 +131,7 @@
 	import throttle from 'lodash/throttle'
 
 	export default {
-		name: "WithdrawRequest",
+		name: "WithdrawOrder",
 		components: {Layout, Pagination},
 		props: {
 	      	msg: String,
@@ -113,7 +148,12 @@
 	    		form_amount_error: '',
 	    		form: {
 	    			id: '',
-	    			amount: ''
+	    			amount: '',
+	    			comment: ''
+	    		},
+	    		accept_form: {
+	    			id: '',
+	    			comment: ''
 	    		},
 	    		searchform: {
 	    			user: ''
@@ -125,25 +165,50 @@
 	    		handler: throttle(function() {
 	    			let query = pickBy(this.searchform)
 					console.log(this.searchform)
-					this.$inertia.replace(this.route('withdraw_requests.index', Object.keys(query).length ? query : { remember: 'forget' }))
+					this.$inertia.replace(this.route('withdraw_orders.index', Object.keys(query).length ? query : { remember: 'forget' }))
 	    		}, 150),
 	    		deep: true
 	    	}
 	    },
 	    methods: {
+	    	get_comment_subject(request)
+	    	{
+	    		if(this.$page.auth.is_admin == 1)
+	    		{
+	    			if(request.status == 'pending')
+	    			{
+	    				return 'Seller'
+	    			}
+	    			return 'You'
+	    		}
+    			else if(this.$page.auth.is_admin == 2)
+    			{
+    				if(request.status == 'pending')
+	    			{
+	    				return 'You'
+	    			}
+	    			return 'Admin'
+    			}
+	    	},
+	    	acceptRequest(data)
+	    	{
+	    		this.closeAcceptModal()
+	    		this.approve(data)
+	    	},
 	    	searchUser(name)
 	    	{
 	    		this.searchform.user = name
 	    	},
 	    	approve(request)
 	    	{
-	    		this.$inertia.put('/withdraw_requests/' + request.id, {
-	    			status: 'approved'
+	    		this.$inertia.put('/withdraw_orders/' + request.id, {
+	    			status: 'approved',
+	    			comment: request.comment
 	    		});
 	    	},
 	    	decline(request)
 	    	{
-	    		this.$inertia.put('/withdraw_requests/' + request.id, {
+	    		this.$inertia.put('/withdraw_orders/' + request.id, {
 	    			status: 'cancel'
 	    		});
 	    	},
@@ -164,7 +229,7 @@
 	    		}
 	    		else { this.form_amount_error = "" }
 
-	    		this.$inertia.post('/withdraw_requests', form)
+	    		this.$inertia.post('/withdraw_orders', form)
 	    		this.reset();
 	    		this.closeModal();
 	    	},
@@ -172,15 +237,32 @@
 	    	{
 	    		$('#modal').modal('show')
 	    	},
+	    	openAcceptModal(request)
+	    	{
+	    		this.accept_form.id = request.id;
+	    		$('#modal_accept').modal('show')
+	    	},
 	    	closeModal: function () {
 				$('#modal').modal('hide')
 				this.reset();
+			},
+			closeAcceptModal()
+			{
+				$('#modal_accept').modal('hide')
+				this.resetAcceptForm();
 			},
 			reset()
 			{
 				this.form = {
 					id: '',
 					amount: ''
+				}
+			},
+			resetAcceptForm()
+			{
+				this.accept_form = {
+					id: '',
+	    			comment: ''
 				}
 			}
 	    }

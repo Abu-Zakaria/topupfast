@@ -1532,34 +1532,29 @@ var render = function() {
                 )
               : _vm._e(),
             _vm._v(" "),
-            _vm.is_admin
-              ? _c(
-                  "li",
-                  { staticClass: "nav-item" },
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    class: _vm.isUrl("notice") ? "active" : "",
+                    attrs: { href: _vm.route("notice.index") }
+                  },
                   [
+                    _c("i", { staticClass: "feather icon-users" }),
+                    _vm._v(" "),
                     _c(
-                      "inertia-link",
-                      {
-                        class: _vm.isUrl("notice") ? "active" : "",
-                        attrs: { href: _vm.route("notice.index") }
-                      },
-                      [
-                        _c("i", { staticClass: "feather icon-users" }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass: "menu-title",
-                            attrs: { "data-i18n": "" }
-                          },
-                          [_vm._v(_vm._s(_vm.__("Notice")))]
-                        )
-                      ]
+                      "span",
+                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
+                      [_vm._v(_vm._s(_vm.__("Notice")))]
                     )
-                  ],
-                  1
+                  ]
                 )
-              : _vm._e(),
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.is_admin
               ? _c(
@@ -1596,8 +1591,8 @@ var render = function() {
                 _c(
                   "inertia-link",
                   {
-                    class: _vm.isUrl("withdraw") ? "active" : "",
-                    attrs: { href: _vm.route("withdraw_requests.index") }
+                    class: _vm.isUrl("withdraw_orders") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw_orders.index") }
                   },
                   [
                     _c("i", { staticClass: "feather icon-users" }),
@@ -1605,7 +1600,7 @@ var render = function() {
                     _c(
                       "span",
                       { staticClass: "menu-title", attrs: { "data-i18n": "" } },
-                      [_vm._v("Withdraw Requests")]
+                      [_vm._v("Withdraw orders")]
                     )
                   ]
                 )
@@ -2726,7 +2721,7 @@ exports = module.exports = __webpack_require__(149)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3063,13 +3058,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dashboard",
   components: {
     Layout: __WEBPACK_IMPORTED_MODULE_0__Shared_Layout___default.a
   },
-  props: ['msg', 'users', 'orders', 'usertoday', 'ordertoday', 'wallet', 'tenorder', 'tenwallet', 'success', 'error', 'invoice', 'seller_wallet', 'withdraw_amount'],
+  props: ['msg', 'users', 'orders', 'usertoday', 'ordertoday', 'wallet', 'tenorder', 'tenwallet', 'success', 'error', 'invoice', 'seller_wallet', 'withdraw_amount', 'today_orders', 'total_orders', 'transaction_wallet'],
   data: function data() {
     return {
       editMode: true,
@@ -3429,6 +3475,122 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-0" }, [
                       _vm._v("Withdraw Amount")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-content" }, [
+                  _c("div", { attrs: { id: "subscribe-gain-chart" } })
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.$page.auth.is_admin == 2
+          ? _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
+              _c("div", { staticClass: "card" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-header d-flex flex-column align-items-start pb-0"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "avatar bg-rgba-primary p-50 m-0" },
+                      [
+                        _c("div", { staticClass: "avatar-content" }, [
+                          _c("i", {
+                            staticClass:
+                              "feather icon-users text-primary font-medium-5"
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("h2", { staticClass: "text-bold-700 mt-1 mb-25" }, [
+                      _vm._v(_vm._s(_vm.today_orders))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-0" }, [_vm._v("Today orders")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-content" }, [
+                  _c("div", { attrs: { id: "subscribe-gain-chart" } })
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.$page.auth.is_admin == 2
+          ? _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
+              _c("div", { staticClass: "card" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-header d-flex flex-column align-items-start pb-0"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "avatar bg-rgba-primary p-50 m-0" },
+                      [
+                        _c("div", { staticClass: "avatar-content" }, [
+                          _c("i", {
+                            staticClass:
+                              "feather icon-users text-primary font-medium-5"
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("h2", { staticClass: "text-bold-700 mt-1 mb-25" }, [
+                      _vm._v(_vm._s(_vm.total_orders))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-0" }, [_vm._v("Total orders")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-content" }, [
+                  _c("div", { attrs: { id: "subscribe-gain-chart" } })
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.$page.auth.is_admin == 2
+          ? _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
+              _c("div", { staticClass: "card" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-header d-flex flex-column align-items-start pb-0"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "avatar bg-rgba-primary p-50 m-0" },
+                      [
+                        _c("div", { staticClass: "avatar-content" }, [
+                          _c("i", {
+                            staticClass:
+                              "feather icon-users text-primary font-medium-5"
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("h2", { staticClass: "text-bold-700 mt-1 mb-25" }, [
+                      _vm._v(_vm._s(_vm.transaction_wallet))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-0" }, [
+                      _vm._v("Available Transaction Wallet")
                     ])
                   ]
                 ),

@@ -63684,291 +63684,299 @@ module.exports = function (css) {
 var map = {
 	"./Auth/Email": [
 		152,
-		32
+		70
 	],
 	"./Auth/Email.vue": [
 		152,
-		32
+		70
 	],
 	"./Auth/Login": [
 		153,
-		31
+		69
 	],
 	"./Auth/Login.vue": [
 		153,
-		31
+		69
 	],
 	"./Auth/PasswordReset": [
 		154,
-		30
+		68
 	],
 	"./Auth/PasswordReset.vue": [
 		154,
-		30
+		68
 	],
 	"./Auth/Register": [
 		155,
-		29
+		67
 	],
 	"./Auth/Register.vue": [
 		155,
-		29
+		67
 	],
 	"./Auth/Subscription": [
 		156,
-		28
+		66
 	],
 	"./Auth/Subscription.vue": [
 		156,
-		28
+		66
 	],
 	"./Banner/Index": [
 		157,
-		23
+		61
 	],
 	"./Banner/Index.vue": [
 		157,
-		23
+		61
 	],
 	"./BloodGroup/Index": [
 		158,
-		15
+		53
 	],
 	"./BloodGroup/Index.vue": [
 		158,
-		15
+		53
 	],
 	"./Brand/Create": [
 		159,
-		27
+		65
 	],
 	"./Brand/Create.vue": [
 		159,
-		27
+		65
 	],
 	"./Brand/Index": [
 		160,
-		22
+		60
 	],
 	"./Brand/Index.vue": [
 		160,
-		22
+		60
 	],
 	"./Category/Index": [
 		161,
-		21
+		59
 	],
 	"./Category/Index.vue": [
 		161,
-		21
+		59
 	],
 	"./Dashboard": [
 		163,
-		26
+		64
 	],
 	"./Dashboard.vue": [
 		163,
-		26
+		64
 	],
 	"./Dashboard/AdminDashboard": [
 		162,
-		16
+		54
 	],
 	"./Dashboard/AdminDashboard.vue": [
 		162,
-		16
+		54
 	],
 	"./Gender/Index": [
 		164,
-		14
+		52
 	],
 	"./Gender/Index.vue": [
 		164,
-		14
+		52
 	],
 	"./Invoice/Index": [
 		165,
-		4
+		41
 	],
 	"./Invoice/Index.vue": [
 		165,
-		4
+		41
 	],
 	"./LandingPage": [
 		166,
-		35
+		73
 	],
 	"./LandingPage.vue": [
 		166,
-		35
+		73
 	],
 	"./Notice/Index": [
 		167,
-		20
+		58
 	],
 	"./Notice/Index.vue": [
 		167,
-		20
+		58
 	],
 	"./Order/Index": [
 		168,
-		3
+		40
 	],
 	"./Order/Index.vue": [
 		168,
-		3
+		40
 	],
 	"./Package/Index": [
 		169,
-		2
+		39
 	],
 	"./Package/Index.vue": [
 		169,
-		2
+		39
 	],
 	"./Paymentmethod/Index": [
 		170,
-		19
+		57
 	],
 	"./Paymentmethod/Index.vue": [
 		170,
-		19
+		57
 	],
 	"./Permission/Index": [
 		171,
-		13
+		51
 	],
 	"./Permission/Index.vue": [
 		171,
-		13
+		51
 	],
 	"./Product/Index": [
 		172,
-		18
+		56
 	],
 	"./Product/Index.vue": [
 		172,
-		18
+		56
 	],
 	"./Religion/Index": [
 		173,
-		12
+		50
 	],
 	"./Religion/Index.vue": [
 		173,
-		12
+		50
 	],
 	"./Role/Index": [
 		174,
-		7
+		45
 	],
 	"./Role/Index.vue": [
 		174,
-		7
+		45
 	],
 	"./Seller/MyOrders/Index": [
 		175,
-		5
+		42
 	],
 	"./Seller/MyOrders/Index.vue": [
 		175,
-		5
+		42
 	],
 	"./Shop/Branch": [
 		176,
-		11
+		49
 	],
 	"./Shop/Branch.vue": [
 		176,
-		11
+		49
 	],
 	"./Shop/Customer": [
 		177,
-		10
+		48
 	],
 	"./Shop/Customer.vue": [
 		177,
-		10
+		48
 	],
 	"./Shop/Index": [
 		178,
-		9
+		47
 	],
 	"./Shop/Index.vue": [
 		178,
-		9
+		47
 	],
 	"./Shop/InvoiceType": [
 		179,
-		8
+		46
 	],
 	"./Shop/InvoiceType.vue": [
 		179,
-		8
+		46
 	],
 	"./Shop/ShopAdmin": [
 		180,
-		25
+		63
 	],
 	"./Shop/ShopAdmin.vue": [
 		180,
-		25
+		63
 	],
 	"./Sms/Index": [
 		181,
-		24
+		62
 	],
 	"./Sms/Index.vue": [
 		181,
-		24
+		62
 	],
 	"./Transaction/Index": [
 		182,
-		1
+		38
 	],
 	"./Transaction/Index.vue": [
 		182,
-		1
+		38
 	],
 	"./User/Create": [
 		183,
-		34
+		72
 	],
 	"./User/Create.vue": [
 		183,
-		34
+		72
 	],
 	"./User/Edit": [
 		184,
-		33
+		71
 	],
 	"./User/Edit.vue": [
 		184,
-		33
+		71
 	],
 	"./User/Index": [
 		185,
-		0
+		37
 	],
 	"./User/Index.vue": [
 		185,
-		0
+		37
 	],
 	"./User/Profile": [
 		186,
-		17
+		55
 	],
 	"./User/Profile.vue": [
 		186,
-		17
+		55
 	],
-	"./WithdrawRequest/Index": [
-		187,
-		6
+	"./WithdrawOrder/Index": [
+		564,
+		44
 	],
-	"./WithdrawRequest/Index.vue": [
-		187,
-		6
+	"./WithdrawOrder/Index.vue": [
+		564,
+		44
+	],
+	"./WithdrawTransaction/Index": [
+		567,
+		43
+	],
+	"./WithdrawTransaction/Index.vue": [
+		567,
+		43
 	]
 };
 function webpackAsyncContext(req) {

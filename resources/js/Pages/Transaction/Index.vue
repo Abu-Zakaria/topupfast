@@ -17,6 +17,7 @@
 				         <div class="mb-6 flex justify-between items-center">
                     <input class="relative w-full py-1 rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="User Id" :value="searchfrom.user_id" @input="check($event.target.value)">
                     <input class="relative w-full py-1 rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Number" :value="searchfrom.number" @input="searchemail($event.target.value)">
+                    <input class="relative w-full py-1 rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Payment Number" :value="searchfrom.payment_number" @input="searchPaymentNumber($event.target.value)">
                    <div style="width: 15%;float: right;">
                      <inertia-link href="/canclealltransaction" class="btn btn-success">Cancle</inertia-link>
                    </div>
@@ -45,7 +46,8 @@
 					                <th>Amount</th>
 					                <th>Number</th>
 					                <th>Paymentmethod</th>
-					                <td>Comment</td>
+					                <th>Payment number</th>
+					                <th>Comment</th>
 					                <th>Status</th>
 													<th>Created At</th>
 					                <th>Action</th>
@@ -57,6 +59,7 @@
 					                <td>{{ row.amount }}</td>
 					                <td>{{ row.number }}</td>
 					                <td>{{ row.paymentmethod.name }}</td>
+					                <td>{{ row.payment_number }}</td>
 					                <td :title="row.comment">
 					                	{{ (row.comment) ? row.comment.substr(0, 6) : "" }}{{ (row.comment && row.comment.length > 6) ? "..." : "" }}
 					                </td>
@@ -149,6 +152,7 @@
                 searchfrom: {
                   user_id: this.filters.user_id,
                   number  : this.filters.number,
+                  payment_number  : this.filters.payment_number,
                   start_date  : this.filters.start_date,
                   end_date  : this.filters.end_date,
                   status  : this.filters.status,
@@ -199,6 +203,10 @@
           },
           searchemail(a){
             this.searchfrom.number=a
+          },
+          searchPaymentNumber(a)
+          {
+          	this.searchfrom.payment_number = a
           },
           openModal: function () {
               $('#modal').modal('show')

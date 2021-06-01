@@ -1646,34 +1646,29 @@ var render = function() {
                 )
               : _vm._e(),
             _vm._v(" "),
-            _vm.is_admin
-              ? _c(
-                  "li",
-                  { staticClass: "nav-item" },
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "inertia-link",
+                  {
+                    class: _vm.isUrl("notice") ? "active" : "",
+                    attrs: { href: _vm.route("notice.index") }
+                  },
                   [
+                    _c("i", { staticClass: "feather icon-users" }),
+                    _vm._v(" "),
                     _c(
-                      "inertia-link",
-                      {
-                        class: _vm.isUrl("notice") ? "active" : "",
-                        attrs: { href: _vm.route("notice.index") }
-                      },
-                      [
-                        _c("i", { staticClass: "feather icon-users" }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass: "menu-title",
-                            attrs: { "data-i18n": "" }
-                          },
-                          [_vm._v(_vm._s(_vm.__("Notice")))]
-                        )
-                      ]
+                      "span",
+                      { staticClass: "menu-title", attrs: { "data-i18n": "" } },
+                      [_vm._v(_vm._s(_vm.__("Notice")))]
                     )
-                  ],
-                  1
+                  ]
                 )
-              : _vm._e(),
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.is_admin
               ? _c(
@@ -1710,8 +1705,8 @@ var render = function() {
                 _c(
                   "inertia-link",
                   {
-                    class: _vm.isUrl("withdraw") ? "active" : "",
-                    attrs: { href: _vm.route("withdraw_requests.index") }
+                    class: _vm.isUrl("withdraw_orders") ? "active" : "",
+                    attrs: { href: _vm.route("withdraw_orders.index") }
                   },
                   [
                     _c("i", { staticClass: "feather icon-users" }),
@@ -1719,7 +1714,7 @@ var render = function() {
                     _c(
                       "span",
                       { staticClass: "menu-title", attrs: { "data-i18n": "" } },
-                      [_vm._v("Withdraw Requests")]
+                      [_vm._v("Withdraw orders")]
                     )
                   ]
                 )
@@ -7598,7 +7593,7 @@ exports = module.exports = __webpack_require__(149)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -7619,6 +7614,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_throttle__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__);
+//
+//
+//
 //
 //
 //
@@ -7772,6 +7770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       searchfrom: {
         user_id: this.filters.user_id,
         number: this.filters.number,
+        payment_number: this.filters.payment_number,
         start_date: this.filters.start_date,
         end_date: this.filters.end_date,
         status: this.filters.status
@@ -7816,6 +7815,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     searchemail: function searchemail(a) {
       this.searchfrom.number = a;
+    },
+    searchPaymentNumber: function searchPaymentNumber(a) {
+      this.searchfrom.payment_number = a;
     },
     openModal: function openModal() {
       $('#modal').modal('show');
@@ -7932,6 +7934,22 @@ var render = function() {
                       on: {
                         input: function($event) {
                           return _vm.searchemail($event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass:
+                        "relative w-full py-1 rounded-r focus:shadow-outline",
+                      attrs: {
+                        autocomplete: "off",
+                        type: "text",
+                        placeholder: "Payment Number"
+                      },
+                      domProps: { value: _vm.searchfrom.payment_number },
+                      on: {
+                        input: function($event) {
+                          return _vm.searchPaymentNumber($event.target.value)
                         }
                       }
                     }),
@@ -8093,7 +8111,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("th", [_vm._v("Paymentmethod")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Comment")]),
+                        _c("th", [_vm._v("Payment number")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Comment")]),
                         _vm._v(" "),
                         _c("th", [_vm._v("Status")]),
                         _vm._v(" "),
@@ -8115,6 +8135,8 @@ var render = function() {
                           _c("td", [_vm._v(_vm._s(row.number))]),
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(row.paymentmethod.name))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(row.payment_number))]),
                           _vm._v(" "),
                           _c("td", { attrs: { title: row.comment } }, [
                             _vm._v(

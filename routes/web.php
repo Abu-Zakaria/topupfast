@@ -19,12 +19,14 @@ Route::group([
 	Route::middleware(['auth','is_admin_or_seller'])->group(function () {
 
 		Route::resource('order', 'OrderController');
+		Route::resource('notice', 'NoticeController');
 		Route::post('seller/order/accept', "SellerController@acceptOrder");
 
 		Route::middleware('is_seller')->resource('seller/orders', 'Seller\OrderController', [
 			'as' => 'seller'
 		]);
-		Route::resource('withdraw_requests', "WithdrawRequestController");
+		Route::resource('withdraw_orders', "WithdrawOrderController");
+		Route::resource('withdraw_transactions', "WithdrawTransactionController");
 
 		Route::middleware(['is_admin'])->group(function() {
 			Route::resource('brand', 'BrandController');
@@ -33,7 +35,6 @@ Route::group([
 			Route::resource('package', 'PackageController');
 			Route::resource('paymentmethod', 'PaymentmethodController');
 			Route::resource('banner', 'BannerController');
-			Route::resource('notice', 'NoticeController');
 			Route::resource('sms', 'SmsController');
 			Route::get('/canclealltransaction', 'TransactionController@canclealltransaction')->name('canclealltransaction');
 			Route::get('/users', 'UserController@index')->name('users.index');

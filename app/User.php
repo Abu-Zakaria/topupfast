@@ -62,7 +62,7 @@ class User extends Authenticatable implements MustVerifyEmail
 			return $this->belongsTo(\App\Models\Users\Role::class);
 		}
 
-		public function getWalletBalance()
+		public function getOrdersWalletBalance()
 		{
 			if($this->is_admin == 1)
 			{
@@ -75,7 +75,26 @@ class User extends Authenticatable implements MustVerifyEmail
             {
                 $total_income += $order->seller_commission;
             }
-            $withdraw_amount = WithdrawRequest::where('user_id', auth()->user()->id)
+            $withdraw_amount = WithdrawOrder::where('user_id', auth()->user()->id)
+						                        ->where('status', 'approved')
+						                        ->sum('withdraw_amount');
+            return $total_income - $withdraw_amount;
+		}
+
+		public function getTransactionsWalletBalance()
+		{
+			if($this->is_admin == 1)
+			{
+				return false;
+			}
+			$total_income = 0;
+			$transactions = Transaction::where('accept_id', $this->id)->where('status', 'complete')->get();
+
+			foreach($transactions as $transaction)
+            {
+                $total_income += $transaction->amount;
+            }
+            $withdraw_amount = WithdrawTransaction::where('user_id', auth()->user()->id)
 						                        ->where('status', 'approved')
 						                        ->sum('withdraw_amount');
             return $total_income - $withdraw_amount;

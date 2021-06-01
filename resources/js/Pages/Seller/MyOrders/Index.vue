@@ -13,7 +13,7 @@
 			                  <input class="relative w-full rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Order Id" :value="searchform.order_id" @input="searchemail($event.target.value)" style="width: 15%;margin-right: 3px;">
 			                  <input class="relative w-full rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="User Id" :value="searchform.user_id" @input="check($event.target.value)" style="width: 15%;margin-right: 3px;">
 			                  <input class="relative w-full rounded-r focus:shadow-outline" autocomplete="off" type="text" placeholder="Seller ID" :value="searchform.accept_id" @input="searchseller($event.target.value)" style="width: 15%;margin-right: 3px;">
-			                  <input class="relative w-full rounded-r focus:shadow-outline" :value="searchform.product_id" @input="searchproduct($event.target.value)" autocomplete="off" type="text" placeholder="Product Name" style="width: 15%;margin-right: 3px;">
+			                  <input class="relative w-full rounded-r focus:shadow-outline" :value="searchform.product_id" @input="searchproduct($event.target.value)" autocomplete="off" type="text" placeholder="Product ID" style="width: 15%;margin-right: 3px;">
 			                <div style="width: 15%;margin-right: 3px;">
 			                  <date-picker v-model="searchform.start_date" :config="options" placeholder="Start Date" style="padding: 25px;"></date-picker>
 			                </div>
@@ -26,6 +26,11 @@
 			                      <option value="complete">complete</option>
 					          	<option value="cancel">cancel</option>
 					        </select>
+					        <select v-model="searchform.accounttype" class="w-full form-select form-control" style="padding: 25px;width: 15%;">
+								<option :value="null" />
+								<option value="gmail">Gmail</option>
+								<option value="facebook">Facebook</option>
+					        </select>
 						</div>
 
 							<div class="table-responsive">
@@ -35,8 +40,9 @@
 						                <th>ID</th>
 						                <th style="width: 440px;">Package</th>
 						                <th>User </th>
-						                <th>Buy Price</th>
+						                <th v-if="$page.auth.is_admin == 1">Buy Price</th>
 						                <th>Sale Price</th>
+						                <th>Commission</th>
 						                <th>Player id</th>
 						                <th>Password</th>
 						                <th>Accounttype</th>
@@ -50,14 +56,19 @@
 							                <td>{{ row.id }}</td>
 							                <td width="7%">{{ row.package_name }} ( <span v-if="row.package"> {{ row.package.product_id }}</span> )</td>
 							                <td width="20%">{{ row.user_id }} (<span v-if="row.user"> {{ row.user.phone }} </span>)</td>
-							                <td>{{ row.buy_price }}</td>
+							                <td v-if="$page.auth.is_admin == 1">{{ row.buy_price }}</td>
 							                <td>{{ row.sale_price }}</td>
+							                <td>{{ row.seller_commission }}</td>
 							                <td>{{ row.playerid }}</td>
 							                <td>{{ row.password }}</td>
 							                <td>{{ row.accounttype }}</td>
 							                <td>{{ row.securitycode }}</td>
 							                <td>{{ row.status }}</td>
 							                <td>{{ row.created_at }}</td>
+							            </tr>
+							            <tr>
+							            	<td colspan="3">Total</td>
+							            	<td > {{ parseFloat(totalsale).toFixed(2) }}</td>
 							            </tr>
 						            </tbody>
 						        </table>
@@ -87,7 +98,6 @@
 	      	success: String,
 	     	errors: Object,
 	     	filters: Object,
-			totalbuy: Number,
 			totalsale: Number,
 	    },
 	    data()
@@ -99,6 +109,7 @@
 					start_date  : this.filters.start_date,
 					end_date  : this.filters.end_date,
 					status  : this.filters.status,
+					accounttype  : this.filters.accounttype,
 					accept_id  : this.filters.accept_id,
 					product_id  : this.filters.product_id,
 				},
