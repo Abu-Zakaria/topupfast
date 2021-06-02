@@ -79,6 +79,7 @@ class SmsController extends Controller
     public function sendMessage(Request $request){
       $users = Request::all('users')['users'];
       $message = Request::all('message')['message'];
+      $extra_number = Request::all('extra_number')['extra_number'];
 
       $messageType = "SMS:TEXT";
       $config = [];
@@ -93,6 +94,19 @@ class SmsController extends Controller
           }
         }
       }
+
+      if (!empty($extra_number)){
+        $mn = explode(',',$extra_number);
+        foreach ($mn as $k => $phone){
+          if (strlen($phone) == 11 && in_array(substr($phone,0,3),['013','014','015','016','016','017','018','019'])){
+            $config["recipient".$messageCount] = $phone;
+            $config["messagedata".$messageCount] = $message;
+            $config["messagetype".$messageCount] = $messageType;
+            $messageCount++;
+          }
+        }
+      }
+
       $config['messagecount'] = $messageCount;
       if ($messageCount){
         $this->sms($config);

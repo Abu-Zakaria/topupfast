@@ -114,12 +114,24 @@
 				                        <div class="form-group">
 				                        	<input type="hidden" v-model="form.id">
 				                        	<label for="name"><b>Status</b></label>
-				                            <select v-model="form.status" :error="errors.status" class="form-control">
-									            <option value="pending">pending</option>
-									            <option value="complete">complete</option>
-									            <option value="cancel">cancel</option>
-									        </select>
+				                            <select v-model="form.status" :error="errors.status" class="form-control" id="name">
+                                        <option value="pending">pending</option>
+                                        <option value="complete">complete</option>
+                                        <option value="cancel">cancel</option>
+                                    </select>
 				                        </div>
+
+                              <div class="form-group" v-if="form.status != 'pending'">
+                                  <label for="status_type"><b>Status Type</b></label>
+                                  <select v-model="form.status_type" :error="errors.status" class="form-control" id="status_type">
+                                    <option value="delivery_done" v-if="form.status.includes('complete')">Delivery Done</option>
+                                    <option value="delivery_id_code" v-if="form.status.includes('complete')">Delivery ID Code</option>
+                                    <option value="cancel_for_no_bonus_id" v-if="form.status.includes('cancel')">Cancel For No Bonus ID</option>
+                                    <option value="cancel_for_incorrect_id_pass" v-if="form.status.includes('cancel')">Cancel For Incorrect ID Pass</option>
+                                    <option value="cancel_for_wrong_security_code" v-if="form.status.includes('cancel')">Cancel For Wrong Security Code</option>
+                                  </select>
+                                </div>
+
 				                        <div class="form-group">
 					                    		<label><b>Comment</b></label>
 					                    		<input type="text" v-model="form.comment" :error="errors.comment" class="form-control">
@@ -168,11 +180,12 @@
       return {
         editMode: false,
         form: {
-            status:null,
+            status:'',
             id:null,
             comment: '',
             start_date: new Date(),
             end_date: new Date(),
+            status_type: '',
         },
         searchfrom: {
 					user_id: this.filters.user_id,
