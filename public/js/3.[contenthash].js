@@ -7555,7 +7555,7 @@ exports = module.exports = __webpack_require__(149)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -7576,6 +7576,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_throttle__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_mapValues___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash_mapValues__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7743,11 +7755,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       editMode: false,
       form: {
-        status: null,
+        status: '',
         id: null,
         comment: '',
         start_date: new Date(),
-        end_date: new Date()
+        end_date: new Date(),
+        status_type: ''
       },
       searchfrom: {
         user_id: this.filters.user_id,
@@ -8395,7 +8408,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass: "form-control",
-                                attrs: { error: _vm.errors.status },
+                                attrs: { error: _vm.errors.status, id: "name" },
                                 on: {
                                   change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
@@ -8432,6 +8445,120 @@ var render = function() {
                               ]
                             )
                           ]),
+                          _vm._v(" "),
+                          _vm.form.status != "pending"
+                            ? _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "status_type" } }, [
+                                  _c("b", [_vm._v("Status Type")])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.status_type,
+                                        expression: "form.status_type"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      error: _vm.errors.status,
+                                      id: "status_type"
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "status_type",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm.form.status.includes("complete")
+                                      ? _c(
+                                          "option",
+                                          { attrs: { value: "delivery_done" } },
+                                          [_vm._v("Delivery Done")]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.form.status.includes("complete")
+                                      ? _c(
+                                          "option",
+                                          {
+                                            attrs: { value: "delivery_id_code" }
+                                          },
+                                          [_vm._v("Delivery ID Code")]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.form.status.includes("cancel")
+                                      ? _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value: "cancel_for_no_bonus_id"
+                                            }
+                                          },
+                                          [_vm._v("Cancel For No Bonus ID")]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.form.status.includes("cancel")
+                                      ? _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "cancel_for_incorrect_id_pass"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Cancel For Incorrect ID Pass"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.form.status.includes("cancel")
+                                      ? _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value:
+                                                "cancel_for_wrong_security_code"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Cancel For Wrong Security Code"
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ])
+                            : _vm._e(),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group" }, [
                             _c("label", [_c("b", [_vm._v("Comment")])]),

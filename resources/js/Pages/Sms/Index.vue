@@ -40,6 +40,8 @@
                     </tbody>
                   </table>
                   <br>
+                  <textarea placeholder="Enter Extra Number e.g: 01966885733,01714358448" v-model="extra_number" class="form-control"></textarea>
+                  <br>
                   <textarea placeholder="Enter Message" v-model="message" class="form-control"></textarea>
                   <div style="text-align: center;margin-top: 16px;">
                     <button type="submit" class="btn btn-primary btn-md">
@@ -71,6 +73,7 @@ export default {
     return {
       my_status: true,
       message: '',
+      extra_number: '',
       selected: [],
     }
   },
@@ -98,6 +101,7 @@ export default {
       this.$inertia.post(this.route('sms.send_message'),{
         users: self.selected,
         message: self.message,
+        extra_number: self.extra_number,
       }).then(() => {
         if (Object.keys(self.errors).length === 0) {
           self.$toast('Message Sent Successfully');

@@ -2798,6 +2798,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
@@ -2814,6 +2816,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       my_status: true,
       message: '',
+      extra_number: '',
       selected: []
     };
   },
@@ -2840,7 +2843,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var self = this;
       this.$inertia.post(this.route('sms.send_message'), {
         users: self.selected,
-        message: self.message
+        message: self.message,
+        extra_number: self.extra_number
       }).then(function () {
         if (Object.keys(self.errors).length === 0) {
           self.$toast('Message Sent Successfully');
@@ -3029,6 +3033,33 @@ var render = function() {
                         )
                       ]
                     ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.extra_number,
+                          expression: "extra_number"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        placeholder:
+                          "Enter Extra Number e.g: 01966885733,01714358448"
+                      },
+                      domProps: { value: _vm.extra_number },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.extra_number = $event.target.value
+                        }
+                      }
+                    }),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),

@@ -194,14 +194,38 @@ class OrderController extends Controller
     $order->comment=Request::all()['comment'];
     $order->update();
 
-    if (Request::all()['status'] == 'cancel') {
-      $message = "Hello ".$user->name.",\n\nYour Order No ".$order->id." Has been Canceled. Please Place a New Order.\n\nOur Facebook Page: https://m.me/TopupFastCom\n\nhttps://TopupFast.Com";
-      $this->sms(["recipient"=>$user->phone,"messagedata"=>$message]);
-    }elseif(Request::all()['status'] == 'complete'){
-      $message = "Hello ".$user->name.",\n\nYour order No ".$order->id." is now Completed. Please leave a review.\n\nStay with https://TopupFast.Com for Cheap Price and Fast Delivery.";
-      $this->sms(["recipient"=>$user->phone,"messagedata"=>$message]);
+    $p_data = Request::all();
+
+    $diff_status = $p_data['status_type'] ?? '';
+    $order_comment = $p_data['comment'] ?? '';
+    $message = "Hello ".$user->name.",\n\n";
+    $con_message = "";
+    switch ($diff_status){
+      case 'delivery_done':
+        $con_message = "Your order No ".$order->id." is now Completed. Please leave a review.\n\nStay with https://TopupFast.Com for Cheap Price and Fast Delivery.";
+        break;
+      case 'delivery_id_code':
+        $con_message = "Your order No ".$order->id." is now Completed. Please Change Your Password for safety.\n\nStay with https://TopupFast.Com for Cheap Price and Fast Delivery.";
+        break;
+      case 'cancel_for_no_bonus_id':
+        $con_message = "Your Order No ".$order->id." Has been Canceled. There are no bonus in this ID Code.\n\nhttps://TopupFast.Com";
+        break;
+      case 'cancel_for_incorrect_id_pass':
+        $con_message = "Your Order No ".$order->id." Has been Canceled. You have submitted the wrong ID and password.\n\nhttps://TopupFast.Com";
+        break;
+      case 'cancel_for_wrong_security_code':
+        $con_message = "Your Order No ".$order->id." Has been Canceled. You have submitted the wrong code.\n\nhttps://TopupFast.Com";
+        break;
+      default:
+        $con_message = "";
     }
 
+    if (!empty($order_comment)){
+      $this->sms(["recipient"=>$user->phone,"messagedata"=>$order_comment]);
+    }elseif(!empty($con_message)){
+      $f_message = $message . $con_message;
+      $this->sms(["recipient"=>$user->phone,"messagedata"=>$f_message]);
+    }
     return redirect()->back()->with('success', 'Order Update successfully!');
   }
 
