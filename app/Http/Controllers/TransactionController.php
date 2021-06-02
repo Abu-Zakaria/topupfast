@@ -17,6 +17,7 @@ class TransactionController extends Controller
 
     $user_id = Request::all('user_id');
     $number = Request::all('number');
+    $payment_number = Request::all('payment_number');
     $status = Request::all('status');
     $start_date = Request::all('start_date');
     $end_date = Request::all('end_date');
@@ -37,6 +38,11 @@ class TransactionController extends Controller
     if ($number['number']!=NULL) {
       $result = $result->where('number', $number);
       $result1 = $result1->where('number', $number);
+    }
+
+    if ($payment_number['payment_number']!=NULL) {
+      $result = $result->where('payment_number', 'like', '%' . $payment_number['payment_number'] . '%');
+      $result1 = $result1->where('payment_number', 'like', '%' . $payment_number['payment_number'] . '%');
     }
 
     if ($status['status']!=NULL) {

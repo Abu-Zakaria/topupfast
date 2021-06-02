@@ -94,8 +94,76 @@
 									<i class="feather icon-users text-primary font-medium-5"></i>
 								</div>
 							</div>
-							<h2 class="text-bold-700 mt-1 mb-25">{{ withdraw_amount }}</h2>
-							<p class="mb-0">Withdraw Amount</p>
+							<h2 class="text-bold-700 mt-1 mb-25">{{ withdraw_orders_amount }}</h2>
+							<p class="mb-0">Total withdraw amount</p>
+						</div>
+						<div class="card-content">
+							<div id="subscribe-gain-chart"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-12" v-if="$page.auth.is_admin == 2">
+					<div class="card">
+						<div class="card-header d-flex flex-column align-items-start pb-0">
+							<div class="avatar bg-rgba-primary p-50 m-0">
+								<div class="avatar-content">
+									<i class="feather icon-users text-primary font-medium-5"></i>
+								</div>
+							</div>
+							<h2 class="text-bold-700 mt-1 mb-25">{{ today_orders }}</h2>
+							<p class="mb-0">Today orders</p>
+						</div>
+						<div class="card-content">
+							<div id="subscribe-gain-chart"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-12" v-if="$page.auth.is_admin == 2">
+					<div class="card">
+						<div class="card-header d-flex flex-column align-items-start pb-0">
+							<div class="avatar bg-rgba-primary p-50 m-0">
+								<div class="avatar-content">
+									<i class="feather icon-users text-primary font-medium-5"></i>
+								</div>
+							</div>
+							<h2 class="text-bold-700 mt-1 mb-25">{{ total_orders }}</h2>
+							<p class="mb-0">Total orders</p>
+						</div>
+						<div class="card-content">
+							<div id="subscribe-gain-chart"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-12" v-if="$page.auth.is_admin == 2">
+					<div class="card">
+						<div class="card-header d-flex flex-column align-items-start pb-0">
+							<div class="avatar bg-rgba-primary p-50 m-0">
+								<div class="avatar-content">
+									<i class="feather icon-users text-primary font-medium-5"></i>
+								</div>
+							</div>
+							<h2 class="text-bold-700 mt-1 mb-25">{{ transaction_wallet }}</h2>
+							<p class="mb-0">Available Transaction Wallet</p>
+						</div>
+						<div class="card-content">
+							<div id="subscribe-gain-chart"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-12" v-if="$page.auth.is_admin == 2">
+					<div class="card">
+						<div class="card-header d-flex flex-column align-items-start pb-0">
+							<div class="avatar bg-rgba-primary p-50 m-0">
+								<div class="avatar-content">
+									<i class="feather icon-users text-primary font-medium-5"></i>
+								</div>
+							</div>
+							<h2 class="text-bold-700 mt-1 mb-25">{{ withdraw_transactions_amount }}</h2>
+							<p class="mb-0">Total withdraw transaction amount</p>
 						</div>
 						<div class="card-content">
 							<div id="subscribe-gain-chart"></div>
@@ -326,7 +394,7 @@
 	export default {
 		name: "Dashboard",
 		components: {Layout},
-		props: ['msg','users','orders','usertoday','ordertoday','wallet','tenorder','tenwallet','success','error','invoice', 'seller_wallet', 'withdraw_amount'],
+		props: ['msg','users','orders','usertoday','ordertoday','wallet','tenorder','tenwallet','success','error','invoice', 'seller_wallet', 'withdraw_orders_amount', 'today_orders', 'total_orders', 'transaction_wallet', 'withdraw_transactions_amount'],
 		data() {
             return {
                 editMode: true,

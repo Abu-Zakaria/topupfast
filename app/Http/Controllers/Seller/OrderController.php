@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Order;
+use App\Product;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request;
@@ -19,6 +20,7 @@ class OrderController extends Controller
         $id = Request::all('order_id');
         $user_id = Request::all('user_id');
         $status = Request::all('status');
+        $accounttype = Request::all('accounttype');
         $start_date = Request::all('start_date');
         $end_date = Request::all('end_date');
         $accept_id = Request::all('accept_id');
@@ -37,6 +39,11 @@ class OrderController extends Controller
         if ($status['status']!=NULL) {
             $result = $result->where('status', $status);
             $result1 = $result1->where('status', $status);
+        }
+
+        if ($accounttype['accounttype']!=NULL) {
+            $result = $result->where('accounttype', $accounttype);
+            $result1 = $result1->where('accounttype', $accounttype);
         }
 
         if ($user_id['user_id']!=NULL) {
@@ -65,7 +72,7 @@ class OrderController extends Controller
 
         if ($product_id['product_id']!=NULL) {
 
-          $products = Product::where('name','like','%'.$product_id['product_id'].'%')->with('package')->get();
+          $products = Product::where('id','like','%'.$product_id['product_id'].'%')->with('package')->get();
 
           $package_ids = [];
           foreach ($products as $product){
@@ -75,12 +82,10 @@ class OrderController extends Controller
           $result1 = $result1->whereIn('package_id', $package_ids);
         }
 
-        $totalbuy = $result1->where('status','!=','cancel')->sum('buy_price');
-        $totalsale = $result1->where('status','!=','cancel')->sum('sale_price');
+        $totalsale = $result->where('status','!=','cancel')->sum('sale_price');
         
         return Inertia::render('Seller/MyOrders/Index', [
             'filters'       => Request::all('user_id'),
-            'totalbuy'      => $totalbuy,
             'totalsale'     => $totalsale,
             // 'orders'        => $result->orderBy('id','DESC')
             'orders'        => $result

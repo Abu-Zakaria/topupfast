@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Order;
 use App\Transaction;
+use App\WithdrawTransaction;
 use App\Invoice;
-use App\WithdrawRequest;
+use App\WithdrawOrder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -37,12 +38,30 @@ class DashboardController extends Controller
         $tenwallet = Transaction::with('paymentmethod')->with('accept_by')->orderBy('id', 'desc')->take(10)->get();
 
         $seller_wallet = 0;
-        $withdraw_amount = 0;
+        $withdraw_orders_amount = 0;
         // if user is a seller
+        $today_orders = '';
+        $total_orders = '';
+        $transaction_wallet = '';
+        $withdraw_transactions_amount = '';
         if(auth()->user()->is_admin == 2)
         {
-            $seller_wallet = auth()->user()->getWalletBalance();
-            $withdraw_amount = WithdrawRequest::where('user_id', auth()->user()->id)
+            $seller_wallet = auth()->user()->getOrdersWalletBalance();
+            $withdraw_orders_amount = WithdrawOrder::where('user_id', auth()->user()->id)
+                                            ->where('status', 'approved')
+                                            ->sum('withdraw_amount');
+
+            $today_orders = Order::where('accept_id', auth()->user()->id)
+                                ->where('status', 'complete')
+                                ->where('action_date', date('Y-m-d', time()))
+                                ->count();
+
+            $total_orders = Order::where('accept_id', auth()->user()->id)
+                                ->where('status', 'complete')
+                                ->count();
+
+            $transaction_wallet = auth()->user()->getTransactionsWalletBalance();
+            $withdraw_transactions_amount = WithdrawTransaction::where('user_id', auth()->user()->id)
                                             ->where('status', 'approved')
                                             ->sum('withdraw_amount');
         }
@@ -58,7 +77,11 @@ class DashboardController extends Controller
             'invoice'       => $invoice,
 	        'tenwallet' 	=> $tenwallet,
             'seller_wallet' => $seller_wallet,
-            'withdraw_amount'   => $withdraw_amount,
+            'withdraw_orders_amount'   => $withdraw_orders_amount,
+            'today_orders'  => $today_orders,
+            'total_orders'  => $total_orders,
+            'transaction_wallet' => $transaction_wallet,
+            'withdraw_transactions_amount' => $withdraw_transactions_amount,
         ]);
     }
 

@@ -17,6 +17,7 @@ class AddNewOrdersColumns extends Migration
             $table->integer('seller_commission')->default(0)->after('status');
             $table->integer('accept_id')->after('seller_commission');
             $table->text('comment')->nullable()->after('accept_id');
+            $table->date('action_date')->nullable()->after('comment');
         });
     }
 
@@ -31,6 +32,7 @@ class AddNewOrdersColumns extends Migration
             $table->dropColumn('seller_commission');
             $table->dropColumn('accept_id');
             $table->dropColumn('comment');
+            $table->dropColumn('action_date');
         });
     }
 }

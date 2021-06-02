@@ -132,7 +132,7 @@
 					</inertia-link>
 				</li>
 
-				<li class="nav-item" v-if="is_admin">
+				<li class="nav-item">
 					<inertia-link :href="route('notice.index')" :class="isUrl('notice') ? 'active' : ''">
 						<i class="feather icon-users"></i>
 						<span class="menu-title" data-i18n="">{{ __("Notice") }}</span>
@@ -146,10 +146,17 @@
           </inertia-link>
         </li>
 
-				<li>
-					<inertia-link :href="route('withdraw_requests.index')" :class="isUrl('withdraw') ? 'active' : ''">
+				<li class="nav-item">
+					<inertia-link :href="route('withdraw_orders.index')" :class="isUrl('withdraw_orders') ? 'active' : ''">
 						<i class="feather icon-users"></i>
-						<span class="menu-title" data-i18n="">Withdraw Requests</span>
+						<span class="menu-title" data-i18n="">Withdraw Orders</span>
+					</inertia-link>
+				</li>
+
+				<li class="nav-item">
+					<inertia-link :href="route('withdraw_transactions.index')" :class="isUrl('withdraw_transactions') ? 'active' : ''">
+						<i class="feather icon-users"></i>
+						<span class="menu-title" data-i18n="">Withdraw Transactions</span>
 					</inertia-link>
 				</li>
 

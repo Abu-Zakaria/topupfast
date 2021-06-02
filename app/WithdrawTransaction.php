@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WithdrawRequest extends Model
+class WithdrawTransaction extends Model
 {
     protected $guarded = [];
 
