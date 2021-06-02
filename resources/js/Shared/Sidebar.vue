@@ -160,6 +160,20 @@
 					</inertia-link>
 				</li>
 
+				<li class="nav-item" v-if="is_admin">
+					<inertia-link :href="route('sellers_order_commissions.index')" :class="isUrl('sellers_order_commissions') ? 'active' : ''">
+						<i class="feather icon-users"></i>
+						<span class="menu-title" data-i18n="">Sellers' Order Commissions</span>
+					</inertia-link>
+				</li>
+
+				<li class="nav-item" v-if="is_admin">
+					<inertia-link :href="route('sellers_transaction_commissions.index')" :class="isUrl('sellers_transaction_commissions') ? 'active' : ''">
+						<i class="feather icon-users"></i>
+						<span class="menu-title" data-i18n="">Sellers' Transactions Commissions</span>
+					</inertia-link>
+				</li>
+
 				<li class="nav-item" v-if="$can('subscription_access')">
 					<inertia-link :href="route('subscriptions.index')">
 						<i class="feather icon-users"></i>

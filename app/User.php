@@ -37,6 +37,13 @@ class User extends Authenticatable implements MustVerifyEmail
 				'email_verified_at' => 'datetime',
 		];
 
+		protected $appends = [
+			'ordersWallet',
+			'transactionsWallet',
+			'withdrawOrders',
+			'withdrawTransactions',
+		];
+
 		// public function sendPasswordResetNotification($token)
 		// {
 		//     $this->notify(new ResetPasswordNotification($token));
@@ -62,6 +69,11 @@ class User extends Authenticatable implements MustVerifyEmail
 			return $this->belongsTo(\App\Models\Users\Role::class);
 		}
 
+		public function getOrdersWalletAttribute()
+		{
+			return $this->getOrdersWalletBalance();
+		}
+
 		public function getOrdersWalletBalance()
 		{
 			if($this->is_admin == 1)
@@ -75,10 +87,15 @@ class User extends Authenticatable implements MustVerifyEmail
             {
                 $total_income += $order->seller_commission;
             }
-            $withdraw_amount = WithdrawOrder::where('user_id', auth()->user()->id)
+            $withdraw_amount = WithdrawOrder::where('user_id', $this->id)
 						                        ->where('status', 'approved')
 						                        ->sum('withdraw_amount');
             return $total_income - $withdraw_amount;
+		}
+
+		public function getTransactionsWalletAttribute()
+		{
+			return $this->getTransactionsWalletBalance();
 		}
 
 		public function getTransactionsWalletBalance()
@@ -94,9 +111,23 @@ class User extends Authenticatable implements MustVerifyEmail
             {
                 $total_income += $transaction->amount;
             }
-            $withdraw_amount = WithdrawTransaction::where('user_id', auth()->user()->id)
+            $withdraw_amount = WithdrawTransaction::where('user_id', $this->id)
 						                        ->where('status', 'approved')
 						                        ->sum('withdraw_amount');
             return $total_income - $withdraw_amount;
+		}
+
+		public function getWithdrawOrdersAttribute()
+		{
+			return WithdrawOrder::where('user_id', $this->id)
+						                        ->where('status', 'approved')
+						                        ->sum('withdraw_amount');
+		}
+
+		public function getWithdrawTransactionsAttribute()
+		{
+			return WithdrawTransaction::where('user_id', $this->id)
+						                        ->where('status', 'approved')
+						                        ->sum('withdraw_amount');
 		}
 }

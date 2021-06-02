@@ -1,94 +1,4 @@
-webpackJsonp([44],Array(188).concat([
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(232)
-/* script */
-var __vue_script__ = __webpack_require__(563)
-/* template */
-var __vue_template__ = __webpack_require__(564)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/Pages/WithdrawTransaction/Index.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4a2c3b7e", Component.options)
-  } else {
-    hotAPI.reload("data-v-4a2c3b7e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */,
-/* 226 */,
-/* 227 */,
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
+webpackJsonp([77],Array(232).concat([
 /* 232 */
 /***/ (function(module, exports) {
 
@@ -7578,7 +7488,61 @@ module.exports = toNumber;
 /* 560 */,
 /* 561 */,
 /* 562 */,
-/* 563 */
+/* 563 */,
+/* 564 */,
+/* 565 */,
+/* 566 */,
+/* 567 */,
+/* 568 */,
+/* 569 */,
+/* 570 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(232)
+/* script */
+var __vue_script__ = __webpack_require__(571)
+/* template */
+var __vue_template__ = __webpack_require__(572)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/Pages/SellersTransactionCommission/Index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1616f381", Component.options)
+  } else {
+    hotAPI.reload("data-v-1616f381", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 571 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7635,218 +7599,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "WithdrawOrder",
+  name: "SellersTransactionCommission",
   components: {
     Layout: __WEBPACK_IMPORTED_MODULE_0__Shared_Layout___default.a,
     Pagination: __WEBPACK_IMPORTED_MODULE_1__Shared_Pagination___default.a
   },
   props: {
     msg: String,
-    orders: Array,
+    sellers: Object,
     success: String,
     error: String,
     errors: Object,
-    requests: Object,
-    wallet_balance: Number
+    total_wallet_balance: Number
   },
   data: function data() {
-    return {
-      form_amount_error: '',
-      form: {
-        id: '',
-        amount: '',
-        comment: ''
-      },
-      accept_form: {
-        id: '',
-        comment: ''
-      },
-      searchform: {
-        user: ''
-      }
-    };
+    return {};
   },
-  watch: {
-    searchform: {
-      handler: __WEBPACK_IMPORTED_MODULE_3_lodash_throttle___default()(function () {
-        var query = __WEBPACK_IMPORTED_MODULE_2_lodash_pickBy___default()(this.searchform);
-        console.log(this.searchform);
-        this.$inertia.replace(this.route('withdraw_transactions.index', Object.keys(query).length ? query : {
-          remember: 'forget'
-        }));
-      }, 150),
-      deep: true
-    }
-  },
-  methods: {
-    get_comment_subject: function get_comment_subject(request) {
-      if (this.$page.auth.is_admin == 1) {
-        if (request.status == 'pending') {
-          return 'Seller';
-        }
-
-        return 'You';
-      } else if (this.$page.auth.is_admin == 2) {
-        if (request.status == 'pending') {
-          return 'You';
-        }
-
-        return 'Admin';
-      }
-    },
-    acceptRequest: function acceptRequest(data) {
-      this.closeAcceptModal();
-      this.approve(data);
-    },
-    searchUser: function searchUser(name) {
-      this.searchform.user = name;
-    },
-    approve: function approve(request) {
-      this.$inertia.put('/withdraw_transactions/' + request.id, {
-        status: 'approved',
-        comment: request.comment
-      });
-    },
-    decline: function decline(request) {
-      this.$inertia.put('/withdraw_transactions/' + request.id, {
-        status: 'cancel'
-      });
-    },
-    is_admin: function is_admin() {
-      return this.$page.auth.is_admin == 1;
-    },
-    is_seller: function is_seller() {
-      return this.$page.auth.is_admin == 2;
-    },
-    submitRequest: function submitRequest(form) {
-      if (form.amount > this.wallet_balance) {
-        this.form_amount_error = "Amount cannot be more than your wallet balance (" + this.wallet_balance + ")";
-        return false;
-      } else {
-        this.form_amount_error = "";
-      }
-
-      this.$inertia.post('/withdraw_transactions', form);
-      this.reset();
-      this.closeModal();
-    },
-    openModal: function openModal() {
-      $('#modal').modal('show');
-    },
-    openAcceptModal: function openAcceptModal(request) {
-      this.accept_form.id = request.id;
-      $('#modal_accept').modal('show');
-    },
-    closeModal: function closeModal() {
-      $('#modal').modal('hide');
-      this.reset();
-    },
-    closeAcceptModal: function closeAcceptModal() {
-      $('#modal_accept').modal('hide');
-      this.resetAcceptForm();
-    },
-    reset: function reset() {
-      this.form = {
-        id: '',
-        amount: ''
-      };
-    },
-    resetAcceptForm: function resetAcceptForm() {
-      this.accept_form = {
-        id: '',
-        comment: ''
-      };
-    }
-  }
+  watch: {},
+  methods: {}
 });
 
 /***/ }),
-/* 564 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -7877,47 +7656,6 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.is_admin()
-                ? _c(
-                    "div",
-                    { staticClass: "mb-6 flex justify-between items-center" },
-                    [
-                      _c("input", {
-                        staticClass:
-                          "relative w-full px-2 py-1 mb-2 rounded-r focus:shadow-outline",
-                        attrs: {
-                          autocomplete: "off",
-                          type: "text",
-                          placeholder: "User name"
-                        },
-                        domProps: { value: _vm.searchform.user },
-                        on: {
-                          input: function($event) {
-                            return _vm.searchUser($event.target.value)
-                          }
-                        }
-                      })
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.is_seller()
-                ? _c("div", { staticClass: "mb-2 text-right" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-sm btn-primary",
-                        on: {
-                          click: function($event) {
-                            return _vm.openModal()
-                          }
-                        }
-                      },
-                      [_vm._v("Create request")]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "table-responsive" },
@@ -7933,96 +7671,29 @@ var render = function() {
                         _c("tr", [
                           _c("th", [_vm._v("ID")]),
                           _vm._v(" "),
-                          _vm.is_admin()
-                            ? _c("th", [_vm._v("Requested by")])
-                            : _vm._e(),
+                          _c("th", [_vm._v("Seller")]),
                           _vm._v(" "),
-                          _c("th", [_vm._v("Withdraw amount")]),
+                          _c("th", [_vm._v("Transaction Wallet")]),
                           _vm._v(" "),
-                          _c("th", [_vm._v("Status")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Comment")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Requested at")]),
-                          _vm._v(" "),
-                          _vm.is_admin()
-                            ? _c("th", [_vm._v("Action")])
-                            : _vm._e()
+                          _c("th", [_vm._v("Withdraw transactions")])
                         ])
                       ]),
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.requests.data, function(request) {
+                        _vm._l(_vm.sellers.data, function(seller) {
                           return _c("tr", [
-                            _c("td", [_vm._v(_vm._s(request.id))]),
+                            _c("td", [_vm._v(_vm._s(seller.id))]),
                             _vm._v(" "),
-                            _vm.is_admin()
-                              ? _c("td", [_vm._v(_vm._s(request.user.name))])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.withdraw_amount))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.status))]),
+                            _c("td", [_vm._v(_vm._s(seller.name))]),
                             _vm._v(" "),
                             _c("td", [
-                              _c("b", [
-                                _vm._v(_vm._s(_vm.get_comment_subject(request)))
-                              ]),
-                              _vm._v(
-                                " - " +
-                                  _vm._s(request.comment) +
-                                  "\n\t\t\t\t\t\t        \t\t"
-                              )
+                              _vm._v(_vm._s(seller.transactionsWallet))
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.created_at))]),
-                            _vm._v(" "),
-                            _vm.is_admin()
-                              ? _c("td", [
-                                  request.status == "pending"
-                                    ? _c("span", [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn btn-sm btn-success",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.openAcceptModal(
-                                                  request
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t        \t\t\t\tApprove\n\t\t\t\t\t\t\t        \t\t\t"
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn btn-sm btn-danger",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.decline(request)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t                    \tDecline\n\t\t\t\t\t\t\t                    "
-                                            )
-                                          ]
-                                        )
-                                      ])
-                                    : _vm._e()
-                                ])
-                              : _vm._e()
+                            _c("td", [
+                              _vm._v(_vm._s(seller.withdrawTransactions))
+                            ])
                           ])
                         }),
                         0
@@ -8030,250 +7701,9 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("pagination", { attrs: { links: _vm.requests.links } })
+                  _c("pagination", { attrs: { links: _vm.sellers.links } })
                 ],
                 1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal fade", attrs: { id: "modal" } }, [
-                _c("div", { staticClass: "modal-dialog" }, [
-                  _c("div", { staticClass: "modal-content" }, [
-                    _c("div", { staticClass: "modal-header" }, [
-                      _c("h4", { staticClass: "modal-title" }, [
-                        _vm._v("New Withdraw Order")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-body" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.id,
-                              expression: "form.id"
-                            }
-                          ],
-                          attrs: { type: "hidden" },
-                          domProps: { value: _vm.form.id },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "id", $event.target.value)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("label", { attrs: { for: "name" } }, [
-                          _c("b", [_vm._v("Amount")])
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.amount,
-                              expression: "form.amount"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            error: _vm.errors.amount,
-                            max: _vm.wallet_balance,
-                            min: "0"
-                          },
-                          domProps: { value: _vm.form.amount },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "amount", $event.target.value)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.form_amount_error
-                          ? _c(
-                              "p",
-                              { staticClass: "text-danger font-weight-bold" },
-                              [_vm._v(_vm._s(_vm.form_amount_error))]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("label", { attrs: { for: "name" } }, [
-                          _c("b", [_vm._v("Comment")])
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.comment,
-                              expression: "form.comment"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", error: _vm.errors.comment },
-                          domProps: { value: _vm.form.comment },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "comment", $event.target.value)
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-footer" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-default",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              return _vm.closeModal()
-                            }
-                          }
-                        },
-                        [_vm._v("Close")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              return _vm.submitRequest(_vm.form)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t                        \tSubmit Request\n\t\t\t\t                        "
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal fade", attrs: { id: "modal_accept" } },
-                [
-                  _c("div", { staticClass: "modal-dialog" }, [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _c("div", { staticClass: "modal-header" }, [
-                        _c("h4", { staticClass: "modal-title" }, [
-                          _vm._v("Accept the transaction")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.accept_form.id,
-                                expression: "accept_form.id"
-                              }
-                            ],
-                            attrs: { type: "hidden" },
-                            domProps: { value: _vm.accept_form.id },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.accept_form,
-                                  "id",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("label", { attrs: { for: "name" } }, [
-                            _c("b", [_vm._v("Comment")])
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.accept_form.comment,
-                                expression: "accept_form.comment"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "text", error: _vm.errors.comment },
-                            domProps: { value: _vm.accept_form.comment },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.accept_form,
-                                  "comment",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-footer" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-default",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.closeAcceptModal()
-                              }
-                            }
-                          },
-                          [_vm._v("Close")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                return _vm.acceptRequest(_vm.accept_form)
-                              }
-                            }
-                          },
-                          [_vm._v("Accept\n\t\t\t\t                        ")]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
               )
             ])
           ])
@@ -8288,7 +7718,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4a2c3b7e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1616f381", module.exports)
   }
 }
 

@@ -42,7 +42,7 @@
 							        		<td>{{ request.withdraw_amount }}</td>
 							        		<td>{{ request.status }}</td>
 							        		<td>
-							        			<b>{{ get_comment_subject(request) }}</b> - {{ request.comment }}
+							        			<span v-html="get_comments(request)"></span>
 							        		</td>
 							        		<td>{{ request.created_at }}</td>
 							        		<td v-if="is_admin()">
@@ -169,23 +169,23 @@
 	    	}
 	    },
 	    methods: {
-	    	get_comment_subject(request)
+	    	get_comments(request)
 	    	{
+	    		let s_comment = request.seller_comment ? request.seller_comment : 'N/A';
+	    		let a_comment = request.admin_comment ? request.admin_comment : 'N/A';
 	    		if(this.$page.auth.is_admin == 1)
 	    		{
-	    			if(request.status == 'pending')
-	    			{
-	    				return 'Seller'
-	    			}
-	    			return 'You'
+	    			let text = "";
+    				text += "Seller - " + s_comment;
+    				text += "<br/> Admin - " + a_comment;
+	    			return text;
 	    		}
     			else if(this.$page.auth.is_admin == 2)
     			{
-    				if(request.status == 'pending')
-	    			{
-	    				return 'You'
-	    			}
-	    			return 'Admin'
+    				let text = "";
+    				text += "You - " + s_comment;
+    				text += "<br/> Admin - " + a_comment;
+	    			return text;
     			}
 	    	},
 	    	acceptRequest(data)

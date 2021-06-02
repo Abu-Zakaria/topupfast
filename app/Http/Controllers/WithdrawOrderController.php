@@ -102,7 +102,7 @@ class WithdrawOrderController extends Controller
         WithdrawOrder::insert([
             'user_id'   => auth()->user()->id,
             'withdraw_amount'    => $amount,
-            'comment'    => $comment,
+            'seller_comment'    => $comment,
             'status'    => 'pending',
             'admin_id'  => 0,
             'created_at' => date('Y-m-d H:i:s', time()),
@@ -154,7 +154,13 @@ class WithdrawOrderController extends Controller
             'comment' => 'max:120',
         ]);
 
-        WithdrawOrder::find($id)->update($validated);
+        $status = $validated['status'];
+        $comment = $validated['comment'];
+
+        WithdrawOrder::find($id)->update([
+            'status' => $status,
+            'admin_comment' => $comment,
+        ]);
 
         if($validated['status'] == 'approved')
         {

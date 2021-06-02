@@ -102,7 +102,7 @@ class WithdrawTransactionController extends Controller
             'user_id'   => auth()->user()->id,
             'withdraw_amount'    => $amount,
             'status'    => 'pending',
-            'comment'   => $comment,
+            'seller_comment'    => $comment,
             'admin_id'  => 0,
             'created_at' => date('Y-m-d H:i:s', time()),
         ]);
@@ -153,7 +153,13 @@ class WithdrawTransactionController extends Controller
             'comment' => 'max:125',
         ]);
 
-        WithdrawTransaction::find($id)->update($validated);
+        $status = $validated['status'];
+        $comment = $validated['comment'];
+
+        WithdrawTransaction::find($id)->update([
+            'status' => $status,
+            'admin_comment' => $comment,
+        ]);
 
         if($validated['status'] == 'approved')
         {

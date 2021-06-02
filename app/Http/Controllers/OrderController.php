@@ -67,10 +67,12 @@ class OrderController extends Controller
         if ($product_id['product_id']!=NULL) {
 
           $products = Product::where('id','like','%'.$product_id['product_id'].'%')->with('package')->get();
-
           $package_ids = [];
           foreach ($products as $product){
-            $package_ids[] = $product->package->id;
+            if($product->package)
+            {
+              $package_ids[] = $product->package->id;
+            }
           }
           $result = $result->whereIn('package_id', $package_ids);
           $result1 = $result1->whereIn('package_id', $package_ids);

@@ -20,7 +20,8 @@ class CreateWithdrawOrdersTable extends Migration
             $table->integer('withdraw_amount');
             $table->enum('status', ['approved', 'pending', 'cancel'])->default('pending');
             $table->integer('admin_id')->default(0);
-            $table->text('comment')->nullable();
+            $table->text('seller_comment')->nullable();
+            $table->text('admin_comment')->nullable();
 
             $table->timestamps();
         });

@@ -57,6 +57,9 @@ Route::group([
 				Route::put('/updatewallet/{id}', 'UserController@updatewallet')->name('users.updatewallet');
 				Route::delete('/users/{id}', 'UserController@destroy')->name('users.destroy');
 
+				Route::resource('/sellers_order_commissions', 'SellersOrderCommissionController');
+				Route::resource('/sellers_transaction_commissions', 'SellersTransactionCommissionController');
+
 				Route::group([
 					'prefix' => 'settings',
 					'namespace' => 'Users'
