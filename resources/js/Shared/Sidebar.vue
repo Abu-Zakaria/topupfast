@@ -146,14 +146,14 @@
           </inertia-link>
         </li>
 
-				<li>
+				<li class="nav-item">
 					<inertia-link :href="route('withdraw_orders.index')" :class="isUrl('withdraw_orders') ? 'active' : ''">
 						<i class="feather icon-users"></i>
 						<span class="menu-title" data-i18n="">Withdraw Orders</span>
 					</inertia-link>
 				</li>
 
-				<li>
+				<li class="nav-item">
 					<inertia-link :href="route('withdraw_transactions.index')" :class="isUrl('withdraw_transactions') ? 'active' : ''">
 						<i class="feather icon-users"></i>
 						<span class="menu-title" data-i18n="">Withdraw Transactions</span>
