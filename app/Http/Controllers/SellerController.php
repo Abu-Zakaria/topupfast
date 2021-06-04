@@ -11,7 +11,7 @@ class SellerController extends Controller
     {
         $order = Order::find($request->id);
 
-        if($request->accept_id != 0 || $order->status != 'pending')
+        if($order->accept_id != 0 || $order->status != 'pending')
         {
             return [
                 'success' => false,
