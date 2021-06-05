@@ -295,7 +295,7 @@
 						                <td>{{ row.purpose }}</td>
 						                <td>{{ row.amount }}</td>
 						                <td>{{ row.number }}</td>
-						                <td>{{ row.paymentmethod.name }}</td>
+						                <td>{{ (row.paymentmethod) ? row.paymentmethod.name : 'N\A' }}</td>
 						                <td :title="row.comment">
 						                	{{ (row.comment) ? row.comment.substr(0, 6) : "" }}{{ (row.comment && row.comment.length > 6) ? "..." : "" }}
 						                </td>
